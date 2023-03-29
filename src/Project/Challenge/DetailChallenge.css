@@ -1,0 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+.banner {
+  /* 단순히 배너 공간 잡아주기 */
+  width: 1200px;
+  height:55vh;
+
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top:20vh;
+}
+
+.banner-image {
+  /* 배너 공간 안에서 좌측 이미지 부분 */
+  width:55%;
+  height:450px;
+  background-color: green;
+
+  float: left;
+}
+
+.banner-explain {
+  /* 배너 공간 안에서 우측 글 부분 */
+  width:45%;
+  height:450px;
+  padding-left:3%;
+  float: right;
+}
+
+.state-box-PartInChallenge {
+  /* 참여중인 챌린지 */
+  height: 40px;
+  width: 155px;
+  left: 1010px;
+  top: 245px;
+  border-radius: 50px;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #FF6700;
+  float: left;
+  margin-left: 50px;
+  margin-right: -40px;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.state-box-Challenge {
+  /*진행중*/
+  height: 40px;
+  width: 90px;
+  left: 1175px;
+  top: 245px;
+  border-radius: 50px;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #FF9900;
+  float: left;
+  margin-left: 50px;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.state-box-Challenge2 {
+  /*진행예정*/
+  height: 40px;
+  width: 100px;
+  left: 1175px;
+  top: 245px;
+  border-radius: 50px;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #CCCCCC;
+  float: left;
+  margin-top: 10px;
+  margin-left: 50px;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.state-box-Challenge3 {
+  /*진행종료*/
+  height: 40px;
+  width: 100px;
+  left: 1175px;
+  top: 245px;
+  border-radius: 50px;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #FF0000;
+  float: left;
+  margin-top: 10px;
+  margin-left: 50px;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.Challenge-Title {
+  /*챌린지 제목(매일 운동하기)*/
+  height: 50px;
+  width: 550px;
+  left: 1010px;
+  top: 295px;
+  line-height: 50px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #FF6B00;
+  float: left;
+  text-align: left;
+  margin-left: 50px;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.Challenge-Period {
+  /*챌린지 기간 */
+  height: 30px;
+  width: 238px;
+  left: 1015px;
+  top: 355px;
+  line-height: 30px;
+  font-size: 22px;
+  color: #666666;
+  float: left;
+  text-align: left;
+  margin-left: 55px;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.Challenge-People {
+  /*사람 수 몇명인지 설명하는 부분 */
+  height: 30px;
+  width: 600px;
+  left: 1015px;
+  top: 395px;
+  font-weight: bold;
+  line-height: 30px;
+  font-size: 18px;
+  color: #FF9900;
+  float: left;
+  text-align: left;
+  margin-left: 55px;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.Challenge-Explain {
+  /*300자 정도 들어가는 챌린지 설명 부분*/
+  height: 150px;
+  width: 545px;
+  left: 1015px;
+  top: 435px;
+  font-weight: 400;
+  line-height: 30px;
+  font-size: 22px;
+  color: black;
+  float: left;
+  text-align: left;
+  margin-left: 55px;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.box-Today-challenge {
+  /* 오늘의 챌린지 인증하기 */
+  height: 80px;
+  width: 385px;
+  left: 1015px;
+  top: 605px;
+  border-radius: 50px;
+  background-color: #FF6B00;
+  float: left;
+  text-align: left;
+  margin-left: 55px;
+  margin-top: 20px;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.box-Today-challenge:hover {
+  /* 오늘의 챌린지 인증하기 호버 */
+  cursor: pointer;
+}
+
+.box-Today-challenge2 {
+  /* 함께 하기 */
+  height: 80px;
+  width: 250px;
+  left: 1015px;
+  top: 605px;
+  border-radius: 50px;
+  background-color: #FF6B00;
+  float: left;
+  text-align: center;
+  margin-left: 55px;
+  margin-top: 20px;
+  margin-bottom: 135px;
+  color: white;
+  font-size: 30px;
+  line-height: 80px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.box-Today-challenge2:hover {
+  /* 함께 하기 호버 */
+  cursor: pointer;
+}
+
+.box-Today-challenge3 {
+  /* 오늘의 챌린지 인증 완료 */
+  height: 80px;
+  width: 385px;
+  left: 1015px;
+  top: 605px;
+  border-radius: 50px;
+  background-color: #AAAAAA;
+  float: left;
+  text-align: center;
+  margin-left: 55px;
+  margin-top: 20px;
+  color: white;
+  font-size: 30px;
+  line-height: 80px;
+  font-weight: bold;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.box-Today-challenge4 {
+  /* 마감된 챌린지 입니다 */
+  height: 80px;
+  width: 330px;
+  left: 1015px;
+  top: 605px;
+  border-radius: 50px;
+  background-color: #AAAAAA;
+  float: left;
+  text-align: center;
+  margin-left: 55px;
+  margin-top: 20px;
+  color: white;
+  font-size: 30px;
+  line-height: 80px;
+  font-weight: bold;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+
+.box-Text {
+  /* 오늘의 챌린지 인증하기 */
+  height: 40px;
+  width: 385px;
+  left: 1015px;
+  top: 615px;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 40px;
+  margin-top: 10px;
+}
+
+.until-time {
+  /* 하루마다 24부터 0으로 떨어지는 타이머 */
+  height: 20px;
+  width: 385px;
+  left: 1015px;
+  top: 655px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.bottom-place {
+  /* 나의 챌린지 참여 현황 상위 div*/
+  width: 100%;
+  justify-content: center;
+  margin-top: 225px;
+  /*90px 인데 위에 div가 135라 더해줬습니다 */
+
+}
+
+.bottom-text {
+  /* 나의 챌린지 참여 현황 */
+  height: 30px;
+  width: 200px;
+  left: 365px;
+  top: 775px;
+  color: #666666;
+  line-height: 30px;
+  font-size: 22px;
+  margin-top: 90px;
+  margin-bottom: 24px;
+  margin-left: 360px;
+  text-align: left;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+#check {
+  border: 1px solid #888888;
+  border-left: 0px;
+  border-right: 0px;
+  width: 100%;
+  height: 100px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#check::-webkit-scrollbar {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#check::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+#check:hover::-webkit-scrollbar-thumb {
+  display: block;
+  border-radius: 25px;
+  background: #cccccc50;
+}
+
+table {
+  text-align: left;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  margin-left: 334px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.button-text {
+
+  background-color: white;
+  border: none;
+  display: inline-block;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.button-check {
+
+  background-color: #cccccc;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  display: inline-block;
+  margin: 0px 3px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.button-check-green {
+
+  background-color: #84D184;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  display: inline-block;
+  margin: 0px 3px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.button-check-red {
+
+  background-color: #F24747;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  display: inline-block;
+  margin: 0px 3px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.blank_bottom_place {
+  margin-top: 225px;
+  margin-bottom: 150px;
+  float: left;
+  height: 100px;
+  width: 100%;
+  font-size: 22px;
+  line-height: 100px;
+  background-color: white;
+  border: 1px solid #888888;
+  border-right: white;
+  border-left: white;
+  color: #666666;
+  font-weight: bold;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+
+}
+
+.image-explain-detail {
+  height: 3976px;
+  left: 360px;
+  top: 1070px;
+  border-radius: 0px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.challenge-certify {
+  height: 30px;
+  width: 107px;
+  left: 365px;
+  top: 950px;
+  border-radius: nullpx;
+  text-align: left;
+  color: #666666;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 365px;
+  font-size: 22px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.table-certify {
+  text-align: left;
+  white-space: nowrap;
+  margin: 5px 5px;
+  overflow-x: auto;
+}
+
+.table-certify::-webkit-scrollbar {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.table-certify::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.table-certify:hover::-webkit-scrollbar-thumb {
+  display: block;
+  border-radius: 25px;
+  background: #aaaaaa50;
+}
+
+.certify-button {
+  background-color: #FFF8ED;
+  border: none;
+  height: 500px;
+  width: 560px;
+  display: inline-block;
+  margin: 0px 10px 100px;
+  border-radius: 40px;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.certify-image {
+  width: 400px;
+  height: 300px;
+  position: relative;
+  margin-top: 50px;
+}
+
+.certify-text {
+  text-align: left;
+  margin-left: 80px;
+  position: relative;
+  top: 10px;
+  font-size: 15px;
+
+}
+
+.modify-button {
+  background-color: #FFF8ED;
+  border: none;
+  display: block;
+  float: right;
+  cursor: pointer;
+  color: #888888;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.plan-text {
+  text-align: center;
+  color: #666666;
+  position: relative;
+  top: 40%;
+}
+
+.detail-image {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}

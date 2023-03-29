@@ -1,0 +1,114 @@
+/* Login.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+*{box-sizing:border-box; list-style-type:none;}
+body{margin:0; padding:0;}
+*{margin:0; padding:0;}
+
+.login{
+  /* border:2px solid red; */
+  width:100%;
+  height:100%;
+  background:url(./image/login&join/login_bg.png);
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+.login .inner{
+  /* border:1px solid blue; */
+  width:30%;
+  margin:0 auto;
+  padding-top:23vh;
+}
+.login .inner .box{
+  /* border:1px solid crimson; */
+  width:100%;
+  border-radius:1.7vw;
+  background-color:rgba(255, 255, 255, 0.5);
+  text-align:center;
+  padding:5.5vh 0 7vh;
+}
+.login .inner .box h2{
+  text-align:center;
+  margin-bottom:4.5vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:2vw;
+  color:#FF6B00;
+}
+.login .inner .box .top p{
+  margin-bottom:3vh;
+}
+.login .inner .box .top p input{
+  border:2px solid #999999;
+  border-radius:5px;
+  width:21.5vw;
+  height:6vh;
+  padding-left:10px;
+  font-size:0.8vw;
+  color:#999999;
+  letter-spacing:0.03em;
+}
+.login .inner .box .top p input:focus{
+  outline-color: #FF6B00;
+}
+.login .inner .box .bottom .search{
+  /* border:1px solid orange; */
+  width:72%;
+  text-align:right;
+  padding-top:10px;
+}
+.login .inner .box .bottom .search li{
+  display:inline-block;
+  margin-left:10px;
+  font-size:14px;
+}
+.login .inner .box .bottom .search li:nth-child(2){
+  font-size:14px;
+  color:#999999;
+}
+.login .inner .box .bottom .search li a{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.75vw;
+  color:#999999;
+  letter-spacing:0.02em;
+  text-decoration:none;
+}
+.login .inner .box .bottom .search .searchID a:hover{
+  box-shadow:inset 0 -1.2px 0 #999999;
+}
+.login .inner .box .bottom .search .searchPW a:hover{
+  box-shadow:inset 0 -1.2px 0 #999999;
+}
+.login .inner .box .bottom button{
+  margin:8px 0 10px;
+  width:21.5vw;
+  height:6vh;
+  border:none;
+  border-radius:5px;
+  background-color:#FF6B00;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.1vw;
+  color:#fff;
+  letter-spacing:0.05em;
+}
+.login .inner .box .bottom button:focus{
+  outline-color:#FF6B00;
+  font-size:1.3vw;
+  padding-bottom:0.2vh;
+}
+.login .inner .box .bottom button:hover{
+  outline-color:#FF6B00;
+  font-size:1.3vw;
+  padding-bottom:0.2vh;
+}
+.login .inner .box .bottom p{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.85vw;
+  letter-spacing:0.05em;
+}
+.login .inner .box .bottom p a{
+  color:#999999;
+  text-decoration:none;
+}
+.login .inner .box .bottom p a:focus{
+  color:#585858;
+}

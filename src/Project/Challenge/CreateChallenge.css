@@ -1,0 +1,326 @@
+/* CreateChallenge.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+*{box-sizing:border-box; list-style-type:none;}
+body{margin:0; padding:0;}
+*{margin:0; padding:0;}
+
+.createChallenge{
+  width:100%;
+  height:auto;
+  background-color:rgba(255 , 103, 0, 0.05) ;
+}
+.createChallenge .inner2{
+  /* border:1px solid blue; */
+  width:70%;
+  margin:0 auto;
+  padding:19vh 0 16vh;
+}
+.createChallenge .inner2 h2{
+  text-align:center;
+  margin-bottom:30px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:2vw;
+  color:#FF6B00;
+}
+.createChallenge .inner2 .box2{
+  /* border:1px solid crimson; */
+  width:100%;
+  border-radius:1.7vw;
+  /* background-color:rgba(255, 255, 255, 0.5); */
+  background-color:#fff;
+  padding:9vh 0 10vh;
+  overflow:hidden;
+}
+.createChallenge .inner2 .box2 .wrap{
+  overflow:hidden;
+}
+
+.createChallenge .inner2 .box2 .wrap .main{
+  /* border:1px solid blue; */
+  float:left;
+  width:23%;
+  margin:0 3% 0 9%;
+  padding-top:0.5vh;
+}
+.createChallenge .inner2 .box2 .wrap .main h3{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.2vw;
+  text-align:center;
+}
+.createChallenge .inner2 .box2 .wrap .main #result{
+  border:1px solid #999999;
+  border-radius:0.3vw;
+  width:100%;
+  height:24vh;
+  margin-top:2vh;
+  padding-top:4px;
+}
+
+
+.createChallenge .inner2 .box2 .wrap .create{
+  float:right;
+  width:65%;
+}
+.createChallenge .inner2 .box2 .wrap .create ul{
+  overflow:hidden;
+  margin-bottom:3vh;
+  /* border:1px solid chartreuse; */
+}
+.createChallenge .inner2 .box2 .wrap .create ul li{
+  /* border:1px solid chartreuse; */
+}
+.createChallenge .inner2 .box2 .wrap .create ul .first{
+  float:left;
+  width:10%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.9vw;
+  padding-top:0.7vh;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second{
+  width:90%;
+  float:right;
+}
+.createChallenge .inner2 .box2 .wrap .create .check{
+  overflow:hidden;
+  margin-bottom:3vh;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .first{
+  float:left;
+  width:10%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.9vw;
+  padding-top:0.7vh;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second{
+  width:90%;
+  float:right;
+}
+
+
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="text"]{
+  border:1px solid #FF6B00;
+  background-color:#fff;
+  border-radius:0.3vw;
+  width:85%;
+  height:6vh;
+  padding-left:10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#000;
+  letter-spacing:0.03em;
+  padding-bottom:0.2vh;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="text"]::placeholder{color:#999999;}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="text"]:focus{outline-color:#FF6B00;}
+
+
+.createChallenge .inner2 .box2 .wrap .create ul .second textarea{
+  border:1px solid #FF6B00;
+  background-color:#fff;
+  border-radius:0.3vw;
+  width:85%;
+  height:25vh;
+  padding:10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#000;
+  letter-spacing:0.03em;
+  padding-bottom:0.2vh;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second textarea::placeholder{color:#999999;}
+.createChallenge .inner2 .box2 .wrap .create ul .second textarea:focus{outline-color:#FF6B00;}
+
+
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]{
+  border:none;
+  background-color:#fff;
+  border-radius:0.3vw;
+  width:40%;
+  height:6vh;
+  padding-left:10px;
+  color:#000;
+  letter-spacing:0.03em;
+  position:relative;
+  background:url(../image/creteChallenge/Cal.png) no-repeat 97% 50% / 0.9vw auto;
+  padding-bottom:0.2vh;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]::placeholder{color:#999999;}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]:focus{
+  outline-color: #FF6B00;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]:nth-child(1){margin-right:1.9%;}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]:nth-child(2){margin-left:1.9%;}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]::before{
+  content: attr(data-placeholder);
+  width: 100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#999999;
+  letter-spacing:0.03em;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]:focus::before,
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]:valid::before{
+  display:none;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]::-webkit-clear-button,
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]::-webkit-inner-spin-button{
+  display:none;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]::-webkit-calendar-picker-indicator{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  border:1px solid #FF6B00;
+  box-sizing:border-box;
+  border-radius:0.3vw;
+}
+
+
+.createChallenge .inner2 .box2 .wrap .create ul .second .photo1{
+  /* border:1px solid blue; */
+  width:85.5%;
+  height:6vh;
+  position:relative;
+  margin-left:0;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second .input_photo[type="file"]{
+  border:1px solid #FF6B00;
+  border-radius:0.3vw;
+  background-color:#fff;
+  width:83%;
+  height:6vh;
+  margin-right:4%;
+  padding:1.5vh 0 0 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#999999;
+  letter-spacing:0.03em;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second .input_photo[type="file"]:focus{
+  outline-color:#FF6B00;
+}
+.createChallenge .inner2 .box2 .wrap .create ul .second .input_photo[type="file"]::file-selector-button{
+  width:15%;
+  height:100%;
+  background: #fff;
+  box-sizing:border-box;
+  border:none;
+  background-color:#FF6B00;
+  border-radius:0.3vw;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  color:#fff;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.createChallenge .inner2 .box2 .wrap .create .check .second .sub{
+  overflow:hidden;
+  /* border:1px solid green; */
+  height:4vh;
+  padding-top:0.6vh;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second .sub p{
+  display:inline-block;
+  margin-right:9.2%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1vw;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second .cycleA{
+  overflow:hidden;
+  height:4vh;
+  padding-top:0.6vh;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second .cycleA p{
+  display:inline-block;
+  margin-right:9.8%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1vw;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second .cycleB{
+  overflow:hidden;
+  height:4vh;
+  padding-top:0.6vh;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second .cycleB p{
+  display:inline-block;
+  margin-right:7.9%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1vw;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second input[type="checkbox"]{
+  -webkit-appearance: none;
+  position:relative;
+  width:1.2vw;
+	height:2.4vh;
+  outline: none !important;
+	border:1px solid #FF9900;
+  border-radius:4px;
+  background: #fff;
+	cursor:pointer;
+  margin-right:0.5vw;
+  top:4px;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second input[type="checkbox"]::before{
+  content: "\2713";
+  position: absolute;
+  top:50%;
+  left:50%;
+  overflow:hidden;
+  transform:scale(0) translate(-50%, -50%);
+  line-height:1;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second input[type="checkbox"]:hover{
+  border-color: rgba(255, 153, 0, 0.5);
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second input[type="checkbox"]:focus{
+  border:2px solid #FF6B00;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second input[type="checkbox"]:checked {
+  background-color: #FF9900;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second input[type="checkbox"]:checked::before {
+  border-radius:2px;
+  transform: scale(1) translate(-50%, -50%)
+}
+.createChallenge .inner2 .box2 .wrap .create .check .second p label{
+  /* border:1px solid blue; */
+  top:-5px
+}
+
+
+.createChallenge .inner2 .box2 .btn{
+}
+.createChallenge .inner2 .box2 .btn button{
+  width:70%;
+  height:7vh;
+  margin:3.5vh 0 0 15%;
+  border:none;
+  border-radius:5px;
+  background-color:#FF6B00;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.2vw;
+  color:#fff;
+  letter-spacing:0.05em;
+}
+.createChallenge .inner2 .box2 .btn button:focus{
+  outline-color:#FF6B00;
+  font-size:1.4vw;
+  padding-bottom:0.2vh;
+}
+
+

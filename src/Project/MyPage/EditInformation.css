@@ -1,0 +1,298 @@
+/* EditInformation.css */
+/* MyPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+*{box-sizing:border-box; list-style-type:none;}
+body{margin:0; padding:0;}
+*{margin:0; padding:0;}
+
+.editInfo{
+  width:100%;
+  height:auto;
+}
+.editInfo .sideBar{
+  width:20%;
+  height:79%;
+  position:fixed;
+  top:0;
+  left:0;
+  padding-top:8vh;
+  text-align:center;
+  z-index:1;
+}
+.editInfo .sideBar .sideProfile{
+  margin:0 auto;
+  padding-top:10vh;
+}
+#profile_container .pf-img{margin-bottom:2vh;}
+#profile_container .pf-text{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.3vw;
+  font-weight:600;
+  color:#000;
+  letter-spacing:0.03em;
+}
+#profile_container .pf-text span{
+  font-size:1vw;
+  font-weight:400;
+}
+.editInfo .sideBar .sideProfile .line{
+  margin:3vh 0;
+}
+#side-nav .nav-sub{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.3vw;
+  color:#000;
+  letter-spacing:0.03em;
+  margin-bottom:2vh;
+}
+#side-nav .nav-sub a{
+  text-decoration:none;
+  color:#000;
+}
+#side-nav .nav-sub a:hover{font-weight:600;}
+#side-nav .nav-sub a:focus{font-weight:600;}
+#side-nav .nav-sub:nth-child(2) a{font-weight:600;}
+
+
+
+.editInfo .mainPage{
+  border-left:0.3vw solid #FFF8ED;
+  width:80%;
+  height:100%;
+  margin-left:20%;
+  padding:8vh 0 9vh;
+}
+.editInfo .mainPage .box3{
+  margin:0 auto;
+  /* border:1px solid darkblue; */
+  width:50%;
+  padding-top:10vh;
+}
+.editInfo .mainPage .box3 h1{
+  font-size:1.5vw;
+  font-weight:700;
+  text-align:center;
+  color:#EC8E00;
+}
+
+.editInfo .mainPage .box3 form{
+  width:100%;
+  margin:4vh;
+}
+.box3ul{
+  /* border:1px solid green; */
+  width:100%;
+  overflow:hidden;
+  margin-bottom:2.5vh;
+}
+.box3ul li{}
+.box3ul .editL{
+  float:left;
+  width:20%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.9vw;
+  color:#000;
+  letter-spacing:0.03em;
+}
+.box3ul .editL2{padding-top:0.4vh;}
+.box3ul .editC{padding-top:0.7vh;}
+.box3ul .editR{
+  float:right;
+  /* text-align:left; */
+  width:80%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.9vw;
+  color:#000;
+  letter-spacing:0.03em;
+  overflow:hidden;
+}
+.box3ul .editR input{
+  width:100%;
+  height:6vh;
+  border:1px solid #B9B9B9;
+  border-radius:0.3vw;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#000;
+  letter-spacing:0.03em;
+  padding:0 0 0.2vh 5px;
+}
+.box3ul .editR input:focus{outline-color:#FF6B00;}
+
+.box3ul p{
+  display:inline-block;
+}
+.box3ul .email1{margin-right:3%; width:45%;}
+.box3ul .email2{margin-left:3%; width:45%;}
+.box3ul .editR input[type="email"]{
+  width:100%;
+  height:6vh;
+  border:1px solid #B9B9B9;
+  border-radius:0.3vw;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#000;
+  letter-spacing:0.03em;
+  padding:0 0 0.2vh 5px;
+}
+.box3ul .editR input[type="email"]::placeholder{color:#999999}
+
+
+.box3ul .editR .pro-img{
+  float:left;
+  width:18%;
+  margin-right:4%;
+}
+.box3ul .editR img{
+  width:100%;
+  object-fit:cover;
+}
+.box3ul .editR #upload_container{
+  width:78%;
+  float:right;
+  padding-top:3vh;
+  position:relative;
+  text-align:right;
+}
+.box3ul .editR .pro-btn{
+  width:20%;
+  height:6vh;
+  border:none;
+  border-radius:0.3vw;
+  background-color:#FF6B00;
+  display:inline-block;
+  margin-right:3%;
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+.box3ul .editR .profile_btn{
+  width:100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.9vw;
+  color:#fff;
+  letter-spacing:0.05em;
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  padding-top:1.5vh;
+}
+.box3ul .editR input[type="file"]{
+  width:77%;
+  height:6vh;
+  border:1px solid #B9B9B9;
+  border-radius:0.3vw;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#999999;
+  letter-spacing:0.03em;
+  padding:1.5vh 0 0 5px;
+}
+.box3ul .editR input[type="file"]::file-selector-button{display:none;}
+
+.box3ul .editR select{
+  width:100%;
+  height:6vh;
+  border:1px solid #B9B9B9;
+  border-radius:0.3vw;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  color:#999999;
+  letter-spacing:0.03em;
+  padding:0 0 0.2vh 5px;
+
+  -webkit-appearance:none; /* 네이티브 외형 감추기 */ 
+  -moz-appearance:none; 
+  appearance:none;
+  background:url(../image/login&join/arrow.png) no-repeat 97% 50% / 1vw auto;
+  background-color:#fff;
+}
+.box3ul .editR select:focus{outline-color: #FF6B00;}
+
+
+.box3ul .editR .favC2{
+  /* border:1px solid salmon; */
+  width:100%;
+  height:6vh;
+  /* padding-top:1.2vh; */
+  overflow: hidden;
+}
+.box3ul .editR .favC2 p{
+  display:inline-block;
+  padding-left:0.5%;
+  margin-right:8.5%;
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:0.9vw;
+}
+.box3ul .editR .favC2 p:last-child{
+  margin-right:0;
+}
+.box3ul .editR .favC2 input[type="checkbox"]{
+  -webkit-appearance: none;
+  position:relative;
+  width:1.5vw;
+	height:3vh;
+  outline: none !important;
+	border:2px solid #FF9900;
+  border-radius:4px;
+  background: #fff;
+	cursor:pointer;
+  margin-right:0.4vw;
+  top:7px;
+}
+.box3ul .editR .favC2 input[type="checkbox"]::before{
+  content: "\2713";
+  position: absolute;
+  top:50%;
+  left:50%;
+  overflow:hidden;
+  transform:scale(0) translate(-50%, -50%);
+  line-height:1;
+}
+.box3ul .editR .favC2 input[type="checkbox"]:hover{border-color: rgba(255, 153, 0, 0.5);}
+.box3ul .editR .favC2 input[type="checkbox"]:focus{border:2px solid #FF6B00}
+.box3ul .editR .favC2 input[type="checkbox"]:checked {
+  background-color: #FF9900;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+.box3ul .editR .favC2 input[type="checkbox"]:checked::before {
+  border-radius: 2px;
+  transform: scale(1) translate(-50%, -50%)
+}
+.box3ul .editR .favC2 p label{
+  /* border:1px solid blue; */
+  top:-1px
+}
+
+.editBtn{
+  width:100%;
+}
+.editBtn input[type="submit"]{
+  width:100%;
+  height:6vh;
+  border:none;
+  border-radius:5px;
+  background-color:#EC8E00;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.2vw;
+  color:#fff;
+  letter-spacing:0.05em;
+}
+.editBtn input[type="submit"]:focus{font-size:1.4vw;}
+.withdraw{
+  margin-top:2.5vh;
+  text-align:center;
+} 
+.withdraw a{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.1vw;
+  color:#999999;
+  letter-spacing:0.05em;
+  text-decoration:none;
+}

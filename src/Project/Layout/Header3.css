@@ -1,0 +1,66 @@
+/* Header3.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+*{box-sizing:border-box; list-style-type:none;}
+body{margin:0;}
+
+header{
+  /* border:1px solid salmon; */
+  width:100%;
+  position:fixed;
+  z-index:2;
+}
+.header3{
+  position:relative;
+  background-color:#FFF8ED;
+  height:8vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  overflow:hidden;
+}
+.header3 div{
+  /* border:1px solid coral; */
+}
+.header3 .logoText{
+  float:left;
+  width:70%;
+  margin-left:3%;
+  padding-top:1.5vh;
+}
+.header3 .logoText p{
+  display:inline-block;
+  vertical-align:middle;
+  padding-right:1vw;
+  font-size:0.9vw;
+}
+.header3 .logoText p a{
+  /* border:1px solid chartreuse; */
+  padding:30px 5px;
+}
+.header3 .logoText p a img{
+  width:2vw;
+}
+.header3 .logoText p span{
+  font-weight:600;
+  font-size:1vw;
+}
+
+.header3 .rNav{
+  float:right;
+  width:17%;
+  overflow:hidden;
+}
+.header3 .rNav ul{
+  overflow:hidden;
+}
+.header3 .rNav ul .l04{
+  display:inline-block;
+  margin-right:1vw;
+  padding-top:1.5vw;
+  font-size:0.8vw;
+  color:#5A5A5A;
+}
+.header3 .rNav ul .l04 a{
+  color:#5A5A5A;
+  text-decoration:none;
+}
+.header3 .rNav ul .l04 a:focus{color:#000;}

@@ -1,0 +1,77 @@
+/* Footer.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+*{box-sizing:border-box; list-style-type:none;}
+body{margin:0;}
+
+footer{
+  /* border:1px solid crimson; */
+  width:100%;
+  height:21vh;
+  bottom:0;
+  overflow:hidden;
+}
+
+.f-left{
+  float:left;
+  width:45%;
+  overflow:hidden;
+  padding:4vh 0 0 25%;
+}
+.f-left p{
+  /* border:1px solid chartreuse; */
+  display:inline-block;
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:1.5vw;
+  font-weight:600;
+  color:rgba(255, 153, 0, 0.5);
+  vertical-align:top;
+}
+.f-left .logo{
+  width:9%;
+  margin-right:5px;
+}
+.f-left .logo img{
+  width:100%;
+  object-fit:cover;
+}
+
+.f-right{
+  float:right;
+  width:55%;
+  padding:4.5vh 0;
+  /* border:1px solid green; */
+}
+.f-right ul{
+  width:100%;
+  overflow:hidden;
+  margin-bottom:1vh;
+}
+.f-right ul li{
+  /* border:1px solid chartreuse; */
+  float:left;
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:0.7vw;
+  font-weight:500;
+  color:#777777;
+}
+.f-right ul li:nth-child(1){
+  width:15%;
+}
+.f-right ul li:nth-child(2){
+  width:80%;
+}
+.f-right ul li span{
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:0.7vw;
+  font-weight:400;
+  color:#999999;
+}
+.copy{
+  /* border: 1px solid rebeccapurple; */
+  font-family:'Noto Sans KR', sans-serif;
+  font-size:0.7vw;
+  font-weight:400;
+  color:#999999;
+  padding-top:1vh;
+}
