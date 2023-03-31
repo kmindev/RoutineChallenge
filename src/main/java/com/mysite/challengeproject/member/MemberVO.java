@@ -13,5 +13,5 @@ public class MemberVO {
 	private String member_nickname; // 회원 닉네임
 	private String member_profile; // 회원 프로필 이미지 저장명
 	private Date member_birth; // 회원 생년월일 DATE(YY/MM/DD) 년/월/일
-	private String theme; // 회원 관심 주제
+	private String member_theme; // 회원 관심 주제
 }
