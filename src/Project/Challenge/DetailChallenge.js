@@ -1,8 +1,6 @@
 import "./DetailChallenge.css";
 import React from "react";
 import { useState, useEffect } from "react";
- 
-
 
 function DetailChallenge() {
   var [참여현황변수, set참여현황변수] = useState(0); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
@@ -10,7 +8,7 @@ function DetailChallenge() {
 
   var 챌린지시작일변수 = new Date("3 2, 2023, 0:00:00");
   var 챌린지마지막일변수 = new Date("6 31, 2023, 0:00:00");
-
+  var bonin = 0;
   ///////////////////////////////////////////////////////////////// 여기 부터 타이머 만드는데 관련 된 요소 /////////////////////////////////////////////////////////////
 
   const [time, setTime] = useState(new Date()); // 현재 시간 변수는 time 입니다. 해당 값은 밀리초 (ms) 형태로 표기 됩니다. ex "1678198855933"
@@ -87,204 +85,165 @@ function DetailChallenge() {
     set오늘인증했나변수(0);
   }
 
-  const arr = [ // 3,4 ,5 ,6
-    Array.from(Array(31), (v, i) => i + 1),
-    Array.from(Array(30), (v, i) => i + 1),
-    Array.from(Array(31), (v, i) => i + 1),
-    Array.from(Array(30), (v, i) => i + 1),
-  ]; 
-
-  const holiday = [5, 2, 7, 4]; // 각 월의 처음 일요일
-
-  let color = [];
-
-  for (let kazu = 0; kazu < arr.length; kazu++) {
-    color[kazu] = arr[kazu].map((i) => {
-      let sun = holiday[kazu] % 7;
-      let sat = (holiday[kazu] % 7) - 1;
-
-      if (sat < 0) {
-        sat = sat + 7;
-      }
-
-      if (i % 7 === sun) {
-        return "#FF0000";
-      } else if (i % 7 === sat) {
-        return "#0000FF";
-      } else {
-        return "#000000";
-      }
-    });
-  }
-
   return (
     <>
-    <div className="forcenterdiv">
-      <div className="banner">
-        <img
-          className="banner-image"
-          alt="배너이미지"
-          src={process.env.PUBLIC_URL + "/image/detailChallenge/detail8.png"}
-        ></img>
-        <div className="banner-explain">
-          {closed === 1 ? (
-            <div className="state-box-Challenge3">진행종료</div>
-          ) : 참여현황변수 === 1 ? (
-            <>
-              <div className="state-box-PartInChallenge">참여 중인 챌린지</div>{" "}
-              <div className="state-box-Challenge">진행중</div>
-            </>
-          ) : started === 1 ? (
-            <div className="state-box-Challenge">진행중</div>
-          ) : (
-            <div className="state-box-Challenge2">진행예정</div>
-          )}
-
-          <div className="Challenge-Title">매일 운동하기</div>
-          <div className="Challenge-Period">2023.03.02~2023.06.31</div>
-          <div className="Challenge-People">현재 213명 참여 중</div>
-          <div className="Challenge-Explain">
-            -------------------------------------------------<br/>
-            운동 설명<br/>
-            -------------------------------------------------
-          </div>
-
-          {
-            closed === 1 ? (
-              <div className="box-Today-challenge4">마감된 챌린지입니다</div> // 챌린지가 닫혔는지부터 확인
+      <div className="forcenterdiv">
+        <div className="banner">
+          <img
+            className="banner-image"
+            alt="배너이미지"
+            src={process.env.PUBLIC_URL + "/image/detailChallenge/detail8.png"}
+          ></img>
+          <div className="banner-explain">
+            {closed === 1 ? (
+              <div className="state-box-Challenge3">진행종료</div>
             ) : 참여현황변수 === 1 ? (
-              // 먼저 챌린지에 참여 했는지 여부를 따집니다. 참여했다면 '💛' 로 갑니다. 참여하지 않았다면 '🧡' 로 갑니다.
-              오늘인증했나변수 === 1 ? ( // 💛 참여한 상태인데 오늘 인증을 했는지 따집니다.
-                <div className="box-Today-challenge3">
-                  오늘의 챌린지 인증 완료
-                </div> // 인증을 했다면 인증완료 출력, 안했다면 : 밑의 div 인증하기 출력
-              ) : (
-                <div
-                  className="box-Today-challenge"
-                  onClick={() => {
-                    alert("오늘의 챌린지 인증 완료!");
-                    set오늘인증했나변수(1); // 🚩인증 창을 띄우고 인증이 완료되면 되게 다시 수정해야 합니다. 추가로 변수같은걸 만들어서 db에 전송하면 끝🚩
-                    // 근데 이 변수를 날짜마다 초기화 해주는 기능이 필요합니다
-                  }}
-                >
-                  <div className="box-Text">오늘의 챌린지 인증하기</div>
-                  <div className="until-time">{final_time}</div>
-                </div>
-              )
-            ) : (
-              //  (closed === 1) ? // 🧡 챌린지에 참여하지 않은사람들입니다. 챌린지 시작 날짜가 지났는지 확인합니다.
-              //  <div className="box-Today-challenge4">마감된 챌린지입니다</div> :  // 지났다면 마감되었다고 알려줍니다.
               <>
-              <div
-                className="box-Today-challenge2"
-                onClick={() => {
-                  if (started === 1) {
-                    alert("챌린지에 참여하였습니다!"); // 🚩맘에 드는 폼으로 수정해야 합니다 🚩
-                    set참여현황변수(1);
-                  } else {
-                    alert("시작일이 아닙니다"); //🚩맘에 드는 폼으로 수정해야 합니다 🚩
-                  }
-                }}
-              >
-                함께 하기
-              </div>
+                <div className="state-box-PartInChallenge">
+                  참여 중인 챌린지
+                </div>{" "}
+                <div className="state-box-Challenge">진행중</div>
               </>
-            ) // 지나지 않았다면 함께 하기 버튼을 활성화 해줍니다.
+            ) : started === 1 ? (
+              <div className="state-box-Challenge">진행중</div>
+            ) : (
+              <div className="state-box-Challenge2">진행예정</div>
+            )}
+
+            <div className="Challenge-Title">매일 운동하기</div>
+            <div className="Challenge-Period">2023.03.02~2023.06.31</div>
+            <div className="Challenge-People">현재 213명 참여 중</div>
+            <div className="Challenge-Explain">
+              -------------------------------------------------
+              <br />
+              운동 설명
+              <br />
+              -------------------------------------------------
+            </div>
+
+            {
+              closed === 1 ? (
+                <div className="box-Today-challenge4">마감된 챌린지입니다</div> // 챌린지가 닫혔는지부터 확인
+              ) : 참여현황변수 === 1 ? (
+                // 먼저 챌린지에 참여 했는지 여부를 따집니다. 참여했다면 '💛' 로 갑니다. 참여하지 않았다면 '🧡' 로 갑니다.
+                오늘인증했나변수 === 1 ? ( // 💛 참여한 상태인데 오늘 인증을 했는지 따집니다.
+                  <div className="box-Today-challenge3">
+                    오늘의 챌린지 인증 완료
+                  </div> // 인증을 했다면 인증완료 출력, 안했다면 : 밑의 div 인증하기 출력
+                ) : (
+                  <div
+                    className="box-Today-challenge"
+                    onClick={() => {
+                      alert("오늘의 챌린지 인증 완료!");
+                      set오늘인증했나변수(1); // 🚩인증 창을 띄우고 인증이 완료되면 되게 다시 수정해야 합니다. 추가로 변수같은걸 만들어서 db에 전송하면 끝🚩
+                      // 근데 이 변수를 날짜마다 초기화 해주는 기능이 필요합니다
+                    }}
+                  >
+                    <div className="box-Text">오늘의 챌린지 인증하기</div>
+                    <div className="until-time">{final_time}</div>
+                  </div>
+                )
+              ) : (
+                //  (closed === 1) ? // 🧡 챌린지에 참여하지 않은사람들입니다. 챌린지 시작 날짜가 지났는지 확인합니다.
+                //  <div className="box-Today-challenge4">마감된 챌린지입니다</div> :  // 지났다면 마감되었다고 알려줍니다.
+                <>
+                  <div
+                    className="box-Today-challenge2"
+                    onClick={() => {
+                      if (started === 1) {
+                        alert("챌린지에 참여하였습니다!"); // 🚩맘에 드는 폼으로 수정해야 합니다 🚩
+                        set참여현황변수(1);
+                      } else {
+                        alert("시작일이 아닙니다"); //🚩맘에 드는 폼으로 수정해야 합니다 🚩
+                      }
+                    }}
+                  >
+                    함께 하기
+                  </div>
+                </>
+              ) // 지나지 않았다면 함께 하기 버튼을 활성화 해줍니다.
+            }
+          </div>
+        </div>
+        {started === 0 ? (
+          <>
+            <div className="blank_bottom_place">진행 예정인 챌린지입니다.</div>
+            <img
+              className="image-explain-detail"
+              alt="챌린지설명"
+              src={
+                process.env.PUBLIC_URL + "/image/detailChallenge/detail9.png"
+              }
+            ></img>
+          </>
+        ) : null}
+        <div className="bottom-place">
+          {
+            // 나의 챌린지 참여 현황은 챌린지에 참여 중일때만 표시되도록 하였습니다.
+            참여현황변수 === 1 ? (
+              <>
+                <section id="check">
+                  <div className="reply-box">
+                    <div className="challenge-certify">챌린지 인증</div>
+                    <div className="reply-inputform">
+                      <input
+                        type="text"
+                        className="reply-inputform-textbox"
+                        placeholder="챌린지 인증 댓글 입력"
+                      />
+                      <div className="reply-inputform-button">등록</div>
+                    </div>
+                    <div className="reply-list">
+                      <div className="reply-obj">
+                        <div className="reply-objleft">닉네임01</div>
+                        <div className="reply-objcontent">
+                          2023년 03월 10일 오늘도 인증 완료!
+                        </div>
+                        <div className="reply-objdate">1시간 전</div>
+                        {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                          <div className="reply-objchange">수정</div>
+                        ) : null}
+                      </div>
+                      <div className="reply-obj">
+                        <div className="reply-objleft">닉네임02</div>
+                        <div className="reply-objcontent">
+                          인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
+                        </div>
+                        <div className="reply-objdate">2023-03-09</div>
+                        {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                          <div className="reply-objchange">수정</div>
+                        ) : null}
+                      </div>
+                      <div className="reply-obj">
+                        <div className="reply-objleft">이름은몇글자까지</div>
+                        <div className="reply-objcontent">
+                          인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
+                        </div>
+                        <div className="reply-objdate">2023-03-09</div>
+                        {bonin === 1 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                          <div className="reply-objchange">수정</div>
+                        ) : null}
+                      </div>
+                      <div className="reply-moreContent">더보기</div>
+                    </div>
+                  </div>
+                </section>
+
+                <div className="table-big">
+                  <img
+                    className="detail-image"
+                    alt=""
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/image/detailChallenge/detail9.png"
+                    }
+                  ></img>
+                </div>
+              </>
+            ) : null
           }
         </div>
       </div>
-      {
-      started === 0 ? (<><div className="blank_bottom_place">진행 예정인 챌린지입니다.</div>
-      <img className="image-explain-detail" alt="챌린지설명" src={process.env.PUBLIC_URL + "/image/detailChallenge/detail9.png"}>
-      
-      </img>
-      
-      </>) : null
-      }
-      <div className="bottom-place"> 
-      
-      
-        {
-          
-          // 나의 챌린지 참여 현황은 챌린지에 참여 중일때만 표시되도록 하였습니다.
-          참여현황변수 === 1 ? (
-            <>
-              <div className="bottom-text">나의 챌린지 참여 현황</div>
-              <section id="check">
-                <div>
-                  <table>
-                    <tr>
-                      {arr.map((a, b) => {
-                        return (
-                          <td>
-                            {b + 3}월
-                            <br />
-                            {arr[b].map((item, num) => {
-                              return (
-                                <button
-                                  className="button-text"
-                                  style={{ color: color[b][num] }}
-                                >
-                                  {item}
-                                  <br />
-                                  <button className="button-check"></button>
-                                </button>
-                              );
-                            })}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  </table>
-                </div>
-              </section>
-              <div className = "challenge-certify">
-          챌린지 인증       
-        </div>
-        <div className = "table-certify">
-          <table>
-            <tr>
-              <td>
-                <button class = "certify-button">
-                  <img className="certify-image" alt="인증사진" src={process.env.PUBLIC_URL + "/image/detailChallenge/detail7.png"}></img>
-                  <div className = "certify-text">
-                    <h2>닉네임01</h2>
-                    <p>2023년 03월 10일 오늘도 인증 완료!</p>
-                  </div>
-                  <button class = "modify-button">수정</button>
-                </button>
-              </td>
-              <td>
-                <button class = "certify-button">
-                  <img className="certify-image" alt="인증사진" src={process.env.PUBLIC_URL + "/image/detailChallenge/detail7.png"}></img>
-                  <div className = "certify-text">
-                    <h2>루챌</h2>
-                    <p>2023년 03월 9일 인증하기</p>
-                  </div>
-                  <button class = "modify-button">수정</button>
-                </button>
-              </td>
-              <td>
-                <button class = "certify-button">
-                  <img className="certify-image" alt="인증사진" src={process.env.PUBLIC_URL + "/image/detailChallenge/detail7.png"}></img>
-                  <div className = "certify-text">
-                    <h2>닉네임02</h2>
-                    <p>2023년 03월 10일 인증완료!</p>
-                  </div>                           
-                </button>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div>
-        <img className="detail-image" alt="" src={process.env.PUBLIC_URL + "/image/detailChallenge/detail9.png"}></img>
-        </div>
-              
-            </>
-          ) : null
-        }
-      </div>
-    </div>  
     </>
   );
 }
