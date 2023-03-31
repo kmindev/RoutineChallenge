@@ -5,7 +5,7 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class ChallengeMemberVO {
+public class ChallengeMember {
 	private int entry_num; // challege_member 기본키 AI
 	private int challenge_num; // 챌린지 num (외래키)
 	private String member_id; // 참여 회원(외래키)
