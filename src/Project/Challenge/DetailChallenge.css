@@ -3,12 +3,13 @@
 .banner {
   /* 단순히 배너 공간 잡아주기 */
   width: 1200px;
-  height:55vh;
+  /*height:55vh;*/
 
   display: flex;
   justify-content: center;
   margin: 0 auto;
   padding-top:20vh;
+  padding-bottom:135px;
 }
 
 .banner-image {
@@ -291,8 +292,8 @@
   /* 나의 챌린지 참여 현황 상위 div*/
   width: 100%;
   justify-content: center;
-  margin-top: 225px;
-  /*90px 인데 위에 div가 135라 더해줬습니다 */
+  /*margin-top: 225px;*/
+  
 
 }
 
@@ -314,16 +315,19 @@
 
 
 #check {
-  border: 1px solid #888888;
+  /*margin-top: 114px;*/
   border-left: 0px;
   border-right: 0px;
   width: 100%;
-  height: 100px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   font-family: 'Noto Sans KR', sans-serif;
+  display:table;
+  border-width: 1px 0px 1px 0px;
+
+border-style: solid;
+
+border-color: #999999;
+
+
 }
 
 #check::-webkit-scrollbar {
@@ -341,7 +345,145 @@
   background: #cccccc50;
 }
 
-table {
+.reply-box{
+margin: 0 auto;
+height: 595px;
+width: 1200px;
+left: 360px;
+top: 875px;
+border-radius: 10px;
+display:table;
+}
+
+.reply-inputform{
+height: 100px;
+width: 1200px;
+left: 360px;
+top: 920px;
+border-radius: 10px;
+border: 2px solid #FFD596;
+}
+
+.reply-inputform-textbox{
+border : 0;
+margin-top:35px;
+margin-left:30px;
+float: left;
+height: 30px;
+width: 1050px;
+font-family: 'Noto Sans KR', sans-serif;
+font-size: 22px;
+font-weight: 700;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+}
+
+.reply-inputform-textbox::placeholder{
+  color: #CCCCCC;
+  }
+
+.reply-inputform-textbox:focus{
+  outline:none;
+  color:black;
+  }
+
+.reply-inputform-button{
+margin-top: 35px;
+margin-right: 30px;
+float:right;
+height: 44px;
+width: 44px;
+font-family: 'Noto Sans KR', sans-serif;
+font-size: 22px;
+font-weight: 700;
+line-height: 30px;
+text-align: right;
+color: #FF6B00;
+}
+
+.reply-inputform-button:hover{
+cursor: pointer;
+}
+
+.reply-list{
+margin-top:30px;
+height: 360px;
+width: 1200px;
+left: 360px;
+top: 1050px;
+border-radius: 10px;
+display: table;
+}
+
+.reply-obj{
+width: 1200px;
+border-radius: 10px;
+min-height: 90px;
+background: #FF99000D;
+margin-bottom: 15px;
+display: table;
+padding-bottom: 30px;
+}
+
+.reply-objleft{
+float:left;
+height: 30px;
+width: 90px;
+margin-top: 30px;
+margin-left: 30px;
+font-family: 'Noto Sans KR', sans-serif;
+font-size:18px;
+font-weight: bold;
+display:table;
+}
+
+.reply-objcontent{
+float:left;
+margin-top: 30px;
+margin-left: 10px;
+width: 850px;
+font-family: 'Noto Sans KR', sans-serif;
+font-size:18px;
+}
+
+.reply-objchange{
+float:right;
+margin-top: 30px;
+margin-right: 30px;
+color: #333333;
+font-family: 'Noto Sans KR', sans-serif;
+font-size:18px;
+}
+
+.reply-objchange:hover{
+cursor: pointer;
+}
+
+.reply-objdate{
+text-align: end;
+float:right;
+width:95px;
+margin-top: 30px;
+margin-right: 30px;
+color: #888888;
+font-family: 'Noto Sans KR', sans-serif;
+font-size:18px;
+}
+
+.reply-moreContent{
+height: 30px;
+width: 61px;
+color: #888888;
+font-family: 'Noto Sans KR', sans-serif;
+font-size:22px;
+margin-bottom: 50px;
+}
+
+.reply-moreContent:hover{
+cursor: pointer;
+}
+.table {
   text-align: left;
   overflow-x: auto;
   overflow-y: hidden;
@@ -438,18 +580,16 @@ table {
 
 .challenge-certify {
   height: 30px;
-  width: 107px;
   left: 365px;
   top: 950px;
-  border-radius: nullpx;
   text-align: left;
   color: #666666;
-  margin-top: 30px;
+  margin-top: 55px;
   margin-bottom: 30px;
-  margin-left: 365px;
+  font-weight: bold;
   font-size: 22px;
   font-family: 'Noto Sans KR', sans-serif;
-
+  flex: 0 0;
 }
 
 .table-certify {
@@ -499,7 +639,14 @@ table {
   position: relative;
   top: 10px;
   font-size: 15px;
+}
 
+.certify-text {
+  text-align: left;
+  margin-left: 80px;
+  position: relative;
+  top: 10px;
+  font-size: 15px;
 }
 
 .modify-button {
@@ -525,4 +672,8 @@ table {
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+}
+
+.table-big {
+  margin-top: 100px;
 }
