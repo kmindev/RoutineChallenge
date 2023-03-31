@@ -3,12 +3,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 function DetailChallenge() {
-  var [참여현황변수, set참여현황변수] = useState(0); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
+  var [참여현황변수, set참여현황변수] = useState(1); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
   var [오늘인증했나변수, set오늘인증했나변수] = useState(0); // 인증했으면 1, 인증 안했으면 0  이 항목은 '참여현황변수'가 1일 경우에만 유효합니다.
 
   var 챌린지시작일변수 = new Date("3 2, 2023, 0:00:00");
   var 챌린지마지막일변수 = new Date("6 31, 2023, 0:00:00");
   var bonin = 0;
+  const [saveReply, setSaveReply] = useState("");
+
+  const saveUserReply = (event) => {
+    setSaveReply(event.target.value);
+  };
   ///////////////////////////////////////////////////////////////// 여기 부터 타이머 만드는데 관련 된 요소 /////////////////////////////////////////////////////////////
 
   const [time, setTime] = useState(new Date()); // 현재 시간 변수는 time 입니다. 해당 값은 밀리초 (ms) 형태로 표기 됩니다. ex "1678198855933"
@@ -29,6 +34,10 @@ function DetailChallenge() {
   var tomorrow1 = new Date(year2, month2, day2 - 1);
 
   var gap = tomorrow - today; // 챌린지 시작일 변수와 현재 날짜의 차를 구합니다.
+  var gap2 = 챌린지시작일변수 - today;
+
+  var day3 = Math.floor(gap2 / (1000 * 60 * 60 * 24));
+
   var zero = ["", "", ""];
   // var day = Math.ceil(gap / (1000 * 60 * 60 * 24))-1; // 값은 86,400,000 으로 해당 값을 밀리초에서 날짜 값으로 바꿔줍니다.  ex "19423"  이 값을 1970.01.01 에 더해주는식으로
   var hour = Math.ceil((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -101,8 +110,12 @@ function DetailChallenge() {
               <>
                 <div className="state-box-PartInChallenge">
                   참여 중인 챌린지
-                </div>{" "}
-                <div className="state-box-Challenge">진행중</div>
+                </div>
+                {started === 1 ? (
+                  <div className="state-box-Challenge">진행중</div>
+                ) : (
+                  <div className="state-box-Challenge2">진행예정</div>
+                )}
               </>
             ) : started === 1 ? (
               <div className="state-box-Challenge">진행중</div>
@@ -130,32 +143,41 @@ function DetailChallenge() {
                   <div className="box-Today-challenge3">
                     오늘의 챌린지 인증 완료
                   </div> // 인증을 했다면 인증완료 출력, 안했다면 : 밑의 div 인증하기 출력
-                ) : (
+                ) : started === 1 ? (
                   <div
                     className="box-Today-challenge"
                     onClick={() => {
-                      alert("오늘의 챌린지 인증 완료!");
-                      set오늘인증했나변수(1); // 🚩인증 창을 띄우고 인증이 완료되면 되게 다시 수정해야 합니다. 추가로 변수같은걸 만들어서 db에 전송하면 끝🚩
+                      document
+                        .querySelector('.reply-inputform-textbox[type="text"]')
+                        .focus();
+
+                      // 🚩인증 창을 띄우고 인증이 완료되면 되게 다시 수정해야 합니다. 추가로 변수같은걸 만들어서 db에 전송하면 끝🚩
                       // 근데 이 변수를 날짜마다 초기화 해주는 기능이 필요합니다
                     }}
                   >
                     <div className="box-Text">오늘의 챌린지 인증하기</div>
                     <div className="until-time">{final_time}</div>
                   </div>
+                ) : (
+                  <div
+                    className="box-Today-challenge"
+                    onClick={() => {
+                      alert("챌린지 시작일이 아닙니다.");
+                    }}
+                  >
+                    <div className="box-Text">챌린지 시작까지</div>
+                    <div className="until-time">{day3 + 1}일</div>
+                  </div>
                 )
+              ) : started === 1 ? (
+                <div className="box-Today-challenge4">마감된 챌린지입니다</div>
               ) : (
-                //  (closed === 1) ? // 🧡 챌린지에 참여하지 않은사람들입니다. 챌린지 시작 날짜가 지났는지 확인합니다.
-                //  <div className="box-Today-challenge4">마감된 챌린지입니다</div> :  // 지났다면 마감되었다고 알려줍니다.
                 <>
                   <div
                     className="box-Today-challenge2"
                     onClick={() => {
-                      if (started === 1) {
-                        alert("챌린지에 참여하였습니다!"); // 🚩맘에 드는 폼으로 수정해야 합니다 🚩
-                        set참여현황변수(1);
-                      } else {
-                        alert("시작일이 아닙니다"); //🚩맘에 드는 폼으로 수정해야 합니다 🚩
-                      }
+                      alert("챌린지에 참여하였습니다!"); // 🚩맘에 드는 폼으로 수정해야 합니다 🚩
+                      set참여현황변수(1);
                     }}
                   >
                     함께 하기
@@ -167,7 +189,16 @@ function DetailChallenge() {
         </div>
         {started === 0 ? (
           <>
-            <div className="blank_bottom_place">진행 예정인 챌린지입니다.</div>
+            {closed === 1 ? (
+              <div className="blank_bottom_place">
+                모집 마감된 챌린지입니다.
+              </div>
+            ) : (
+              <div className="blank_bottom_place">
+                진행 예정인 챌린지입니다.
+              </div>
+            )}
+
             <img
               className="image-explain-detail"
               alt="챌린지설명"
@@ -190,8 +221,43 @@ function DetailChallenge() {
                         type="text"
                         className="reply-inputform-textbox"
                         placeholder="챌린지 인증 댓글 입력"
+                        value={saveReply}
+                        onChange={saveUserReply}
                       />
-                      <div className="reply-inputform-button">등록</div>
+                      {closed === 1 ? (
+                        <div
+                          className="reply-inputform-button"
+                          onClick={() => {
+                            alert("마감된 챌린지 입니다.");
+                          }}
+                        >
+                          등록
+                        </div>
+                      ) : 오늘인증했나변수 === 1 ? (
+                        <div
+                          className="reply-inputform-button"
+                          onClick={() => {
+                            alert("오늘은 이미 인증했습니다.");
+                          }}
+                        >
+                          등록
+                        </div>
+                      ) : (
+                        <div
+                          className="reply-inputform-button"
+                          onClick={() => {
+                            if (saveReply === "") {
+                              alert("글을 작성해주세요.");
+                            } else {
+                              set오늘인증했나변수(1);
+                              alert("인증되었습니다.");
+                              //리다이렉트
+                            }
+                          }}
+                        >
+                          등록
+                        </div>
+                      )}
                     </div>
                     <div className="reply-list">
                       <div className="reply-obj">
