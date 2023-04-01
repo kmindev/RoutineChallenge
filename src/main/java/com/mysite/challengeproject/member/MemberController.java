@@ -29,8 +29,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/find_id")
-	public int findId(@RequestBody MemberVO member) throws Exception {
-		int res = memberService.findId(member);
+	public String findId(@RequestBody MemberVO member) throws Exception {
+		String res = memberService.findId(member);
 		return res;
 	}
 	
@@ -47,8 +47,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/get_member") 
-	public int getMember(@RequestBody MemberVO member) throws Exception {
-		int res = memberService.getMember(member);
+	public MemberVO getMember(MemberVO member) throws Exception {
+		MemberVO res = memberService.getMember(member);
 		return res;
 	}
 	
@@ -58,7 +58,7 @@ public class MemberController {
 		return memberList;
 	}
 	
-	@RequestMapping("/delete_Member") 
+	@RequestMapping("/delete_member") 
 	public int deleteMember(@RequestBody MemberVO member) throws Exception {
 		int res = memberService.deleteMember(member);
 		return res;
