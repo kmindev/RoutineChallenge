@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface MemberService {
 	public int insertMember(MemberVO member);
 	public int login(MemberVO member);
-	public int findId(MemberVO member);
+	public String findId(MemberVO member);
 	public int findPw(MemberVO member);
 	public int updateMember(MemberVO member);
 	public int getMember(MemberVO member);

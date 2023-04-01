@@ -27,8 +27,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int findId(MemberVO member) {
-		int res = mapper.findId(member);
+	public String findId(MemberVO member) {
+		String res = mapper.findId(member);
 		return res;
 	}
 	

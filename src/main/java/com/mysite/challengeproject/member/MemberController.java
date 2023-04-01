@@ -29,8 +29,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/find_id")
-	public int findId(@RequestBody MemberVO member) throws Exception {
-		int res = memberService.findId(member);
+	public String findId(@RequestBody MemberVO member) throws Exception {
+		String res = memberService.findId(member);
 		return res;
 	}
 	
