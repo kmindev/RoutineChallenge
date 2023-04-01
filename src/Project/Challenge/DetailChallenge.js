@@ -207,108 +207,109 @@ function DetailChallenge() {
               }
             ></img>
           </>
-        ) : null}
-        <div className="bottom-place">
-          {
-            // 나의 챌린지 참여 현황은 챌린지에 참여 중일때만 표시되도록 하였습니다.
-            참여현황변수 === 1 ? (
-              <>
-                <section id="check">
-                  <div className="reply-box">
-                    <div className="challenge-certify">챌린지 인증</div>
-                    <div className="reply-inputform">
-                      <input
-                        type="text"
-                        className="reply-inputform-textbox"
-                        placeholder="챌린지 인증 댓글 입력"
-                        value={saveReply}
-                        onChange={saveUserReply}
-                      />
-                      {closed === 1 ? (
-                        <div
-                          className="reply-inputform-button"
-                          onClick={() => {
-                            alert("마감된 챌린지 입니다.");
-                          }}
-                        >
-                          등록
+        ) : (
+          <div className="bottom-place">
+            {
+              // 나의 챌린지 참여 현황은 챌린지에 참여 중일때만 표시되도록 하였습니다.
+              참여현황변수 === 1 ? (
+                <>
+                  <section id="check">
+                    <div className="reply-box">
+                      <div className="challenge-certify">챌린지 인증</div>
+                      <div className="reply-inputform">
+                        <input
+                          type="text"
+                          className="reply-inputform-textbox"
+                          placeholder="챌린지 인증 댓글 입력"
+                          value={saveReply}
+                          onChange={saveUserReply}
+                        />
+                        {closed === 1 ? (
+                          <div
+                            className="reply-inputform-button"
+                            onClick={() => {
+                              alert("마감된 챌린지 입니다.");
+                            }}
+                          >
+                            등록
+                          </div>
+                        ) : 오늘인증했나변수 === 1 ? (
+                          <div
+                            className="reply-inputform-button"
+                            onClick={() => {
+                              alert("오늘은 이미 인증했습니다.");
+                            }}
+                          >
+                            등록
+                          </div>
+                        ) : (
+                          <div
+                            className="reply-inputform-button"
+                            onClick={() => {
+                              if (saveReply === "") {
+                                alert("글을 작성해주세요.");
+                              } else {
+                                set오늘인증했나변수(1);
+                                alert("인증되었습니다.");
+                                //리다이렉트
+                              }
+                            }}
+                          >
+                            등록
+                          </div>
+                        )}
+                      </div>
+                      <div className="reply-list">
+                        <div className="reply-obj">
+                          <div className="reply-objleft">닉네임01</div>
+                          <div className="reply-objcontent">
+                            2023년 03월 10일 오늘도 인증 완료!
+                          </div>
+                          <div className="reply-objdate">1시간 전</div>
+                          {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                            <div className="reply-objchange">수정</div>
+                          ) : null}
                         </div>
-                      ) : 오늘인증했나변수 === 1 ? (
-                        <div
-                          className="reply-inputform-button"
-                          onClick={() => {
-                            alert("오늘은 이미 인증했습니다.");
-                          }}
-                        >
-                          등록
+                        <div className="reply-obj">
+                          <div className="reply-objleft">닉네임02</div>
+                          <div className="reply-objcontent">
+                            인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
+                          </div>
+                          <div className="reply-objdate">2023-03-09</div>
+                          {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                            <div className="reply-objchange">수정</div>
+                          ) : null}
                         </div>
-                      ) : (
-                        <div
-                          className="reply-inputform-button"
-                          onClick={() => {
-                            if (saveReply === "") {
-                              alert("글을 작성해주세요.");
-                            } else {
-                              set오늘인증했나변수(1);
-                              alert("인증되었습니다.");
-                              //리다이렉트
-                            }
-                          }}
-                        >
-                          등록
+                        <div className="reply-obj">
+                          <div className="reply-objleft">이름은몇글자까지</div>
+                          <div className="reply-objcontent">
+                            인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
+                          </div>
+                          <div className="reply-objdate">2023-03-09</div>
+                          {bonin === 1 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                            <div className="reply-objchange">수정</div>
+                          ) : null}
                         </div>
-                      )}
+                        <div className="reply-moreContent">더보기</div>
+                      </div>
                     </div>
-                    <div className="reply-list">
-                      <div className="reply-obj">
-                        <div className="reply-objleft">닉네임01</div>
-                        <div className="reply-objcontent">
-                          2023년 03월 10일 오늘도 인증 완료!
-                        </div>
-                        <div className="reply-objdate">1시간 전</div>
-                        {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-                          <div className="reply-objchange">수정</div>
-                        ) : null}
-                      </div>
-                      <div className="reply-obj">
-                        <div className="reply-objleft">닉네임02</div>
-                        <div className="reply-objcontent">
-                          인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
-                        </div>
-                        <div className="reply-objdate">2023-03-09</div>
-                        {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-                          <div className="reply-objchange">수정</div>
-                        ) : null}
-                      </div>
-                      <div className="reply-obj">
-                        <div className="reply-objleft">이름은몇글자까지</div>
-                        <div className="reply-objcontent">
-                          인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
-                        </div>
-                        <div className="reply-objdate">2023-03-09</div>
-                        {bonin === 1 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-                          <div className="reply-objchange">수정</div>
-                        ) : null}
-                      </div>
-                      <div className="reply-moreContent">더보기</div>
-                    </div>
-                  </div>
-                </section>
+                  </section>
 
-                <div className="table-big">
-                  <img
-                    className="detail-image"
-                    alt=""
-                    src={
-                      process.env.PUBLIC_URL +
-                      "/image/detailChallenge/detail9.png"
-                    }
-                  ></img>
-                </div>
-              </>
-            ) : null
-          }
-        </div>
+                  <div className="table-big">
+                    <img
+                      className="detail-image"
+                      alt=""
+                      src={
+                        process.env.PUBLIC_URL +
+                        "/image/detailChallenge/detail9.png"
+                      }
+                    ></img>
+                  </div>
+                </>
+              ) : null
+            }
+          </div>
+        )}
       </div>
     </>
   );
