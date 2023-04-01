@@ -45,8 +45,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int getMember(MemberVO member) {
-		int res = mapper.getMember(member);
+	public MemberVO getMember(MemberVO member) {
+		MemberVO res = mapper.getMember(member);
 		return res;
 	}
 	
