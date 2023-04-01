@@ -18,7 +18,7 @@ body{margin:0; padding:0;}
   left:0;
   padding-top:8vh;
   text-align:center;
-  z-index:1;
+  z-index:4;
 }
 .editInfo .sideBar .sideProfile{
   margin:0 auto;
@@ -78,7 +78,7 @@ body{margin:0; padding:0;}
 
 .editInfo .mainPage .box3 form{
   width:100%;
-  margin:4vh;
+  margin:4vh 0;
 }
 .box3ul{
   /* border:1px solid green; */
@@ -285,14 +285,122 @@ body{margin:0; padding:0;}
   letter-spacing:0.05em;
 }
 .editBtn input[type="submit"]:focus{font-size:1.4vw;}
-.withdraw{
-  margin-top:2.5vh;
+
+.del-wrap{text-align:center;}
+.del-btn{
+  border:none;
+  background-color:white;
+  margin:0 auto;
+  /* display: flex;
+  justify-content: center; */
   text-align:center;
-} 
-.withdraw a{
   font-family: 'Noto Sans KR', sans-serif;
   font-size:1.1vw;
   color:#999999;
   letter-spacing:0.05em;
   text-decoration:none;
+}
+
+/* 탈퇴 모달 */
+/* modal창 외부화면 */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:rgba(0, 0, 0, 0.8);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:5;
+}
+ 
+/* modal창 */
+.modalBody{
+  position:absolute;
+  width:40%;
+  padding:6vh 4vw;
+  text-align:left;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1vw;
+  color:#000;
+  letter-spacing:0.05em;
+  text-decoration:none;
+  background-color:#f9f9f9;
+  border-radius:1vw;
+  box-shadow: 0 8px 10px 0 rgba(186, 192, 198, 0.5);
+}
+ #modalCloseBtn{
+  position:absolute;
+  top:1.5vh;
+  right:1.5vw;
+  border:none;
+  color:rgba(0, 0, 0, 0.7);
+  background-color:transparent;
+  font-size:1.3vw;
+}
+#modalCloseBtn:hover{
+  cursor:pointer;
+}
+
+.modal-inner{}
+.modal-phrase{line-height:3.5vh;}
+.modal-phrase span{
+  font-size:1.2vw;
+  font-weight:600;
+  line-height:5.5vh;
+}
+.modal-check{padding:2vh 0 2vh;}
+.modal-check input[type="checkbox"]{
+  -webkit-appearance:none;
+  position:relative;
+  width:1.5vw;
+	height:3vh;
+  outline: none !important;
+	border:2px solid #FF9900;
+  border-radius:4px;
+  background: #fff;
+	cursor:pointer;
+  margin-right:0.4vw;
+  top:7px;
+}
+.modal-check input[type="checkbox"]::before{
+  content: "\2713";
+  position: absolute;
+  top:50%;
+  left:50%;
+  overflow:hidden;
+  transform:scale(0) translate(-50%, -50%);
+  line-height:1;
+}
+.modal-check input[type="checkbox"]:hover{border-color: rgba(255, 153, 0, 0.5);}
+.modal-check input[type="checkbox"]:focus{border:2px solid #FF6B00}
+.modal-check input[type="checkbox"]:checked {
+  background-color: #FF9900;
+  border-color: rgba(255, 255, 255, 0.3);
+  color:white;
+}
+.modal-check input[type="checkbox"]:checked::before {
+  border-radius: 2px;
+  transform: scale(1) translate(-50%, -50%)
+}
+.modal-check label{
+  /* border:1px solid blue; */
+  top:-1px
+}
+
+.final-delBtn{
+  border:none;
+  border-radius:0.2vw;
+  background:#FF9900;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1vw;
+  color:#fff;
+  letter-spacing:0.05em;
+  text-decoration:none;
+  padding:0.8vh 1vw;
+  display: flex;
+  justify-content: center;
+  margin-top:3vh;
 }

@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import "./EditInformation.css";
+import DeleteModal from "./DeleteModal";
 
 function EditInformation(props) {
   const [user, setUser] = useState({
@@ -11,16 +12,16 @@ function EditInformation(props) {
     email1: "example",  //이메일
     email2: "naver.com",  //이메일 뒷 주소
     challenges: [],  //관심 챌린지
-    image: process.env.PUBLIC_URL + "/image/myPage/profile_icon.png", // 프로필 이미지
+    image: process.env.PUBLIC_URL + "/image/myPage/profile_icon.png",  //프로필 이미지
   });
 
-  const input_current_password = useRef(""); // 현재 비밀번호 ref
-  const input_change_password1 = useRef(""); // 변경할 비밀번호 ref
-  const input_change_password2 = useRef(""); // 변경할 비밀번호 확인 ref
-  const input_chage_nickname = useRef(""); // 변경할 닉네임 ref
-  const input_chage_email = useRef(""); // 이메일 ref
+  const input_current_password = useRef("");  //현재 비밀번호 ref
+  const input_change_password1 = useRef("");  //변경할 비밀번호 ref
+  const input_change_password2 = useRef("");  //변경할 비밀번호 확인 ref
+  const input_chage_nickname = useRef("");  //변경할 닉네임 ref
+  const input_chage_email = useRef("");  //이메일 ref
 
-  // 프로필 이미지 변경
+  //프로필 이미지 변경
   const handleImageUpload = (event) => {
     const selectedImage = event.target.files[0];
     const imageUrl = URL.createObjectURL(selectedImage);
@@ -31,6 +32,10 @@ function EditInformation(props) {
     setUser(nextUser);
   };
 
+  //회원탈퇴 모달
+  const [del, setDel] = useState(false);
+
+  
   return (
     <div className="editInfo">
       <div className="sideBar">
@@ -45,7 +50,7 @@ function EditInformation(props) {
             <p className="nav-sub"><a href="/editInfo">개인정보 수정</a></p>
           </div>
         </div>  
-      </div>
+      </div> {/*sideBar*/}
 
       <div className="mainPage">
         <div className='box3'>
@@ -192,11 +197,18 @@ function EditInformation(props) {
             <div className="editBtn">
               <input id="edit" type="submit" value="수정" />
             </div>
-            <p className="withdraw"><a href="/">회원탈퇴</a></p>
-          </form>  
-        </div>
-      </div>
-    </div>
+          </form>
+
+          <div className="del-wrap">
+            <button className="del-btn" onClick={() => setDel(!del)}>회원탈퇴</button>    
+          </div>
+
+          {del && (
+            <DeleteModal closeModal={() => setDel(!del)}></DeleteModal>
+          )}
+        </div>{/*box3*/}
+      </div>{/*mainPage*/}
+    </div>//editInfo
   );
 }
 
