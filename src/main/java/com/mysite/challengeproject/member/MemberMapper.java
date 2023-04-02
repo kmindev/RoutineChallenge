@@ -46,4 +46,13 @@ public interface MemberMapper {
 	@Delete("delete from member where member_id=#{member_id}")
 	public int deleteMember(String member_id);
 	
+	@Update("update challenge set challenge_creater='no_info' where challenge_creater=#{member_id}")
+	public void updateChallengeForMemberDel(String member_id);
+	
+	@Update("update board set member_id='no_info' where member_id=#{member_id}")
+	public void updateBoardForMemberDel(String member_id);
+	
+	@Delete("delete from challenge_member where member_id=#{member_id}")
+	public void updateChallengeMemberForMemberDel(String member_id);
+	
 }

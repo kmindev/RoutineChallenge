@@ -59,8 +59,11 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override // 회원 탈퇴
 	public int deleteMember(String meber_id) {
-		int res = mapper.deleteMember(meber_id);
-		return res;
+		mapper.updateChallengeForMemberDel(meber_id);
+		mapper.updateBoardForMemberDel(meber_id);
+		mapper.updateChallengeMemberForMemberDel(meber_id);
+		
+		return mapper.deleteMember(meber_id);
 	}
 
 }
