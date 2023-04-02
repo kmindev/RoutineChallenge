@@ -39,8 +39,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override // 회원 정보 조회
-	public MemberVO getMember(MemberVO member) {
-		MemberVO res = mapper.getMember(member);
+	public MemberVO getMember(String member_id) {
+		MemberVO res = mapper.getMember(member_id);
 		return res;
 	}
 
@@ -58,9 +58,12 @@ public class MemberServiceImpl implements MemberService {
 //	}
 	
 	@Override // 회원 탈퇴
-	public int deleteMember(MemberVO member) {
-		int res = mapper.deleteMember(member);
-		return res;
+	public int deleteMember(String meber_id) {
+		mapper.updateChallengeForMemberDel(meber_id);
+		mapper.updateBoardForMemberDel(meber_id);
+		mapper.updateChallengeMemberForMemberDel(meber_id);
+		
+		return mapper.deleteMember(meber_id);
 	}
 
 }

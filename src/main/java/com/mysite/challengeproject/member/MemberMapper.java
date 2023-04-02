@@ -30,10 +30,10 @@ public interface MemberMapper {
 
 	// 회원 정보 조회
 	@Select("select * from member where member_id=#{member_id}")
-	public MemberVO getMember(MemberVO member);
+	public MemberVO getMember(String member_id);
 	
 	// 회원 정보 수정
-	@Update("update member set member_name=#{member_name}, member_password=#{member_password}, "
+	@Update("update member set member_password=#{member_password}, "
 			+ "member_email=#{member_email}, member_nickname=#{member_nickname}, member_profile=#{member_profile}, "
 			+ "member_birth=#{member_birth}, member_theme=#{member_theme} where member_id=#{member_id}")
 	public int updateMember(MemberVO member);
@@ -44,6 +44,15 @@ public interface MemberMapper {
 	
 	// 회원 탈퇴
 	@Delete("delete from member where member_id=#{member_id}")
-	public int deleteMember(MemberVO member);
+	public int deleteMember(String member_id);
+	
+	@Update("update challenge set challenge_creater='no_info' where challenge_creater=#{member_id}")
+	public void updateChallengeForMemberDel(String member_id);
+	
+	@Update("update board set member_id='no_info' where member_id=#{member_id}")
+	public void updateBoardForMemberDel(String member_id);
+	
+	@Delete("delete from challenge_member where member_id=#{member_id}")
+	public void updateChallengeMemberForMemberDel(String member_id);
 	
 }

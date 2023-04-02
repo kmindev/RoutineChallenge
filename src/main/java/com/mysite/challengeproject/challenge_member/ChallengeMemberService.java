@@ -3,7 +3,7 @@ package com.mysite.challengeproject.challenge_member;
 public interface ChallengeMemberService {
 	
 	// 챌린지 참여 여부 조회
-	public int membercheck_challenge(String member_id, int challenge_num) throws Exception;
+	public int membercheck_challenge(ChallengeMemberVO challemgeMemberVO) throws Exception;
 	
 	// 챌린지 참여 인원 조회
 	public int count_challengemember(int challenge_num) throws Exception;
