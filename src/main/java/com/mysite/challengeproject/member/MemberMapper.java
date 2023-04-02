@@ -30,7 +30,7 @@ public interface MemberMapper {
 
 	// 회원 정보 조회
 	@Select("select * from member where member_id=#{member_id}")
-	public MemberVO getMember(MemberVO member);
+	public MemberVO getMember(String member_id);
 	
 	// 회원 정보 수정
 	@Update("update member set member_name=#{member_name}, member_password=#{member_password}, "
@@ -44,6 +44,6 @@ public interface MemberMapper {
 	
 	// 회원 탈퇴
 	@Delete("delete from member where member_id=#{member_id}")
-	public int deleteMember(MemberVO member);
+	public int deleteMember(String member_id);
 	
 }
