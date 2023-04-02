@@ -19,15 +19,13 @@ public class ChallengeController {
 	// 챌린지 전체 조회
 	@GetMapping("/challengelist")
 	public List<ChallengeDTO> challengelist() {
-		List<ChallengeDTO> list = challengeServiceImpl.challengelist();
-		return list;
+		return challengeServiceImpl.challengelist();
 	}
 		
 	// 주제별 챌린지 조회
 	@GetMapping("/theme_challengelist")
 	public List<ChallengeDTO> ThemeChallengelist(String theme) {
-		List<ChallengeDTO> list = challengeServiceImpl.ThemeChallengelist(theme);
-		return list;
+		return challengeServiceImpl.ThemeChallengelist(theme);
 	}
 	
 	// 진행상태별 챌린지 조회(0:진행예정 1:진행중 2:진행종료)

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-	private int board_id; // board id(기본키) AI
+	private int board_num; // board num(기본키) AI
 	private String member_id; // 작성자 (외래키)
 	private int challenge_num; // 챌린지 id (외래키)
 	private String board_content; // 내용

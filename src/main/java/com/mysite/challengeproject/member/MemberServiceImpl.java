@@ -14,50 +14,50 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	
-	@Override
+	@Override // 회원가입
 	public int insertMember(MemberVO member) {
 		int res = mapper.insertMember(member);
 		return res;
 	}
 	
-	@Override
+	@Override // 로그인
 	public int login(MemberVO member) {
 		int res = mapper.login(member);
-		return res;  //id와 pw가 일치하는 행 반환
+		return res;
 	}
 	
-	@Override
+	@Override // 아이디 찾기 (이름, 이메일)
 	public String findId(MemberVO member) {
 		String res = mapper.findId(member);
 		return res;
 	}
 	
-	@Override
-	public int findPw(MemberVO member) {
-		int res = mapper.findPw(member);
+	@Override // 비밀번호 찾기 (아이디, 이메일)
+	public String findPw(MemberVO member) {
+		String res = mapper.findPw(member);
 		return res;
 	}
 
-	@Override
+	@Override // 회원 정보 조회
+	public MemberVO getMember(MemberVO member) {
+		MemberVO res = mapper.getMember(member);
+		return res;
+	}
+
+	@Override // 회원 정보 수정
 	public int updateMember(MemberVO member) {
 		int res = mapper.updateMember(member);
 		return res;
 	}
 	
-	@Override
-	public MemberVO getMember(MemberVO member) {
-		MemberVO res = mapper.getMember(member);
-		return res;
-	}
+//	@Override // 회원 리스트 조회 (관리자)
+//	public ArrayList<MemberVO> getMemberList() {
+//		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
+//		memberList = mapper.getMemberList();
+//		return memberList;
+//	}
 	
-	@Override
-	public ArrayList<MemberVO> getMemberList() {
-		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
-		memberList = mapper.getMemberList();
-		return memberList;
-	}
-	
-	@Override
+	@Override // 회원 탈퇴
 	public int deleteMember(MemberVO member) {
 		int res = mapper.deleteMember(member);
 		return res;
