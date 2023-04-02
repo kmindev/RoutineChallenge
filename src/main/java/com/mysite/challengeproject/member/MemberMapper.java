@@ -33,7 +33,7 @@ public interface MemberMapper {
 	public MemberVO getMember(String member_id);
 	
 	// 회원 정보 수정
-	@Update("update member set member_name=#{member_name}, member_password=#{member_password}, "
+	@Update("update member set member_password=#{member_password}, "
 			+ "member_email=#{member_email}, member_nickname=#{member_nickname}, member_profile=#{member_profile}, "
 			+ "member_birth=#{member_birth}, member_theme=#{member_theme} where member_id=#{member_id}")
 	public int updateMember(MemberVO member);

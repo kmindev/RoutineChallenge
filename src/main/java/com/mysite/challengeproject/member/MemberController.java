@@ -53,7 +53,7 @@ public class MemberController {
 	
 	// 회원 정보 수정
 	@PostMapping("/update_member")
-	public int updateMember(MemberVO member) throws Exception {
+	public int updateMember(@RequestBody MemberVO member) throws Exception {
 		int res = memberService.updateMember(member);
 		return res;
 	}
