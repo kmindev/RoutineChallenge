@@ -10,16 +10,16 @@ public interface ChallengeService {
 	public List<ChallengeDTO> challengelist();
 		
 	// 주제별 챌린지 조회
-	public List<ChallengeDTO> ThemeChallengelist(String theme);
+	public List<ChallengeDTO> ThemeChallengelist(String challenge_theme);
 	
 	// 진행상태별 챌린지 조회(진행예정)
-	public List<ChallengeDTO> StateChallengelist0(int state);
+	public List<ChallengeDTO> StateChallengelist1();
 	
 	// 진행상태별 챌린지 조회(진행중)
-	public List<ChallengeDTO> StateChallengelist1(int state);
+	public List<ChallengeDTO> StateChallengelist2();
 	
 	// 진행상태별 챌린지 조회(진행종료)
-	public List<ChallengeDTO> StateChallengelist2(int state);
+	public List<ChallengeDTO> StateChallengelist3();
 	
 	// 챌린지 조회수 업데이트
 	public void setReadCountUpdate(int challenge_num);

@@ -30,16 +30,16 @@ public class ChallengeController {
 		return challengeServiceImpl.ThemeChallengelist(challenge_theme);
 	}
 	
-	// 진행상태별 챌린지 조회(0:진행예정 1:진행중 2:진행종료)
+	// 진행상태별 챌린지 조회(1:진행예정 2:진행중 3:진행종료)
 	@GetMapping("/state_challengelist")
 	public List<ChallengeDTO> StateChallengelist(@RequestParam("state") int state) {
 		List<ChallengeDTO> list;
 		if (state == 0) {
-			list = challengeServiceImpl.StateChallengelist0(state);
+			list = challengeServiceImpl.StateChallengelist1();
 		} else if (state == 1) {
-			list = challengeServiceImpl.StateChallengelist1(state);
+			list = challengeServiceImpl.StateChallengelist2();
 		} else {
-			list = challengeServiceImpl.StateChallengelist2(state);
+			list = challengeServiceImpl.StateChallengelist3();
 		}
 		return list;
 	}

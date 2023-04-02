@@ -16,19 +16,19 @@ public interface ChallengeMapper {
 	
 	// 주제별 챌린지 조회
 	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_theme=#{challenge_theme}")
-	public List<ChallengeDTO> ThemeChallengelist(String theme);
+	public List<ChallengeDTO> ThemeChallengelist(String challenge_theme);
 	
 	// 진행상태별 챌린지 조회(진행예정)
 	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_start>=NOW()")
-	public List<ChallengeDTO> StateChallengelist0(int state);
+	public List<ChallengeDTO> StateChallengelist1();
 	
 	// 진행상태별 챌린지 조회(진행중)
 	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_start<=NOW() AND challenge_end>=NOW()")
-	public List<ChallengeDTO> StateChallengelist1(int state);
+	public List<ChallengeDTO> StateChallengelist2();
 	
 	// 진행상태별 챌린지 조회(진행종료)
 	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_end<=NOW()")
-	public List<ChallengeDTO> StateChallengelist2(int state);
+	public List<ChallengeDTO> StateChallengelist3();
 	
 	// 챌린지 조회수 업데이트
 	@Update("UPDATE challenge SET challenge_readcount=challenge_readcount+1 WHERE challenge_num=#{challenge_num}")

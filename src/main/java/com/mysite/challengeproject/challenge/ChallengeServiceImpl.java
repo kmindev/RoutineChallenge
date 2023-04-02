@@ -19,23 +19,23 @@ public class ChallengeServiceImpl implements ChallengeService{
 	}
 		
 	@Override // 주제별 챌린지 조회
-	public List<ChallengeDTO> ThemeChallengelist(String theme) {
-		return mapper.ThemeChallengelist(theme);
+	public List<ChallengeDTO> ThemeChallengelist(String challenge_theme) {
+		return mapper.ThemeChallengelist(challenge_theme);
 	}
 	
 	@Override // 진행상태별 챌린지 조회(진행예정)
-	public List<ChallengeDTO> StateChallengelist0(int state) {
-		return mapper.StateChallengelist0(state);
+	public List<ChallengeDTO> StateChallengelist1() {
+		return mapper.StateChallengelist1();
 	}
 	
 	@Override // 진행상태별 챌린지 조회(진행중)
-	public List<ChallengeDTO> StateChallengelist1(int state) {
-		return mapper.StateChallengelist1(state);
+	public List<ChallengeDTO> StateChallengelist2() {
+		return mapper.StateChallengelist2();
 	}
 	
 	@Override // 진행상태별 챌린지 조회(진행종료)
-	public List<ChallengeDTO> StateChallengelist2(int state) {
-		return mapper.StateChallengelist2(state);
+	public List<ChallengeDTO> StateChallengelist3() {
+		return mapper.StateChallengelist3();
 	}
 	
 	@Override // 챌린지 조회수 업데이트
