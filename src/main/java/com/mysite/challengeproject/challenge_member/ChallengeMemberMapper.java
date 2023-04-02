@@ -10,7 +10,7 @@ public interface ChallengeMemberMapper {
 	
 	// 챌린지 참여 여부 조회 (1:참여 중, 0: 미참여)
 	@Select("SELECT COUNT(*) FROM challenge_member where member_id=#{member_id} and challenge_num=#{challenge_num} ")
-	public int membercheck_challenge(String member_id, int challenge_num) throws Exception;
+	public int membercheck_challenge(ChallengeMemberVO challemgeMemberVO) throws Exception;
 	
 	// 챌린지 참여 인원 조회
 	@Select("SELECT COUNT(*) FROM challenge_member where challenge_num=#{challenge_num}")
