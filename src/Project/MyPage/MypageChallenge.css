@@ -63,22 +63,23 @@ body{margin:0; padding:0;}
   width:100%;
   overflow:hidden;
 }
-.share_body2{padding-top:3vh;}
+/* .share_body2{padding-top:3vh;} */
 
 .share_body ul{
   width:100%;
   overflow:hidden;
 }
+
 #my_challenge{
   /* border:2px solid green; */
+  display: inline-block;
   float:left;
   width:31%;
   height:50vh;
   margin-right:3.5%;
-  /* background-color: rgba(255, 255, 255, 0.7); */
-  /* background: #FFFCF0; */
-  /* box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1); */
-  border-radius:1.5vw;
+  background-color: #fefaf8;
+  border-radius: 1.5vw;
+  border: 2px solid #FF9900;
   cursor:pointer;
 }
 #my_challenge:nth-child(3){margin-right:0;}
@@ -88,46 +89,51 @@ body{margin:0; padding:0;}
   border-radius:1.5vw 1.5vw 0px 0px;
   overflow:hidden;
   align-items:center;
-  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
 }
 .ch-image .ch-img{
   width:100%;
-  height:100%;
+  height:28vh;
   object-fit:cover;
   object-position:center;
 }
 
 .ch-text{
-  border:3px solid #FF9900;
-  border-top:none;
-  background: #FFFCF0;
-  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
-  clear:both;
-  width:100%;
-  padding:2.5vh 10% 3vh;
+  clear: both;
+  float: left;
+  width: 100%;
+  height: 22vh;
+  padding: 2.5vh 10% 3vh;
   border-radius: 0px 0px 1.5vw 1.5vw;
-  text-align:left;
-  position:relative;
 }
 .ch-text .ch-title {
   clear: both;
+  float: left;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   font-weight:700;
   font-size:1.2vw;
+  text-align: left;
   color:#333333;
-  margin-bottom:0.5vh;
 }
 .ch-text .ch-subtext {
   clear: both;
+  float: left;
   margin-bottom:4vh;
-  font-size:0.85vw;
+  padding: 0;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 0.85vw;
+  line-height: 1vw;
+  text-align: left;
   color:#666666;
 }
 .ch-text .ch-date {
   clear: both;
+  float: right;
   font-weight: 700;
   font-size: 16px;
   color: #ff6700;
-  position:absolute;
   right:7%;
   bottom:1.5vh;
-} 
+}
