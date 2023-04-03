@@ -1,8 +1,11 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Join.css";
 import axios from "axios";
 
 function Join() {
+  const navigate = useNavigate();
+
   const [member, setMember] = useState({
     member_name: "",
     member_id: "",
@@ -26,7 +29,7 @@ function Join() {
   };
 
   const idCfm = () => {
-    alert(member.member_id + "사용할 수 있는 아이디입니다.");
+    alert(member.member_id + " 사용할 수 있는 아이디입니다.");
   };
 
   const onClick = (event) => {
@@ -53,12 +56,18 @@ function Join() {
         },
       })
       .then((response) => {
-        console.log(response);
         // 회원가입이 성공적으로 이루어졌을 경우 처리할 코드 작성
+        console.log(response);
+        if (response.data === 1) {
+          alert(member.member_name + "님 오늘도 반갑습니다!");
+          navigate("/login");
+        } else {
+          alert("회원 정보를 확인해주세요.");
+        }
       })
       .catch((error) => {
         console.log(error);
-        // 회원가입이 실패했을 경우 처리할 코드 작성
+        alert("회원 정보를 확인해주세요.");
       });
   };
 
