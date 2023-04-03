@@ -5,6 +5,8 @@ import Layout from './Project/Layout/Layout';
 import Layout2 from './Project/Layout/Layout2';
 import Layout3 from './Project/Layout/Layout3';
 import Login from './Project/Login';
+import ViewFindId from './Project/ViewFindId';
+import ViewFindPw from './Project/ViewFindPw';
 import Join from './Project/Join';
 import CreateChallenge from './Project/Challenge/CreateChallenge';
 import MyPage from './Project/MyPage/MyPage';
@@ -22,6 +24,8 @@ const App = () => {
 
       <Route element={<Layout2 />}>
         <Route path='/login' element={<Login />} />
+        <Route path='/viewFindId' element={<ViewFindId />} />
+        <Route path='/viewFindPw' element={<ViewFindPw />} />
         <Route path='/join' element={<Join />} />
         <Route path='/createChallenge' element={<CreateChallenge />} />
       </Route>
