@@ -14,18 +14,14 @@ function Challenge() {
   const sortlist = () => {
     return sort === "popular" ? "최신순" : "인기순";
   };
-
-  const setSortlist = () => {
-    return sort === "popular" ? "new" : "popular";
-  };
   // filter, sort 끝
 
   // 진행 상태 선택 시작
-  const [prog, setProg] = useState([
+  const prog = [
     { id: 1, name: "진행예정", img: "/image/Challenge/running_icon1.png" },
     { id: 2, name: "진행중", img: "/image/Challenge/running_icon2.png" },
     { id: 3, name: "진행종료", img: "/image/Challenge/running_icon3.png" },
-  ]);
+  ];
 
   const Rprog = prog.map((prog) => (
     <button
@@ -47,14 +43,14 @@ function Challenge() {
   // 진행 상태 선택 끝
 
   // 카테고리 시작
-  const [cate, setCate] = useState([
+  const cate = [
     { id: "all", name: "전체" },
     { id: "development", name: "자기계발" },
     { id: "study", name: "학습" },
     { id: "exercise", name: "운동" },
     { id: "health", name: "건강" },
     { id: "etc", name: "기타" },
-  ]);
+  ];
 
   const Rcate = cate.map((cate) => (
     <li
@@ -69,7 +65,7 @@ function Challenge() {
     </li>
   ));
   // 카테고리 끝
-  
+
   const MoveToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -113,6 +109,8 @@ function Challenge() {
         </ul>
       </div>
 
+      <ChallengeList progress={progress} category={category} sort={sort} />
+
       {/* 버튼 */}
       <section className="btnWrap">
         <div className="createbtnWrap">
@@ -127,7 +125,6 @@ function Challenge() {
           ↑
         </button>
       </section>
-      <ChallengeList progress={progress} category={category} sort={sort} />
     </div>
   );
 }
