@@ -1,73 +1,30 @@
 /* EditInformation.css */
-/* MyPage.css */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 
 *{box-sizing:border-box; list-style-type:none;}
 body{margin:0; padding:0;}
 *{margin:0; padding:0;}
 
+
 .editInfo{
   width:100%;
   height:auto;
-}
-.editInfo .sideBar{
-  width:20%;
-  height:79%;
-  position:fixed;
-  top:0;
-  left:0;
   padding-top:8vh;
-  text-align:center;
-  z-index:4;
+  position:relative;
+  /* border:1px solid blue; */
 }
-.editInfo .sideBar .sideProfile{
-  margin:0 auto;
-  padding-top:10vh;
-}
-#profile_container .pf-img{margin-bottom:2vh;}
-#profile_container .pf-text{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size:1.3vw;
-  font-weight:600;
-  color:#000;
-  letter-spacing:0.03em;
-}
-#profile_container .pf-text span{
-  font-size:1vw;
-  font-weight:400;
-}
-.editInfo .sideBar .sideProfile .line{
-  margin:3vh 0;
-}
-#side-nav .nav-sub{
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size:1.3vw;
-  color:#000;
-  letter-spacing:0.03em;
-  margin-bottom:2vh;
-}
-#side-nav .nav-sub a{
-  text-decoration:none;
-  color:#000;
-}
-#side-nav .nav-sub a:hover{font-weight:600;}
-#side-nav .nav-sub a:focus{font-weight:600;}
-#side-nav .nav-sub:nth-child(2) a{font-weight:600;}
-
-
 
 .editInfo .mainPage{
   border-left:0.3vw solid #FFF8ED;
   width:80%;
   height:100%;
   margin-left:20%;
-  padding:8vh 0 9vh;
+  padding:8vh 0 10vh;
 }
 .editInfo .mainPage .box3{
   margin:0 auto;
   /* border:1px solid darkblue; */
   width:50%;
-  padding-top:10vh;
 }
 .editInfo .mainPage .box3 h1{
   font-size:1.5vw;
@@ -120,6 +77,47 @@ body{margin:0; padding:0;}
   padding:0 0 0.2vh 5px;
 }
 .box3ul .editR input:focus{outline-color:#FF6B00;}
+
+.box3ul .editR input[type="date"]{
+  position:relative;
+  background:url(../image/login&join/Cal.png) no-repeat 97% 50% / 1.1vw auto;
+  background-color:#fff;
+  border:none;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:0.8vw;
+  font-weight:300;
+  letter-spacing:0.03em;
+}
+.box3ul .editR input[type="date"]::before{
+  content:attr(data-placeholder);
+  width:100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  color:#999999;
+}
+.box3ul .editR input[type="date"]:focus::before,
+.box3ul .editR input[type="date"]:valid::before{
+  display:none;
+}
+.box3ul .editR input[type="date"]::-webkit-clear-button,
+.box3ul .editR input[type="date"]::-webkit-inner-spin-button{
+  display:none;
+}
+.box3ul .editR input[type="date"]::-webkit-calendar-picker-indicator{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:transparent;
+  color:transparent;
+  cursor:pointer;
+  border:1px solid #B9B9B9;
+  box-sizing:border-box;
+  border-radius:0.3vw;
+}
+.box3ul .editR input[type="date"]::-webkit-calendar-picker-indicator:focus{
+  border-color: #FF6B00;
+}
 
 .box3ul p{
   display:inline-block;
