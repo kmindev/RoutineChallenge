@@ -1,17 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import {FullPage,Slide} from "https://cdn.skypack.dev/react-full-page@0.1.12";
-import './Login.css';
+import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {
+  FullPage,
+  Slide,
+} from "https://cdn.skypack.dev/react-full-page@0.1.12";
+import "./Login.css";
 
 const Login = () => {
-
-  //const [inputId, setInputId] = useState();
-  //const [inputPw, setInputPw] = useState("");
-
   const input_id = useRef();
   const input_pw = useRef();
   const input_btn = useRef();
+
+  window.sessionStorage.setItem("member_id", input_id.current.value);
 
   const navigate = useNavigate();
 
@@ -50,67 +51,72 @@ const Login = () => {
 
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
-      if (e.target.name ==="id") {
-        input_pw.current.focus();  
-      } else if (e.target.name ==="pw") {
+      if (e.target.name === "id") {
+        input_pw.current.focus();
+      } else if (e.target.name === "pw") {
         input_btn.current.focus();
       }
     }
-  }
-  
-  
+  };
+
   return (
     <div>
-    <FullPage controls controlsProps={{className:"slide"}}>
-      <Slide>
-        <div className="login">
-          <div className='inner'>
-            <div className='box'>
-              <h2>로그인</h2>
-              <div className='top'>
-                <p>
-                  <input 
-                    ref={input_id}
-                    type="text"
-                    name="id"
-                    placeholder="UserID"
-                    //value={inputId}
-                    //onChange={(e) => {setInputId(e.target.value);}}
-                    onKeyPress={onKeyPress}
-                  />
-                </p>
-                <p>
-                  <input 
-                    ref={input_pw}
-                    type="password"
-                    name="pw"
-                    placeholder="Password"
-                    //value={inputPw}
-                    //onChange={(e) => {setInputPw(e.target.value);}}
-                    onKeyPress={onKeyPress}
-                  />
-                </p>
-              </div>
-              <div className='bottom'>
-                <ul className='search'>
-                  <li className='searchID'><a href="viewFindId">ID 찾기</a></li>
-                  <li>l</li>
-                  <li className='searchPW'><a href="viewFindPw">비밀번호 찾기</a></li>
-                </ul>
-                <button ref={input_btn} onClick={handleLogin}>LOGIN</button>
-                <p><a href="/join">회원가입</a></p>
+      <FullPage controls controlsProps={{ className: "slide" }}>
+        <Slide>
+          <div className="login">
+            <div className="inner">
+              <div className="box">
+                <h2>로그인</h2>
+                <div className="top">
+                  <p>
+                    <input
+                      ref={input_id}
+                      type="text"
+                      name="id"
+                      placeholder="UserID"
+                      //value={inputId}
+                      //onChange={(e) => {setInputId(e.target.value);}}
+                      onKeyPress={onKeyPress}
+                    />
+                  </p>
+                  <p>
+                    <input
+                      ref={input_pw}
+                      type="password"
+                      name="pw"
+                      placeholder="Password"
+                      //value={inputPw}
+                      //onChange={(e) => {setInputPw(e.target.value);}}
+                      onKeyPress={onKeyPress}
+                    />
+                  </p>
+                </div>
+                <div className="bottom">
+                  <ul className="search">
+                    <li className="searchID">
+                      <a href="viewFindId">ID 찾기</a>
+                    </li>
+                    <li>l</li>
+                    <li className="searchPW">
+                      <a href="viewFindPw">비밀번호 찾기</a>
+                    </li>
+                  </ul>
+                  <button ref={input_btn} onClick={handleLogin}>
+                    LOGIN
+                  </button>
+                  <p>
+                    <a href="/join">회원가입</a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </Slide>
-    </FullPage>
+        </Slide>
+      </FullPage>
 
-    <div id='footer'></div>
-
+      <div id="footer"></div>
     </div>
   );
 };
-
 
 export default Login;
