@@ -11,23 +11,19 @@ import org.apache.ibatis.annotations.Update;
 public interface ChallengeMapper {
 	
 	// 챌린지 전체 조회
-	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge")
+	@Select("SELECT challenge_num, challenge_title, challenge_theme, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge")
 	public List<ChallengeDTO> challengelist();
 	
-	// 주제별 챌린지 조회
-	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_theme=#{challenge_theme}")
-	public List<ChallengeDTO> ThemeChallengelist(String challenge_theme);
-	
 	// 진행상태별 챌린지 조회(진행예정)
-	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_start>=NOW()")
+	@Select("SELECT challenge_num, challenge_title, challenge_theme, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_start>=NOW()")
 	public List<ChallengeDTO> StateChallengelist1();
 	
 	// 진행상태별 챌린지 조회(진행중)
-	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_start<=NOW() AND challenge_end>=NOW()")
+	@Select("SELECT challenge_num, challenge_title, challenge_theme, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_start<=NOW() AND challenge_end>=NOW()")
 	public List<ChallengeDTO> StateChallengelist2();
 	
 	// 진행상태별 챌린지 조회(진행종료)
-	@Select("SELECT challenge_num, challenge_title, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_end<=NOW()")
+	@Select("SELECT challenge_num, challenge_title, challenge_theme, challenge_intro, challenge_start, challenge_end, challenge_thumbnail FROM challenge WHERE challenge_end<=NOW()")
 	public List<ChallengeDTO> StateChallengelist3();
 	
 	// 챌린지 조회수 업데이트
