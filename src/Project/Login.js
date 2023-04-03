@@ -12,8 +12,6 @@ const Login = () => {
   const input_pw = useRef();
   const input_btn = useRef();
 
-  window.sessionStorage.setItem("member_id", input_id.current.value);
-
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -37,7 +35,7 @@ const Login = () => {
         console.log("handleLogin =>", res);
         if (res.data === 1) {
           alert(input_id.current.value + "님 오늘도 반갑습니다!");
-          window.sessionStorage.setItem("input_id", input_id.current.value);
+          window.sessionStorage.setItem("member_id", input_id.current.value);
           navigate("/");
         } else {
           alert("로그인에 실패하셨습니다!");
