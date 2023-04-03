@@ -1,8 +1,12 @@
 package com.mysite.challengeproject.member;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
@@ -15,9 +19,15 @@ public class MemberServiceImpl implements MemberService {
 
 	
 	@Override // 회원가입
-	public int insertMember(MemberVO member) {
-		int res = mapper.insertMember(member);
-		return res;
+	public int insertMember(MemberDTO memberDTO, MultipartFile member_profile) throws IOException {   
+		String profileSaveName = null;
+		
+		if(member_profile != null) {  // 첨부된 파일이 있을 경우
+			profileSaveName = UUID.randomUUID().toString() +"." +StringUtils.getFilename(member_profile.getOriginalFilename());
+			File file = new File("C:\\Project\\upload\\profile_image\\" + profileSaveName);
+			member_profile.transferTo(file);
+		}
+		return mapper.insertMember(memberDTO, profileSaveName); // memberDTO와 이미지 저장명을 전달
 	}
 	
 	@Override // 로그인

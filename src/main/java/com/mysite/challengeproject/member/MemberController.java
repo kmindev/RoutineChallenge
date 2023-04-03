@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class MemberController {
@@ -17,9 +18,10 @@ public class MemberController {
 	
 	
 	// 회원가입
+	// member_profile 파일을 전달받는다. 프로필을 필수로 안받아도 되기 때문에 required를 false
 	@PostMapping("/join_member")
-	public int insertMember(@RequestBody MemberVO memberVO) throws Exception {
-		int res = memberService.insertMember(memberVO);
+	public int insertMember(MemberDTO memberDTO, @RequestParam(value="member_profile", required = false) MultipartFile member_profile) throws Exception {
+		int res = memberService.insertMember(memberDTO, member_profile);
 		return res;
 	}
 	
