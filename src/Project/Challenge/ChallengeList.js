@@ -49,13 +49,13 @@ function ChallengeList(props) {
     )
     .sort(compareID)
     .map((li) => (
-      <li id="challenge" key={li.challenge_num}>
+      <li id="challenge" key={li.challenge_num} to={`/${li.challenge_num}`}>
         <a href="/detailChallenge">
           <div className="c-image">
             <img
               className="c-img"
               alt={`챌린지이미지`}
-              src={`process.env.PUBLIC_URL` + li.challenge_thumbnail}
+              src={process.env.PUBLIC_URL + li.challenge_thumbnail}
             ></img>
           </div>
           <div className="c-text">
