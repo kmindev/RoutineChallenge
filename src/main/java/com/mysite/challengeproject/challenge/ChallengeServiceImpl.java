@@ -17,11 +17,6 @@ public class ChallengeServiceImpl implements ChallengeService{
 	public List<ChallengeDTO> challengelist() {
 		return mapper.challengelist();
 	}
-		
-	@Override // 주제별 챌린지 조회
-	public List<ChallengeDTO> ThemeChallengelist(String challenge_theme) {
-		return mapper.ThemeChallengelist(challenge_theme);
-	}
 	
 	@Override // 진행상태별 챌린지 조회(진행예정)
 	public List<ChallengeDTO> StateChallengelist1() {

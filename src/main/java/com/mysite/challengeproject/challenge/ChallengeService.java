@@ -8,9 +8,6 @@ public interface ChallengeService {
 
 	// 챌린지 전체 조회
 	public List<ChallengeDTO> challengelist();
-		
-	// 주제별 챌린지 조회
-	public List<ChallengeDTO> ThemeChallengelist(String challenge_theme);
 	
 	// 진행상태별 챌린지 조회(진행예정)
 	public List<ChallengeDTO> StateChallengelist1();

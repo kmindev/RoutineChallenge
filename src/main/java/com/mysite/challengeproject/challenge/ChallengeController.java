@@ -17,29 +17,19 @@ public class ChallengeController {
 	public ChallengeController(ChallengeServiceImpl challengeServiceImpl) {
 		this.challengeServiceImpl = challengeServiceImpl;
 	}
-
-	// 챌린지 전체 조회
-	@GetMapping("/challengelist")
-	public List<ChallengeDTO> challengelist() {
-		return challengeServiceImpl.challengelist();
-	}
-		
-	// 주제별 챌린지 조회
-	@GetMapping("/theme_challengelist")
-	public List<ChallengeDTO> ThemeChallengelist(@RequestParam("challenge_theme") String challenge_theme) {
-		return challengeServiceImpl.ThemeChallengelist(challenge_theme);
-	}
 	
-	// 진행상태별 챌린지 조회(1:진행예정 2:진행중 3:진행종료)
-	@GetMapping("/state_challengelist")
+	// 챌린지 조회
+	@GetMapping("/challengelist")
 	public List<ChallengeDTO> StateChallengelist(@RequestParam("state") int state) {
 		List<ChallengeDTO> list;
-		if (state == 0) {
+		if (state == 1) { // 진행예정(1)
 			list = challengeServiceImpl.StateChallengelist1();
-		} else if (state == 1) {
+		} else if (state == 2) { // 진행중(2)
 			list = challengeServiceImpl.StateChallengelist2();
-		} else {
+		} else if (state == 3) { // 진행종료(3)
 			list = challengeServiceImpl.StateChallengelist3();
+		} else { // 전체(0)
+			list = challengeServiceImpl.challengelist();
 		}
 		return list;
 	}
