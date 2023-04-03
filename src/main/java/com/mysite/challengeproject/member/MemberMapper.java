@@ -12,9 +12,13 @@ import org.apache.ibatis.annotations.Update;
 public interface MemberMapper {
 	
 	// 회원가입
-	@Insert("insert into member values (#{member_name}, #{member_id}, #{member_password}, #{member_email}, #{member_nickname}, "
-			                         + "#{member_profile}, #{member_birth}, #{member_theme})")
-	public int insertMember(MemberVO member);
+	// memverDTO: member_profile을 제외한 정보
+	// profileSaveName: member_profile => 포로필 사진 데이터베이스 저장명
+	@Insert("insert into member values (#{memverDTO.member_name}, #{memverDTO.member_id},"
+			+ " #{memverDTO.member_password},"+ " #{memverDTO.member_email},"
+			+ " #{memverDTO.member_nickname}, #{profileSaveName}, #{memverDTO.member_birth},"
+			+ " #{memverDTO.member_theme})")
+	public int insertMember(MemberDTO memverDTO, String profileSaveName);
 
 	// 로그인
 	@Select("select count(*) as 'cnt' from member where member_id=#{member_id} and member_password=#{member_password}")
