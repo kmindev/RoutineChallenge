@@ -1,15 +1,69 @@
 import "./DetailChallenge.css";
 import React from "react";
 import { useState, useEffect } from "react";
+import axios from "axios";
+
+var test = 0;
+
+//==========================================================================================================================
+var challenge_num = 2; // 각 Challenge 페이지 마다 특정 번호 부여
+// Challenge 페이지가 일단은 하나뿐이라 이런 식으로 하드 코딩 했습니다. 일단 임시 값으로 2를 부여했습니다.
+//==========================================================================================================================
+
+//================   하단의 코드를 이용하여 아직 구현되지 않은 로그인 id를 세션에 설정하여 테스트 할 수 있습니다   ================//
+window.sessionStorage.setItem("member_id", "kim");
+
+const member_check = (e) => {
+  const login_id = window.sessionStorage.getItem("member_id"); // 해당 코드를 통해 세션에 저장된 member_id를 따와 저장합니다.
+
+  axios
+    .post("/membercheck_challenge", {
+      member_id: login_id, // 위에서 따온 member_id와 challenge_num을 해당 url 파라미터로 넘깁니다.
+      challenge_num: challenge_num,
+    })
+    .then((res) => {
+      console.log(res);
+      if (res.data === 1) {
+        // res.data는 스프링에서의 membercheck_challenge 함수의 return 값입니다. 챌린지 참여 여부 조회 (1:참여 중, 0: 미참여)
+        test = 1;
+      } else {
+      }
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+};
+
+const select_challenge = (e) => {
+  axios
+    .get("/detail_challenge", {})
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((e) => {
+      console.error(e);
+    });
+};
+
+member_check();
+select_challenge();
 
 function DetailChallenge() {
-  var [참여현황변수, set참여현황변수] = useState(1); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
+  var [참여현황변수, set참여현황변수] = useState(0); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
   var [오늘인증했나변수, set오늘인증했나변수] = useState(0); // 인증했으면 1, 인증 안했으면 0  이 항목은 '참여현황변수'가 1일 경우에만 유효합니다.
 
   var 챌린지시작일변수 = new Date("3 2, 2023, 0:00:00");
   var 챌린지마지막일변수 = new Date("6 31, 2023, 0:00:00");
   var bonin = 0;
   const [saveReply, setSaveReply] = useState("");
+
+  useEffect(() => {
+    if (test === 1) {
+      set참여현황변수(1);
+    } else {
+      set참여현황변수(0);
+    }
+  }, []);
 
   const saveUserReply = (event) => {
     setSaveReply(event.target.value);
