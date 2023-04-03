@@ -5,11 +5,13 @@ import { useEffect } from "react";
 
 function Sidebar(props) {
   const [user, setUser] = useState({});
+  const member_id = window.sessionStorage.getItem("member_id");
+
   const getUser = () => {
     axios
       .get("/get_member", {
         params: {
-          member_id: "id01",
+          member_id: member_id,
         },
       })
       .then((res) => setUser(res.data))
