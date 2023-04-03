@@ -31,11 +31,11 @@ const ViewFindId = () => {
       })
       .then((res) => {
         console.log("handleFindId =>", res);
-        if (res.data === 1) {
-          alert("회원님의 아이디는 " + {res} + "입니다");
+        if (res.data.length > 0) {
+          alert("회원님의 아이디는 " + res.data + "입니다");
           navigate("/login");
         } else {
-          alert("아이디 찾기에 실패하셨습니다!");
+          alert("일치하는 정보가 없습니다. 이름과 이메일을 확인해주세요.");
           navigate("/viewFindId");
         }
       })

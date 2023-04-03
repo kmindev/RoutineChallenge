@@ -18,8 +18,9 @@ function EditInformation(props) {
   const input_current_password = useRef("");  //현재 비밀번호 ref
   const input_change_password1 = useRef("");  //변경할 비밀번호 ref
   const input_change_password2 = useRef("");  //변경할 비밀번호 확인 ref
-  const input_chage_nickname = useRef("");  //변경할 닉네임 ref
-  const input_chage_email = useRef("");  //이메일 ref
+  const input_change_nickname = useRef("");  //변경할 닉네임 ref
+  const input_change_bday = useRef("");  //변경할 생년월일 ref
+  const input_change_email = useRef("");  //이메일 ref
 
   //프로필 이미지 변경
   const handleImageUpload = (event) => {
@@ -35,23 +36,9 @@ function EditInformation(props) {
   //회원탈퇴 모달
   const [del, setDel] = useState(false);
 
-  
   return (
+    <>
     <div className="editInfo">
-      <div className="sideBar">
-        <div className="sideProfile">
-          <div id="profile_container">
-            <p className="pf-img"><img src={user.image} alt="프로필 사진"/></p>
-            <p className="pf-text">{user.nickName}<br/><span>{user.email1}@{user.email2}</span></p>
-          </div>
-          <img className="line" src={process.env.PUBLIC_URL + "/image/myPage/line.png"} alt="이미지 로드"></img>
-          <div id="side-nav">
-            <p className="nav-sub"><a href="/myPage">참여중인 챌린지</a></p>
-            <p className="nav-sub"><a href="/editInfo">개인정보 수정</a></p>
-          </div>
-        </div>  
-      </div> {/*sideBar*/}
-
       <div className="mainPage">
         <div className='box3'>
           <h1>개인정보 수정</h1>
@@ -101,7 +88,7 @@ function EditInformation(props) {
                 <input
                   type="text"
                   placeholder={user.nickName}
-                  ref={input_chage_nickname}
+                  ref={input_change_nickname}
                 />
               </li>
             </ul>
@@ -124,14 +111,23 @@ function EditInformation(props) {
             </ul>
             <ul className="box3ul">
               <li className="editL">생년월일</li>
-              <li className="editR">{user.bday}</li>
+              <li className="editR">
+                <input 
+                  ref={input_change_bday}
+                  type="date"
+                  name="bday"
+                  required
+                  aria-required="true"
+                  data-placeholder="년도/월/일"
+                />
+              </li>
             </ul>
             <ul className="box3ul">
               <li className="editL editL2">이메일</li>
               <li className="editR">
                 <p className='email1'>
                   <input
-                    ref={input_chage_email}
+                    ref={input_change_email}
                     type="email"
                     placeholder={user.email1}
                     required
@@ -208,7 +204,9 @@ function EditInformation(props) {
           )}
         </div>{/*box3*/}
       </div>{/*mainPage*/}
-    </div>//editInfo
+    </div>{/*editInfo*/} 
+    </>
+
   );
 }
 

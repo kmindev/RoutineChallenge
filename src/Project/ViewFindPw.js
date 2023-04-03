@@ -31,11 +31,11 @@ const ViewFindPw = () => {
       })
       .then((res) => {
         console.log("handleFindPw =>", res);
-        if (res.data === 1) {
-          alert("회원님의 패스워드는 " + {res} + "입니다");
+        if (res.data.length > 0) {
+          alert("회원님의 패스워드는 " + res.data + "입니다");
           navigate("/login");
         } else {
-          alert("패스워드 찾기에 실패하셨습니다!");
+          alert("일치하는 정보가 없습니다. 아이디와 email을 확인해주세요.");
           navigate("/viewFindPw");
         }
       })
