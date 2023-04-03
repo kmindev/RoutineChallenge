@@ -3,18 +3,8 @@ import Sidebar from "./Sidebar";
 import MypageChallenge from "./MypageChallenge";
 import EditInformation from "./EditInformation";
 
-
 function MyPage(props) {
   const [actionMode, setActionMode] = useState(0);
-
-  
-
-  // const [user, setUser] = useState({
-  //   nickName: "루챌", //네임
-  //   email1: "example", //이메일
-  //   email2: "naver.com", //이메일 뒷 주소
-  //   image: process.env.PUBLIC_URL + "/image/myPage/profile_icon.png", // 프로필 이미지
-  // });
 
   console.log("actionMode : " + actionMode);
 
