@@ -99,20 +99,25 @@ const CreateChallenge = () => {
       return false;
     }
 
+    const formData = new FormData();
+    formData.append("challenge_creater", member_id);
+    formData.append("challenge_title", input_title.current.value);
+    formData.append("challenge_theme", themeKind);
+    formData.append("challenge_start",input_start.current.value);
+    formData.append("challenge_end", input_end.current.value);
+    formData.append("challenge_cycle", cycleKind);
+    formData.append("challenge_intro",input_intro.current.value);
+    formData.append("challenge_content",  input_content.current.value);
+    formData.append("challenge_thumbnail", input_mainImage.current.value);
+    formData.append("challenge_image", input_photo.current.value);
+    formData.append("challenge_readcount", 0);
+
     axios
-      .post("/create_challenge", {
-        challenge_creater: member_id,
-        challenge_title: input_title.current.value,
-        challenge_theme: themeKind,
-        challenge_start: input_start.current.value,
-        challenge_end: input_end.current.value,
-        challenge_cycle: cycleKind,
-        challenge_intro: input_intro.current.value,
-        challenge_content: input_content.current.value,
-        challenge_thumbnail: input_mainImage.current.value,
-        challenge_image: input_photo.current.value,
-        challenge_readcount: 0,
-      })
+      .post(
+        "/create_challenge", formData, 
+        {
+          headers: {"Content-Type": "multipart/form-data"},
+        })
       .then((res) => {
         console.log("handleCreateChallenge =>", res);
         console.log("handleCreateChallenge((res.data) =>", res.data);
@@ -268,9 +273,10 @@ const CreateChallenge = () => {
                           <input
                             ref={input_cycle}
                             type="radio"
+                            key={cycle.id}
                             value={cycle.id}
                             name="cycle"
-                            id="cycle"
+                            id={cycle.id}
                             checked={cycleKind === `${cycle.id}`}
                             onChange={handlecycleRadioBtn}
                             onKeyPress={onKeyPress}
