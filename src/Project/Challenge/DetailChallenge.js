@@ -302,7 +302,11 @@ function DetailChallenge() {
           <img
             className="banner-image"
             alt="배너이미지"
-            src={process.env.PUBLIC_URL + "/image/detailChallenge/detail8.png"}
+            src={
+              process.env.PUBLIC_URL +
+              "/image/upload/challengeimg/" +
+              challenge_data.challenge_thumbnail
+            }
           ></img>
           <div className="banner-explain">
             {closed === 1 ? (

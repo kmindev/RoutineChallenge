@@ -34,7 +34,11 @@ function MypageChallenge(props) {
           <img
             className="ch-img"
             alt={`챌린지이미지`}
-            src={process.env.PUBLIC_URL + li.challenge_thumbnail}
+            src={
+              process.env.PUBLIC_URL +
+              "/image/upload/challengeimg/" +
+              li.challenge_thumbnail
+            }
           ></img>
         </div>
         <span className="ch-text">
