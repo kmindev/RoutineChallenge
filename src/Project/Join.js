@@ -37,6 +37,7 @@ function Join() {
 
     const formData = new FormData();
     formData.append("member_profile", profileImage);
+    console.log(profileImage === null ? "profile.jpg" : profileImage);
     formData.append("member_name", member.member_name);
     formData.append("member_id", member.member_id);
     formData.append("member_password", member.member_password);
@@ -44,9 +45,17 @@ function Join() {
       "member_email",
       member.member_email1 + "@" + member.member_email2
     );
-    formData.append("member_nickname", member.member_nickname);
+    formData.append(
+      "member_nickname",
+      member.member_nickname === ""
+        ? member.member_name
+        : member.member_nickname
+    );
     formData.append("member_birth", member.member_birth);
-    formData.append("member_theme", member.member_theme);
+    formData.append(
+      "member_theme",
+      member.member_theme === null ? null : member.member_theme
+    );
 
     // API 요청을 보냅니다.
     axios

@@ -29,20 +29,22 @@ function MypageChallenge(props) {
 
   const list = lists.sort(compared).map((li) => (
     <li id="my_challenge" key={li.challenge_num} to={`/${li.challenge_num}`}>
-      <div className="ch-image">
-        <img
-          className="ch-img"
-          alt={`챌린지이미지`}
-          src={process.env.PUBLIC_URL + li.challenge_thumbnail}
-        ></img>
-      </div>
-      <span className="ch-text">
-        <p className="ch-title">{li.challenge_title}</p>
-        <p className="ch-subtext">{li.challenge_intro}</p>
-        <p className="ch-date">
-          {li.challenge_start} ~ {li.challenge_end}
-        </p>
-      </span>
+      <a href={`/detailChallenge?challenge_num=${li.challenge_num}`}>
+        <div className="ch-image">
+          <img
+            className="ch-img"
+            alt={`챌린지이미지`}
+            src={process.env.PUBLIC_URL + li.challenge_thumbnail}
+          ></img>
+        </div>
+        <span className="ch-text">
+          <p className="ch-title">{li.challenge_title}</p>
+          <p className="ch-subtext">{li.challenge_intro}</p>
+          <p className="ch-date">
+            {li.challenge_start} ~ {li.challenge_end}
+          </p>
+        </span>
+      </a>
     </li>
   ));
 
