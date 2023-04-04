@@ -141,12 +141,17 @@ body{margin:0; padding:0;}
 
 .box3ul .editR .pro-img{
   float:left;
-  width:18%;
+  width:10vh;
+  height:10vh;
   margin-right:4%;
+  border-radius:100%;
+  overflow: hidden;
 }
-.box3ul .editR img{
+.box3ul .editR .pro-img>img{
   width:100%;
+  height: 100%;
   object-fit:cover;
+  object-position: center;
 }
 .box3ul .editR #upload_container{
   width:78%;

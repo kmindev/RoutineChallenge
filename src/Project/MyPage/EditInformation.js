@@ -149,7 +149,14 @@ function EditInformation(props) {
                 <li className="editL">프로필 사진</li>
                 <li className="editR">
                   <div className="pro-img">
-                    <img src={member.member_profile} alt="프로필 사진" />
+                    <img
+                      src={
+                        process.env.PUBLIC_URL +
+                        "/image/upload/profile/" +
+                        member.member_profile
+                      }
+                      alt="프로필 사진"
+                    />
                   </div>
                   <div id="upload_container">
                     <div className="pro-btn">
