@@ -119,6 +119,7 @@ const CreateChallenge = () => {
     formData.append("challenge_cycle", cycleKind);
     formData.append("challenge_intro", input_intro.current.value);
     formData.append("challenge_content", input_content.current.value);
+    formData.append("challenge_thumbnail", input_mainImage.current.files[0]);
     formData.append("challenge_thumbnail", input_mainImage.current.value);
     formData.append("challenge_image", input_photo.current.value);
     formData.append("challenge_readcount", 0);
@@ -335,7 +336,7 @@ const CreateChallenge = () => {
                   </li>
                 </ul>
 
-                <ul>
+                {/* <ul>
                   <li className="first"></li>
                   <li className="second">
                     <p className="photo1">
@@ -350,7 +351,7 @@ const CreateChallenge = () => {
                       />
                     </p>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </section>
 
