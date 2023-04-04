@@ -295,6 +295,16 @@ function DetailChallenge() {
     </div>
   ));
 
+  const cycleguide = (cycle) => {
+    return cycle < 6
+      ? "일주일에 " + cycle + "번 인증하면 성공!"
+      : cycle === 6
+      ? "매일 인증해야 성공!"
+      : cycle === 7
+      ? "평일만 인증하면 성공!"
+      : "주말에만 인증하면 성공!";
+  };
+
   return (
     <>
       <div className="forcenterdiv">
@@ -337,7 +347,7 @@ function DetailChallenge() {
             </div>
             <div className="Challenge-People">현재 {people}명 참여 중</div>
             <div className="Challenge-Period2">
-              일주일에 {challenge_data.challenge_cycle}번 참여하면 성공!
+              {cycleguide(challenge_data.challenge_cycle)}
             </div>
             <div className="Challenge-Explain">
               <br />
