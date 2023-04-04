@@ -37,35 +37,8 @@ function DetailChallenge() {
     challenge_readcount: "",
   });
 
-  const [reply_data, setReply_data] = useState([
-    {
-      board_num: "",
-      member_id: "",
-      challenge_num: "",
-      board_content: "",
-      board_date: "",
-    },
-  ]);
+  const [reply_data, setReply_data] = useState([]);
 
-  const [reply_data1, setReply_data1] = useState([
-    {
-      board_num: "",
-      member_id: "",
-      challenge_num: "",
-      board_content: "",
-      board_date: "",
-    },
-  ]);
-
-  const [reply_data2, setReply_data2] = useState([
-    {
-      board_num: "",
-      member_id: "",
-      challenge_num: "",
-      board_content: "",
-      board_date: "",
-    },
-  ]);
   const [people, setPeople] = useState(0);
 
   const member_count = () => {
@@ -136,13 +109,7 @@ function DetailChallenge() {
         },
       })
       .then((res) => {
-        //console.log(res.data);
-        //console.log(res.data[0]);
-        //console.log(res.data[1]);
-
-        setReply_data(res.data[0]);
-        setReply_data1(res.data[1]);
-        setReply_data2(res.data[2]);
+        setReply_data(res.data);
       });
   };
 
@@ -272,6 +239,17 @@ function DetailChallenge() {
     // 날짜가 바뀌면 인증을 초기화
     set오늘인증했나변수(0);
   }
+
+  const replyget = reply_data.map((reply_data) => (
+    <div className="reply-obj">
+      <div className="reply-objleft">{reply_data.member_id}</div>
+      <div className="reply-objcontent">{reply_data.board_content}</div>
+      <div className="reply-objdate">{reply_data.board_date}</div>
+      {reply_data.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+        <div className="reply-objchange">수정</div>
+      ) : null}
+    </div>
+  ));
 
   return (
     <>
@@ -444,50 +422,8 @@ function DetailChallenge() {
                         )}
                       </div>
                       <div className="reply-list">
-                        <div className="reply-obj">
-                          <div className="reply-objleft">
-                            {reply_data.member_id}
-                          </div>
-                          <div className="reply-objcontent">
-                            {reply_data.board_content}
-                          </div>
-                          <div className="reply-objdate">
-                            {reply_data.board_date}
-                          </div>
-                          {reply_data.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-                            <div className="reply-objchange">수정</div>
-                          ) : null}
-                        </div>
-
-                        <div className="reply-obj">
-                          <div className="reply-objleft">
-                            {reply_data1.member_id}
-                          </div>
-                          <div className="reply-objcontent">
-                            {reply_data1.board_content}
-                          </div>
-                          <div className="reply-objdate">
-                            {reply_data1.board_date}
-                          </div>
-                          {reply_data1.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-                            <div className="reply-objchange">수정</div>
-                          ) : null}
-                        </div>
-                        <div className="reply-obj">
-                          <div className="reply-objleft">
-                            {reply_data2.member_id}
-                          </div>
-                          <div className="reply-objcontent">
-                            {reply_data2.board_content}
-                          </div>
-                          <div className="reply-objdate">
-                            {reply_data2.board_date}
-                          </div>
-                          {reply_data2.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-                            <div className="reply-objchange">수정</div>
-                          ) : null}
-                        </div>
-                        <div className="reply-moreContent">더보기</div>
+                        {replyget}
+                        {/* <div className="reply-moreContent">더보기</div> */}
                       </div>
                     </div>
                   </section>
