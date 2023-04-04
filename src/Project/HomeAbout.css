@@ -101,17 +101,20 @@ body{margin:0; padding:0;}
   line-height:1;
 }
 #about .con01 ul li.c01-left p:nth-child(3) input[type="checkbox"]:hover{
-  border-color: rgba(255, 153, 0, 0.5);
-}
-#about .con01 ul li.c01-left p:nth-child(3) input[type="checkbox"]:checked {
   background-color: #FF9900;
   border-color: rgba(255, 255, 255, 0.3);
   color: white;
+  border-radius: 2px;
 }
-#about .con01 ul li.c01-left p:nth-child(3) input[type="checkbox"]:checked::before {
+/* #about .con01 ul li.c01-left p:nth-child(3) input[type="checkbox"]:checked {
+  background-color: #FF9900;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+} */
+/* #about .con01 ul li.c01-left p:nth-child(3) input[type="checkbox"]:checked::before {
   border-radius: 2px;
   transform: scale(1) translate(-50%, -50%)
-}
+} */
 
 #about .con01 ul li.c01-right{
   float:right;
@@ -230,9 +233,12 @@ body{margin:0; padding:0;}
   line-height:1;
 }
 #about .con03 ul li.c03-right p:nth-child(3) input[type="checkbox"]:hover{
-  border-color: rgba(255, 153, 0, 0.5);
+  background-color: #FF9900;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 2px;
 }
-#about .con03 ul li.c03-right p:nth-child(3) input[type="checkbox"]:checked {
+/* #about .con03 ul li.c03-right p:nth-child(3) input[type="checkbox"]:checked {
   background-color: #FF9900;
   border-color: rgba(255, 255, 255, 0.3);
   color: white;
@@ -240,7 +246,7 @@ body{margin:0; padding:0;}
 #about .con03 ul li.c03-right p:nth-child(3) input[type="checkbox"]:checked::before {
   border-radius: 2px;
   transform: scale(1) translate(-50%, -50%)
-}
+} */
 
 
 .slide button:nth-child(1) {
