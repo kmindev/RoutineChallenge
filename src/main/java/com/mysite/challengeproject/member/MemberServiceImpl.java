@@ -61,9 +61,18 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override // 회원 정보 수정
-	public int updateMember(MemberVO member) {
-		int res = mapper.updateMember(member);
-		return res;
+	public int updateMember(MemberVO memberVO, MultipartFile update_profile) throws IOException {
+		String profileSaveName = null;
+		
+		// 첨부된 파일이 있을 경우
+		if(update_profile != null && !update_profile.isEmpty()) {  
+			profileSaveName = saveImage(update_profile);
+		} else {
+			profileSaveName = memberVO.getMember_profile();
+		}
+		
+		int res = mapper.updateMember(memberVO, profileSaveName);
+		return res; // memberDTO와 이미지 저장명을 전달
 	}
 	
 //	@Override // 회원 리스트 조회 (관리자)

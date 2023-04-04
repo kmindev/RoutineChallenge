@@ -55,8 +55,8 @@ public class MemberController {
 	
 	// 회원 정보 수정
 	@PostMapping("/update_member")
-	public int updateMember(@RequestBody MemberVO member) throws Exception {
-		int res = memberService.updateMember(member);
+	public int updateMember(MemberVO memberVO, @RequestParam(value="update_profile", required = false) MultipartFile update_profile) throws Exception {
+		int res = memberService.updateMember(memberVO, update_profile);
 		return res;
 	}
 	
