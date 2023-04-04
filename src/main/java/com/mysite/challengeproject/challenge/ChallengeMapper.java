@@ -34,7 +34,7 @@ public interface ChallengeMapper {
 	@Insert("insert into challenge "
          + " values(null, #{DTO2.challenge_creater}, #{DTO2.challenge_title}, #{DTO2.challenge_theme}, #{DTO2.challenge_start}, "
          + " #{DTO2.challenge_end}, #{DTO2.challenge_cycle}, #{DTO2.challenge_intro}, #{DTO2.challenge_content}, "
-         + "#{challenge_thumbnail}, null, #{DTO2.challenge_readcount})")
+         + "#{challenge_thumbnail}, #{DTO2.challenge_readcount})")
 	public int insertChallenge(ChallengeDTO2 DTO2, String challenge_thumbnail);
    
 	// 챌린지 상세정보 조회

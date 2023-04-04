@@ -17,7 +17,6 @@ public class ChallengeVO {
 	private String challenge_intro; // 챌린지 소개
 	private String challenge_content; // 챌린지 상세내용
 	private String challenge_thumbnail; // 챌린지 대표사진 저장명
-	private String challenge_image; // 챌린지 사진 저장명
 	private int challenge_readcount; // 챌린지 조회수
 
 }
