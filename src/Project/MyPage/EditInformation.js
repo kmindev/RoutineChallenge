@@ -7,22 +7,11 @@ import axios from "axios";
 function EditInformation(props) {
   const navigate = useNavigate();
 
-  const [member, setMember] = useState({
-    member_name: "", //이름
-    member_id: "", //아이디
-    member_password: "", //현재 비밀번호
-    member_nickname: "", //닉네임
-    member_birth: "", //생년월일
-    member_email1: "", //이메일
-    member_email2: "", //이메일 뒷 주소
-    member_theme: "", //관심 챌린지
-    image: process.env.PUBLIC_URL + "/image/myPage/profile_icon.png", //프로필 이미지
-  });
-
-  const member_id = window.sessionStorage.getItem("member_id");
-
+  const [member, setMember] = useState({});
   //프로필 이미지 변경
   const [profileImage, setProfileImage] = useState(null);
+
+  const member_id = window.sessionStorage.getItem("member_id");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -226,8 +215,9 @@ function EditInformation(props) {
                   <div className="favC2">
                     <p>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="member_challenge"
+                        value="development"
                         onChange={handleChange}
                       />
                       <label for="development">
@@ -236,28 +226,31 @@ function EditInformation(props) {
                     </p>
                     <p>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="member_challenge"
+                        value="study"
                         onChange={handleChange}
                       />
-                      <label for="learning">
+                      <label for="study">
                         <span>학습</span>
                       </label>
                     </p>
                     <p>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="member_challenge"
+                        value="exercise"
                         onChange={handleChange}
                       />
-                      <label for="workout">
+                      <label for="exercise">
                         <span>운동</span>
                       </label>
                     </p>
                     <p>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="member_challenge"
+                        value="health"
                         onChange={handleChange}
                       />
                       <label for="health">
@@ -266,8 +259,9 @@ function EditInformation(props) {
                     </p>
                     <p>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="member_challenge"
+                        value="etc"
                         onChange={handleChange}
                       />
                       <label for="etc">
@@ -278,7 +272,7 @@ function EditInformation(props) {
                 </p>
               </div>
               <div className="editBtn">
-                <input id="edit" type="submit" value="수정" />
+                <button onClick={onClick}>수정</button>
               </div>
             </form>
 
