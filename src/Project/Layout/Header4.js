@@ -1,6 +1,18 @@
 import './Header4.css';
 
 const Header4 = () => {
+
+  const login_id = window.sessionStorage.getItem("member_id");
+
+  const handleLogout = () => {
+    console.log("handleLogout");
+    window.sessionStorage.clear();
+    console.log(
+      "handleLogout: window.sessionStorage(login_id) =>",
+      window.sessionStorage.getItem("member_id")
+    );
+    alert('내일 또 만나요!');
+  };
   
   return (
     <div>
@@ -16,8 +28,12 @@ const Header4 = () => {
             </ul>
             <ul className='nav-right'>
               <li className='l03'><a href="/myPage">MY PAGE</a></li>
-              <li className='l03'><a href="/login">LOGIN</a></li>
-              <li className='l03'><a href="/join">JOIN</a></li>
+              {login_id === null ? 
+                <li className="l03"><a href="/login">LOGIN</a></li> : <li className="l03"><a href="/" onClick={handleLogout}>LOGOUT</a></li>
+              }
+              {login_id === null ? 
+                <li className="l03"><a href="/join">JOIN</a></li> : null
+              }
             </ul>
           </nav>        
         </div>

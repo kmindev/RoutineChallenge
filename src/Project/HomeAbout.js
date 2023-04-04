@@ -4,6 +4,8 @@ import "./HomeAbout.css";
 
 const HomeAbout = () => {
 
+  window.sessionStorage.getItem("member_id");
+
   const navigate = useNavigate();
 
   const linkToMypage = () => {
