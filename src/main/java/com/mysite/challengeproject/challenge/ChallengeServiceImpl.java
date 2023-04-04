@@ -1,8 +1,13 @@
 package com.mysite.challengeproject.challenge;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ChallengeServiceImpl implements ChallengeService{
@@ -38,9 +43,40 @@ public class ChallengeServiceImpl implements ChallengeService{
 		mapper.setReadCountUpdate(challenge_num);
 	}
 	
+//	@Override // 챌린지 생성
+//	public int insertChallenge(ChallengeVO challenge) {
+//		return mapper.insertChallenge(challenge);
+//	}
+	
+//	@Override // 챌린지 생성
+//	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1, MultipartFile mul2) throws IOException {
+//		String thumbnailSaveName = null;
+//		String challengeImageSaveName = null;
+//		
+//		if(mul1 != null) {thumbnailSaveName = saveImage(mul1);}
+//		
+//		if(mul2 != null) { challengeImageSaveName = saveImage(mul1);}
+//		
+//		return mapper.insertChallenge(challengeDTO2, thumbnailSaveName, challengeImageSaveName);
+//		
+//	}
+	
 	@Override // 챌린지 생성
-	public int insertChallenge(ChallengeVO challenge) {
-		return mapper.insertChallenge(challenge);
+	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1) throws IOException {
+		String thumbnailSaveName = null;
+	
+		
+		if(mul1 != null) {thumbnailSaveName = saveImage(mul1);}
+		
+		return mapper.insertChallenge(challengeDTO2, thumbnailSaveName);
+		
+	}
+	
+	private String saveImage(MultipartFile mul) throws IOException {
+		String imgName = UUID.randomUUID() + "." +StringUtils.getFilename(mul.getOriginalFilename());
+		File file = new File("C:\\Project\\upload\\" + imgName); 
+		mul.transferTo(file);
+		return imgName;
 	}
    
 	@Override // 챌린지 상세정보 조회
