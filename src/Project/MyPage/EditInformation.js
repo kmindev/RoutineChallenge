@@ -1,69 +1,87 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./EditInformation.css";
 import DeleteModal from "./DeleteModal";
 import axios from "axios";
 
 function EditInformation(props) {
-
   const navigate = useNavigate();
-
-  const [member, setMember] = useState({
-    member_name: "", //이름
-    member_id: "", //아이디
-    member_password: "", //현재 비밀번호
-    member_nickname: "", //닉네임
-    member_birth: "", //생년월일
-    member_email1: "", //이메일
-    member_email2: "", //이메일 뒷 주소
-    member_theme: "", //관심 챌린지
-    image: process.env.PUBLIC_URL + "/image/myPage/profile_icon.png", //프로필 이미지
-  });
 
   const member_id = window.sessionStorage.getItem("member_id");
 
+  const [member, setMember] = useState({});
+  useEffect(() => {
+    axios
+      .get("/get_member", {
+        params: {
+          member_id: member_id,
+        },
+      })
+      .then((res) => setMember(res.data));
+  }, []);
+
+  const [update_member, setUdate_member] = useState({
+    member_name: "", // 이름
+    member_id: "", // 아이디
+    member_password: "", // 비밀번호
+    member_nickname: "", // 닉네임
+    member_birth: "", // 생년월일
+    member_email1: "", // 이메일1
+    member_email2: "", // 이메일2
+  });
 
   //프로필 이미지 변경
   const [profileImage, setProfileImage] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setMember((prevState) => ({ ...prevState, [name]: value }));
+    setUdate_member((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleFileChange = (event) => {
     setProfileImage(event.target.files[0]);
   };
 
-
   //회원탈퇴 모달
   const [del, setDel] = useState(false);
-
-  axios
-    .get("/get_member", {
-      params: {
-        member_id: member_id,
-      },
-    })
-    .then((res) => setMember(res.data));
-
 
   //수정버튼 데이터 전달
   const handleUpdate = (event) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("member_profile", profileImage);
+    formData.append("update_profile", profileImage);
     formData.append("member_name", member.member_name);
     formData.append("member_id", member.member_id);
-    formData.append("member_password", member.member_password);
+    formData.append(
+      "member_password",
+      update_member.member_password === ""
+        ? member.member_password
+        : update_member.member_password
+    );
     formData.append(
       "member_email",
-      member.member_email1 + "@" + member.member_email2
+      update_member.member_email1 + "@" + update_member.member_email2 === ""
+        ? member.member_email
+        : update_member.member_email1 + "@" + update_member.member_email2
     );
-    formData.append("member_nickname", member.member_nickname);
-    formData.append("member_birth", member.member_birth);
-    formData.append("member_theme", member.member_theme);
+    formData.append(
+      "member_nickname",
+      update_member.member_nickname === ""
+        ? member.member_nickname
+        : update_member.member_nickname
+    );
+    formData.append(
+      "member_birth",
+      update_member.member_birth === ""
+        ? member.member_birth
+        : update_member.member_birth
+    );
+    formData.append(
+      "member_theme",
+      themeKind === "" ? member.member_theme : themeKind
+    );
+    formData.append("member_profile", member.member_profile);
 
     // API 요청을 보냅니다.
     axios
@@ -87,7 +105,6 @@ function EditInformation(props) {
         alert("회원 정보를 확인해주세요.");
       });
   };
-
 
   //관심챌린지 map
   const themesKinds = [
@@ -120,18 +137,18 @@ function EditInformation(props) {
                 <li className="editL">아이디</li>
                 <li className="editR">{member.member_id}</li>
               </ul>
-              <ul className="box3ul">
+              {/* <ul className="box3ul">
                 <li className="editL editL2">현재 비밀번호</li>
                 <li className="editR">{member.member_password}</li>
-              </ul>
+              </ul> */}
               <ul className="box3ul">
                 <li className="editL editL2">비밀번호 변경</li>
                 <li className="editR">
                   <input
                     type="password"
-                    placeholder="새로운 비밀번호"
                     name="member_password"
-                    required
+                    placeholder="새로운 비밀번호"
+                    value={update_member.member_password}
                     onChange={handleChange}
                   />
                 </li>
@@ -141,8 +158,8 @@ function EditInformation(props) {
                 <li className="editR">
                   <input
                     type="password"
+                    name="pwCfm"
                     placeholder="새로운 비밀번호 확인"
-                    required
                     onChange={handleChange}
                   />
                 </li>
@@ -155,7 +172,7 @@ function EditInformation(props) {
                     type="text"
                     name="member_nickname"
                     placeholder={member.member_nickname}
-                    required
+                    value={update_member.member_nickname}
                   />
                 </li>
               </ul>
@@ -181,7 +198,6 @@ function EditInformation(props) {
                     <input
                       type="file"
                       name="member_profile"
-                      accept="img"
                       placeholder="선택된 파일 없음"
                       onChange={handleFileChange}
                     ></input>
@@ -196,8 +212,8 @@ function EditInformation(props) {
                     name="member_birth"
                     required
                     aria-required="true"
-                    data-placeholder="년도/월/일"
-                    value={member.member_birth}
+                    data-placeholder={member.member_birth}
+                    value={update_member.member_birth}
                     onChange={handleChange}
                   />
                 </li>
@@ -212,15 +228,15 @@ function EditInformation(props) {
                       type="text"
                       name="member_email1"
                       placeholder="새로운 E-mail"
-                      value={member.member_email1}
-                      required
+                      value={update_member.member_email1}
                     />
                   </p>
                   @
                   <p className="email2">
                     <select
+                      type="text"
                       name="member_email2"
-                      value={member.member_email2}
+                      value={update_member.member_email2}
                       onChange={handleChange}
                     >
                       <option value="">도메인 선택</option>
@@ -262,7 +278,12 @@ function EditInformation(props) {
                 </p>
               </div>
               <div className="editBtn">
-                <input id="edit" type="submit" value="수정" onClick={handleUpdate}/>
+                <input
+                  id="edit"
+                  type="submit"
+                  value="수정"
+                  onClick={handleUpdate}
+                />
               </div>
             </form>
 
