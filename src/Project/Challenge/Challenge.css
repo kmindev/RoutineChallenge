@@ -15,11 +15,14 @@ body{
 }
 
 .challengepage {
+  /* border:1px solid blue; */
   width: 100%;
-  padding: 15vh 0 15vh;
+  padding: 17vh 0 20vh;
+  overflow:hidden;
 }
 
 .progressWrap {
+  /* border:1px solid blue; */
   clear: both;
   padding: 0 auto;
   width: 60%;
@@ -67,10 +70,11 @@ body{
 .progress:focus .progressText { color: #ff6700; }
 
 .csWrap {
+  /* border:1px solid blue; */
   clear: both;
   width: 63%;
   height: 5.5vh;
-  margin: 1vh auto 1.6vh;
+  margin: 2.3vh auto 2.3vh;
 }
 
 .csWrap .categories {
@@ -96,6 +100,7 @@ body{
 .categoryOn { background-color: #FF9900; }
 
 .csWrap .sort {
+  /* border:1px solid green; */
   float: right;
   width: 10%;
   height: 40px;

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Outlet } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -11,6 +10,19 @@ const Header = () => {
       window.addEventListener('scroll', updateScroll);
   });
 
+
+  const login_id = window.sessionStorage.getItem("member_id");
+
+  const handleLogout = () => {
+    console.log("handleLogout");
+    window.sessionStorage.clear();
+    console.log(
+      "handleLogout: window.sessionStorage(login_id) =>",
+      window.sessionStorage.getItem("member_id")
+    );
+    alert('내일 또 만나요!');
+  };
+  
 
   return (
     <div>
@@ -29,11 +41,19 @@ const Header = () => {
             </ul>
             <ul className='nav-right'>
               <li className="l01"><a href="/myPage">MY PAGE</a></li>
-              <li className="l01"><a href="/login">LOGIN</a></li>
-              <li className="l01"><a href="/join">JOIN</a></li>
+              {login_id === null ? 
+                <li className="l01"><a href="/login">LOGIN</a></li> : <li className="l01"><a href="/" onClick={handleLogout}>LOGOUT</a></li>
+              }
+              {login_id === null ? 
+                <li className="l01"><a href="/join">JOIN</a></li> : null
+              }
               <li className="l02"><a href="/myPage">MY PAGE</a></li>
-              <li className="l02"><a href="/login">LOGIN</a></li>
-              <li className="l02"><a href="/join">JOIN</a></li>
+              {login_id === null ? 
+                <li className="l02"><a href="/login">LOGIN</a></li> : <li className="l02"><a href="/" onClick={handleLogout}>LOGOUT</a></li>
+              }
+              {login_id === null ? 
+                <li className="l02"><a href="/join">JOIN</a></li> : null
+              }
             </ul>
           </nav>        
         </div>
