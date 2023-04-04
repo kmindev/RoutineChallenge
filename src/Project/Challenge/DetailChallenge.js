@@ -11,7 +11,8 @@ function DetailChallenge() {
   var [참여현황변수, set참여현황변수] = useState(0); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
   var [오늘인증했나변수, set오늘인증했나변수] = useState(0); // 인증했으면 1, 인증 안했으면 0  이 항목은 '참여현황변수'가 1일 경우에만 유효합니다.
 
-  var bonin = 0;
+  const [monitor, setMonitor] = useState(0);
+
   const [board_reply_max, setBoard_reply_max] = useState(3); // 초기 게시판 덧글 최대 노출 개수
 
   const [saveReply, setSaveReply] = useState("");
@@ -19,6 +20,7 @@ function DetailChallenge() {
   const id = searchParams.get("challenge_num");
   //console.log(id);
   parseInt({ id });
+  const [sujung, setSujung] = useState("");
 
   const login_id = window.sessionStorage.getItem("member_id"); // 해당 코드를 통해 세션에 저장된 member_id를 따와 저장합니다.
 
@@ -121,7 +123,19 @@ function DetailChallenge() {
         board_content: saveReply,
       })
       .then((res) => {
-        console.log(res);
+        setMonitor(1);
+      });
+  };
+
+  const reply_revise = () => {
+    axios
+      .post("/update_board", {
+        board_content: saveReply,
+        board_num: sujung,
+        member_id: login_id,
+      })
+      .then((res) => {
+        reply_get();
       });
   };
 
@@ -131,7 +145,16 @@ function DetailChallenge() {
     member_count();
     detail();
     reply_get();
+    parseInt(sujung);
   }, []);
+
+  useEffect(() => {
+    reply_revise();
+  }, [sujung]);
+
+  useEffect(() => {
+    reply_get();
+  }, [monitor]);
 
   const saveUserReply = (event) => {
     setSaveReply(event.target.value);
@@ -240,13 +263,26 @@ function DetailChallenge() {
     set오늘인증했나변수(0);
   }
 
-  const replyget = reply_data.map((reply_data) => (
-    <div className="reply-obj">
+  const replyget = reply_data.map((reply_data, i) => (
+    <div className="reply-obj" key={i}>
       <div className="reply-objleft">{reply_data.member_id}</div>
       <div className="reply-objcontent">{reply_data.board_content}</div>
       <div className="reply-objdate">{reply_data.board_date}</div>
       {reply_data.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-        <div className="reply-objchange">수정</div>
+        <div
+          className="reply-objchange"
+          onClick={() => {
+            if (saveReply === "") {
+              alert("글을 작성해주세요.");
+            } else {
+              alert("수정되었습니다.");
+              setSujung(reply_data.board_num);
+              reply_get();
+            }
+          }}
+        >
+          수정
+        </div>
       ) : null}
     </div>
   ));
@@ -288,6 +324,9 @@ function DetailChallenge() {
               {challenge_data.challenge_end}
             </div>
             <div className="Challenge-People">현재 {people}명 참여 중</div>
+            <div className="Challenge-Period2">
+              일주일에 {challenge_data.challenge_cycle}번 참여하면 성공!
+            </div>
             <div className="Challenge-Explain">
               <br />
               {challenge_data.challenge_content}
@@ -413,7 +452,6 @@ function DetailChallenge() {
                                 set오늘인증했나변수(1);
                                 alert("인증되었습니다.");
                                 reply_add();
-                                reply_get();
                               }
                             }}
                           >

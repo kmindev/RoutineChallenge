@@ -158,6 +158,21 @@
 
 }
 
+.Challenge-Period2 {
+  /*주기*/
+  height: 30px;
+  width: 600px;
+  font-weight: bold;
+  line-height: 30px;
+  font-size: 18px;
+  color: #2903ff;
+  float: left;
+  text-align: left;
+  margin-left: 55px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+
 .Challenge-Explain {
   /*300자 정도 들어가는 챌린지 설명 부분*/
   height: 150px;
@@ -171,7 +186,6 @@
   float: left;
   text-align: left;
   margin-left: 55px;
-  margin-top: 10px;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -186,7 +200,6 @@
   float: left;
   text-align: left;
   margin-left: 55px;
-  margin-top: 20px;
   color: white;
   font-family: 'Noto Sans KR', sans-serif;
   text-align: center;
@@ -353,6 +366,7 @@ left: 360px;
 top: 875px;
 border-radius: 10px;
 display:table;
+margin-bottom: 60px;
 }
 
 .reply-inputform{
