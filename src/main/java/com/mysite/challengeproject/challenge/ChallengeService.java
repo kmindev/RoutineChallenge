@@ -1,8 +1,10 @@
 package com.mysite.challengeproject.challenge;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface ChallengeService {
 
@@ -22,7 +24,9 @@ public interface ChallengeService {
 	public void setReadCountUpdate(int challenge_num);
 	
 	// 챌린지 생성(챌린지 테이블에 insert)
-	public int insertChallenge(ChallengeVO challenge);
+//	public int insertChallenge(ChallengeVO challenge);
+//	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1, MultipartFile mul2) throws IOException;
+	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1) throws IOException;
    
    	// 챌린지 상세정보 조회
 	public ChallengeVO getDetailChallenge(int challenge_num);

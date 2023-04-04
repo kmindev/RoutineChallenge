@@ -32,9 +32,10 @@ public interface ChallengeMapper {
 	
 	// 챌린지 생성(챌린지 테이블에 insert)
 	@Insert("insert into challenge "
-         + " values(null, #{challenge_creater}, #{challenge_title}, #{challenge_theme}, #{challenge_start}, "
-         + " #{challenge_end}, #{challenge_cycle}, #{challenge_intro}, #{challenge_content}, #{challenge_thumbnail}, #{challenge_image}, #{challenge_readcount})")
-	public int insertChallenge(ChallengeVO challenge);
+         + " values(null, #{DTO2.challenge_creater}, #{DTO2.challenge_title}, #{DTO2.challenge_theme}, #{DTO2.challenge_start}, "
+         + " #{DTO2.challenge_end}, #{DTO2.challenge_cycle}, #{DTO2.challenge_intro}, #{DTO2.challenge_content}, "
+         + "#{challenge_thumbnail}, null, #{DTO2.challenge_readcount})")
+	public int insertChallenge(ChallengeDTO2 DTO2, String challenge_thumbnail);
    
 	// 챌린지 상세정보 조회
 	// 챌린지 상세페이지 들어가면 진행여부, 제목, 시작날짜, 종료날짜, 운동설명이 필요함(진행여부는 back에서 별도의 url로 처리하도록 하는게 괜찮아보임)
