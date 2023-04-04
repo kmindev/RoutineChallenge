@@ -293,7 +293,7 @@ body{margin:0; padding:0;}
 .join .inner .box .bottom div .right .favC p:last-child{
   margin-right:0;
 }
-.join .inner .box .bottom div .right .favC input[type="checkbox"]{
+.join .inner .box .bottom div .right .favC input[type="radio"]{
   -webkit-appearance: none;
   position:relative;
   width:1.2vw;
@@ -306,7 +306,7 @@ body{margin:0; padding:0;}
   margin-right:0.4vw;
   top:4px;
 }
-.join .inner .box .bottom div .right .favC input[type="checkbox"]::before{
+.join .inner .box .bottom div .right .favC input[type="radio"]::before{
   content: "\2713";
   position: absolute;
   top:50%;
@@ -315,14 +315,14 @@ body{margin:0; padding:0;}
   transform:scale(0) translate(-50%, -50%);
   line-height:1;
 }
-.join .inner .box .bottom div .right .favC input[type="checkbox"]:hover{border-color: rgba(255, 153, 0, 0.5);}
-.join .inner .box .bottom div .right .favC input[type="checkbox"]:focus{border:2px solid #FF6B00}
-.join .inner .box .bottom div .right .favC input[type="checkbox"]:checked {
+.join .inner .box .bottom div .right .favC input[type="radio"]:hover{border-color: rgba(255, 153, 0, 0.5);}
+.join .inner .box .bottom div .right .favC input[type="radio"]:focus{border:2px solid #FF6B00}
+.join .inner .box .bottom div .right .favC input[type="radio"]:checked {
   background-color: #FF9900;
   border-color: rgba(255, 255, 255, 0.3);
   color: white;
 }
-.join .inner .box .bottom div .right .favC input[type="checkbox"]:checked::before {
+.join .inner .box .bottom div .right .favC input[type="radio"]:checked::before {
   border-radius: 2px;
   transform: scale(1) translate(-50%, -50%)
 }

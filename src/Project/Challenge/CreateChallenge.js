@@ -1,32 +1,36 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 import './CreateChallenge.css';
-import GalleryList from './Gallery/GalleryList';
-import data from './Gallery/GalleryImages';
 
 const CreateChallenge = () => {
 
-  const result = useRef('');
   const input_mainImage = useRef('');  //ref 설정: createRef함수
   const input_title = useRef('');  
-  const input_subject1 = useRef('');
-  const input_subject2 = useRef('');
-  const input_subject3 = useRef('');
-  const input_subject4 = useRef('');
-  const input_subject5 = useRef('');
-  const input_period1 = useRef('');
-  const input_period2 = useRef('');
-  const input_cycle1 = useRef('');
-  const input_cycle2 = useRef('');
-  const input_cycle3 = useRef('');
-  const input_cycle4 = useRef('');
-  const input_cycle5 = useRef('');
-  const input_cycle6 = useRef('');
-  const input_cycle7 = useRef('');
-  const input_cycle8 = useRef('');
+  const input_theme = useRef('');
+  const input_start = useRef('');
+  const input_end = useRef('');
+  const input_cycle = useRef('');
   const input_intro = useRef('');
-  const input_detail = useRef('');
+  const input_content = useRef('');
   const input_photo = useRef('');
   const input_btn = useRef('');
+
+  const [imageSrc, setImageSrc] = useState('');
+  const member_id = window.sessionStorage.getItem("member_id");
+
+  const navigate = useNavigate();
+
+  const encodeFileToBase64 = (fileBlob) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileBlob);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImageSrc(reader.result);
+        resolve();
+      };
+    });
+  };
 
 
   const onChange = (e) => {
@@ -36,40 +40,18 @@ const CreateChallenge = () => {
   const onKeyPress = (e) => {
     if (e.key === "Enter") {
       if (e.target.name ==="title") {
-        input_subject1.current.focus();
-      } else if (e.target.name ==="subject1") {
-        input_subject2.current.focus();
-      } else if (e.target.name ==="subject2") {
-        input_subject3.current.focus();
-      } else if (e.target.name ==="subject3") {
-        input_subject4.current.focus();  
-      } else if (e.target.name ==="subject4") {
-        input_subject5.current.focus();
-      } else if (e.target.name ==="subject5") {
-        input_period1.current.focus();  
-      } else if (e.target.name ==="period1") {
-        input_period2.current.focus(); 
-      } else if (e.target.name ==="period2") {
-        input_cycle1.current.focus(); 
-      } else if (e.target.name ==="cycle1") {
-        input_cycle2.current.focus(); 
-      } else if (e.target.name ==="cycle2") {
-        input_cycle3.current.focus(); 
-      } else if (e.target.name ==="cycle3") {
-        input_cycle4.current.focus(); 
-      } else if (e.target.name ==="cycle4") {
-        input_cycle5.current.focus(); 
-      } else if (e.target.name ==="cycle5") {
-        input_cycle6.current.focus();  
-      } else if (e.target.name ==="cycle6") {
-        input_cycle7.current.focus(); 
-      } else if (e.target.name ==="cycle7") {
-        input_cycle8.current.focus(); 
-      } else if (e.target.name ==="cycle8") {
+        input_theme.current.focus();
+      } else if (e.target.name ==="theme") {
+        input_start.current.focus();  
+      } else if (e.target.name ==="start") {
+        input_end.current.focus(); 
+      } else if (e.target.name ==="end") {
+        input_cycle.current.focus(); 
+      } else if (e.target.name ==="cycle") {
         input_intro.current.focus(); 
       } else if (e.target.name ==="intro") {
-        input_detail.current.focus(); 
-      } else if (e.target.name ==="detail") {
+        input_content.current.focus(); 
+      } else if (e.target.name ==="content") {
         input_photo.current.focus();  
       } else if (e.target.name ==="photo") {
         input_btn.current.focus();
@@ -77,27 +59,22 @@ const CreateChallenge = () => {
     }
   }
 
-  const onClick = () => {
-    if (input_mainImage.current.value === "" || input_mainImage.current.valueOf === undefined) {
-      alert("대표이미지를 선택하세요");
-      input_mainImage.current.focus();
-      return false;
-    }
+  const handleCreateChallenge = () => {
     if (input_title.current.value === "" || input_title.current.value === undefined) {
       alert("제목을 입력하세요");
       input_title.current.focus();
       return false;
     }
     if (
-      input_period1.current.value === "" || input_period1.current.value === undefined) {
+      input_start.current.value === "" || input_start.current.value === undefined) {
       alert("시작 날짜를 입력하세요");
-      input_period1.current.focus();
+      input_start.current.focus();
       return false;
     }
     if (
-      input_period2.current.value === "" || input_period2.current.value === undefined) {
+      input_end.current.value === "" || input_end.current.value === undefined) {
       alert("종료 날짜를 입력하세요");
-      input_period2.current.focus();
+      input_end.current.focus();
       return false;
     }
     if (
@@ -107,19 +84,74 @@ const CreateChallenge = () => {
       return false;
     }
     if (
-      input_detail.current.value === "" || input_detail.current.value === undefined) {
+      input_content.current.value === "" || input_content.current.value === undefined) {
       alert("상세내용을 입력하세요");
-      input_detail.current.focus();
+      input_content.current.focus();
       return false;
     }
+
+    axios
+      .post("/create_challenge", {
+        challenge_creater: member_id,
+        challenge_title: input_title.current.value,
+        challenge_theme: input_theme.current.value,
+        challenge_start: input_start.current.value,
+        challenge_end: input_end.current.value,
+        challenge_cycle: input_cycle.current.value,
+        challenge_intro: input_intro.current.value,
+        challenge_content :input_content.current.value,
+        challenge_thumbnail :input_mainImage.current.value,
+        challenge_image :input_photo.current.value,
+        challenge_readcount: 0,
+      })
+      .then((res) => {
+        console.log("handleCreateChallenge =>", res);
+        console.log("handleCreateChallenge((res.data) =>", res.data);
+
+        if (res.data === 1) {
+          alert("챌린지 생성 성공");
+          navigate("/challenge");
+        } else {
+          alert("챌린지 생성 실패");   
+          navigate("/createChallenge");
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
-  const [datas, setDatas] = useState(data); //
-  const [currItem, setCurrItem] = useState(datas[0]); //선택한 사진 상태설정
 
-  const onView = (id) => { //고유번호인 id를 받아서 해당 사진을 찾기
-      setCurrItem(datas.find(item => item.id === id)) //해당값만 찾기:find()
-  };
+  const themesKind = [
+    { id: "development", name: "자기계발" },
+    { id: "study", name: "학습" },
+    { id: "exercise", name: "운동" },
+    { id: "health", name: "건강" },
+    { id: "etc", name: "기타" }]
+  
+  const [themeKind, setThemeKind] = useState([]);
+
+  const cyclesKind = [
+    {name: "주1일"},
+    {name: "주2일"},
+    {name: "주3일"},
+    {name: "주4일"},
+    {name: "주5일"},
+    {name: "매일"},
+    {name: "평일"},
+    {name: "주말"}];
+  
+  const [cycleKind, setCycleKind] = useState([]);
+
+  const handlethemeRadioBtn = (e) => {
+    console.log(e.target.value)
+    setThemeKind(e.target.value)
+  }
+
+  const handlecycleRadioBtn = (e) => {
+    console.log(e.target.value)
+    setCycleKind(e.target.value)
+  }
 
   
   return (
@@ -131,8 +163,16 @@ const CreateChallenge = () => {
             <section className='wrap'>
             <div className='main'>
               <h3>대표 이미지</h3>
-              <div id='result' ref={result}>
-                <GalleryList datas = {datas} onView={onView} currItem={currItem}/>
+              <div className="main-image">
+                {imageSrc && <img src={imageSrc} alt="main-image" />}
+              </div>
+              <div className="main-file">
+                <input 
+                ref={input_mainImage}
+                  className="input-main"
+                  type="file" 
+                  onChange={(e) => {encodeFileToBase64(e.target.files[0]);}}
+                />
               </div>
             </div>
             
@@ -156,61 +196,25 @@ const CreateChallenge = () => {
                 <p className='first'>주제</p>
                 <p className='second'>
                   <div className='sub'>
-                    <p>
-                      <input 
-                        ref={input_subject1}
-                        type="checkbox"
-                        name="subject1"
-                        id='sub01'                    
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='sub01'><span>자기계발</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_subject2}
-                        type="checkbox"
-                        name="subject2"
-                        id='sub02'                     
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='sub02'><span>학습</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_subject3}
-                        type="checkbox"
-                        name="subject3"
-                        id='sub03'                      
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='sub03'><span>운동</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_subject4}
-                        type="checkbox"
-                        name="subject4"
-                        id='sub04'                  
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='sub04'><span>건강</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_subject5}
-                        type="checkbox"
-                        name="subject5"
-                        id='sub05'                     
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='sub05'><span>기타</span></label>
-                    </p>
+                    {themesKind.map(theme => (
+                      <p>
+                        <input 
+                          ref={input_theme}
+                          type="radio"
+                          value={theme.id}
+                          key={theme.id}
+                          name="theme"
+                          id={theme.id}
+                          checked={themeKind === `${theme.name}`}                  
+                          onChange={handlethemeRadioBtn}
+                          onClick={() => {
+                            setThemeKind(theme.id);
+                          }}
+                          onKeyPress={onKeyPress}
+                        />
+                        <label key={theme.name}><span>{theme.name}</span></label>
+                      </p>  
+                    ))}
                   </div>
                 </p>
               </div>
@@ -219,7 +223,7 @@ const CreateChallenge = () => {
                 <li className='first'>기간</li>
                 <li className='second'>
                   <input 
-                    ref={input_period1}
+                    ref={input_start}
                     type="date"
                     name="period1"
                     data-placeholder="시작 날짜"
@@ -230,7 +234,7 @@ const CreateChallenge = () => {
                   />
                   ~
                   <input 
-                    ref={input_period2}
+                    ref={input_end}
                     type="date"
                     name="period2"
                     data-placeholder="종료 날짜"
@@ -245,97 +249,22 @@ const CreateChallenge = () => {
               <div className='check'>
                 <p className='first'>주기</p>
                 <p className='second'>
-                  <div className='cycleA'>
-                    <p>
-                      <input 
-                        ref={input_cycle1}
-                        type="checkbox"
-                        name="cycle1"
-                        id='cycle01'                    
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle01'><span>매일</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_cycle2}
-                        type="checkbox"
-                        name="cycle2"
-                        id='cycle02'                     
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle02'><span>평일</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_cycle3}
-                        type="checkbox"
-                        name="cycle3"
-                        id='cycle03'                      
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle03'><span>주말</span></label>
-                    </p>
-                  </div>
-                  <div className='cycleB'>
-                    <p>
-                      <input 
-                        ref={input_cycle4}
-                        type="checkbox"
-                        name="cycle4"
-                        id='cycle04'                  
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle04'><span>주 1일</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_cycle5}
-                        type="checkbox"
-                        name="cycle5" 
-                        id='cycle05'                     
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle05'><span>주 2일</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_cycle6}
-                        type="checkbox"
-                        name="cycle6"
-                        id='cycle06'                  
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle06'><span>주 3일</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_cycle7}
-                        type="checkbox"
-                        name="cycle7" 
-                        id='cycle07'                     
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle07'><span>주 4일</span></label>
-                    </p>
-                    <p>
-                      <input 
-                        ref={input_cycle8}
-                        type="checkbox"
-                        name="cycle8" 
-                        id='cycle08'                     
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
-                      />
-                      <label for='cycle08'><span>주 5일</span></label>
-                    </p>
+                  <div className='cycle'>
+                    {cyclesKind.map(cycle => (
+                        <p>
+                          <input 
+                            ref={input_cycle}
+                            type="radio"
+                            value={cycle.name}
+                            name="cycle"
+                            id='cycle' 
+                            checked={cycleKind === `${cycle.name}`}                  
+                            onChange={handlecycleRadioBtn}
+                            onKeyPress={onKeyPress}
+                          />
+                          <label key={cycle.name}><span>{cycle.name}</span></label>
+                        </p>  
+                      ))}
                   </div>
                 </p>
               </div>
@@ -359,7 +288,7 @@ const CreateChallenge = () => {
                 <li className='first'>상세내용</li>
                 <li className='second'>
                   <textarea
-                    ref={input_detail}
+                    ref={input_content}
                     type="textarea"
                     name="detail"
                     placeholder
@@ -379,7 +308,7 @@ const CreateChallenge = () => {
                 <li className='second'>
                   <p className='photo1'>
                     <input 
-                      className='input_photo'
+                      className='input-photo'
                       ref={input_photo}
                       type="file"
                       name="photo"
@@ -394,7 +323,7 @@ const CreateChallenge = () => {
             </section>
 
             <section className='btn'>
-              <button ref={input_btn} onClick={onClick}>생성하기</button>
+              <button ref={input_btn} onClick={handleCreateChallenge}>생성하기</button>
             </section>  
           </div>
         </div>  
