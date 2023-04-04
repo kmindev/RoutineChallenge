@@ -21,9 +21,21 @@ body{margin:0; padding:0;}
 }
 .sideBar-wrap .sideBar .sideProfile{
   margin:0 auto;
-  padding-top:12vh;
+  padding-top:10vh;
 }
-#profile_container .pf-img{margin-bottom:2vh;}
+#profile_container .pf-img{
+  width: 20vh;
+  height: 20vh;
+  margin-bottom:3vh;
+  border-radius:100%;
+  overflow: hidden;
+}
+#profile_container .pf-img>img{
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+}
 #profile_container .pf-text{
   font-family: 'Noto Sans KR', sans-serif;
   font-size:1.3vw;
