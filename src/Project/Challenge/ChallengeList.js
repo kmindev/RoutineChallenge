@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./ChallengeList.css";
 import axios from "axios";
 
-// 이미지 출력, state 값 변경
-
 function ChallengeList(props) {
   const [lists, setLists] = useState([]);
   const [lists1, setLists1] = useState([]);
@@ -100,7 +98,11 @@ function ChallengeList(props) {
             <img
               className="c-img"
               alt={`챌린지이미지`}
-              src={`process.env.PUBLIC_URL` + li.challenge_thumbnail}
+              src={
+                process.env.PUBLIC_URL +
+                "/image/upload/challengeimg/" +
+                li.challenge_thumbnail
+              }
             ></img>
           </div>
           <div className="c-text">
