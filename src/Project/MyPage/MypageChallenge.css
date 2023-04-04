@@ -92,7 +92,7 @@ body{margin:0; padding:0;}
 }
 .ch-image .ch-img{
   width:100%;
-  height:180px;
+  height:190px;
   object-fit:cover;
   object-position:center;
 }
@@ -101,8 +101,8 @@ body{margin:0; padding:0;}
   clear: both;
   float: left;
   width: 100%;
-  height: 120px;
-  padding: 2.5vh 10% 3vh;
+  height: 110px;
+  padding: 1.5vh 10% 3vh;
   border-radius: 0px 0px 1.5vw 1.5vw;
 }
 .ch-text .ch-title {
