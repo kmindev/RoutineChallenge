@@ -6,16 +6,49 @@ import axios from "axios";
 
 function ChallengeList(props) {
   const [lists, setLists] = useState([]);
-  const state = props.progress;
+  const [lists1, setLists1] = useState([]);
+  const [lists2, setLists2] = useState([]);
+  const [lists3, setLists3] = useState([]);
+  const [clist, setClist] = useState([]);
 
   const getLists = () => {
     axios
       .get("/challengelist", {
         params: {
-          state: state,
+          state: 0,
         },
       })
       .then((res) => setLists(res.data))
+      .catch((e) => {
+        console.error(e);
+      });
+    axios
+      .get("/challengelist", {
+        params: {
+          state: 1,
+        },
+      })
+      .then((res) => setLists1(res.data))
+      .catch((e) => {
+        console.error(e);
+      });
+    axios
+      .get("/challengelist", {
+        params: {
+          state: 2,
+        },
+      })
+      .then((res) => setLists2(res.data))
+      .catch((e) => {
+        console.error(e);
+      });
+    axios
+      .get("/challengelist", {
+        params: {
+          state: 3,
+        },
+      })
+      .then((res) => setLists3(res.data))
       .catch((e) => {
         console.error(e);
       });
@@ -23,6 +56,18 @@ function ChallengeList(props) {
   useEffect(() => {
     getLists();
   }, []);
+
+  useEffect(() => {
+    setClist(
+      props.progress === 0
+        ? lists
+        : props.progress === 1
+        ? lists1
+        : props.progress === 2
+        ? lists2
+        : lists3
+    );
+  });
 
   const deadline = (l) => {
     const d = new Date(l.challenge_start);
@@ -41,7 +86,7 @@ function ChallengeList(props) {
       : (a.challenge_num = b.challenge_num) * -1;
   };
 
-  const list = lists
+  const list = clist
     .filter((lists) =>
       props.category === "all"
         ? lists
@@ -50,7 +95,7 @@ function ChallengeList(props) {
     .sort(compareID)
     .map((li) => (
       <li id="challenge" key={li.challenge_num}>
-        <a href="/detailChallenge">
+        <a href={`/detailChallenge?challenge_num=${li.challenge_num}`}>
           <div className="c-image">
             <img
               className="c-img"
