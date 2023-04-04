@@ -5,13 +5,15 @@ import axios from "axios";
 import { useParams, useSearchParams } from "react-router-dom";
 import Login from "../Login";
 
-//window.sessionStorage.setItem("member_id", "kim"); 임시 로그인 세션 값
+//window.sessionStorage.setItem("member_id", "kim");
 
 function DetailChallenge() {
   var [참여현황변수, set참여현황변수] = useState(0); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
   var [오늘인증했나변수, set오늘인증했나변수] = useState(0); // 인증했으면 1, 인증 안했으면 0  이 항목은 '참여현황변수'가 1일 경우에만 유효합니다.
 
   var bonin = 0;
+  const [board_reply_max, setBoard_reply_max] = useState(3); // 초기 게시판 덧글 최대 노출 개수
+
   const [saveReply, setSaveReply] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const id = searchParams.get("challenge_num");
@@ -35,6 +37,35 @@ function DetailChallenge() {
     challenge_readcount: "",
   });
 
+  const [reply_data, setReply_data] = useState([
+    {
+      board_num: "",
+      member_id: "",
+      challenge_num: "",
+      board_content: "",
+      board_date: "",
+    },
+  ]);
+
+  const [reply_data1, setReply_data1] = useState([
+    {
+      board_num: "",
+      member_id: "",
+      challenge_num: "",
+      board_content: "",
+      board_date: "",
+    },
+  ]);
+
+  const [reply_data2, setReply_data2] = useState([
+    {
+      board_num: "",
+      member_id: "",
+      challenge_num: "",
+      board_content: "",
+      board_date: "",
+    },
+  ]);
   const [people, setPeople] = useState(0);
 
   const member_count = () => {
@@ -80,7 +111,8 @@ function DetailChallenge() {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
+
         setChallenge_data(res.data);
       });
   };
@@ -92,19 +124,52 @@ function DetailChallenge() {
         member_id: login_id,
       })
       .then((res) => {
+        //console.log(res);
+      });
+  };
+
+  const reply_get = () => {
+    axios
+      .get("/get_board", {
+        params: {
+          challenge_num: id,
+        },
+      })
+      .then((res) => {
+        //console.log(res.data);
+        //console.log(res.data[0]);
+        //console.log(res.data[1]);
+
+        setReply_data(res.data[0]);
+        setReply_data1(res.data[1]);
+        setReply_data2(res.data[2]);
+      });
+  };
+
+  const reply_add = () => {
+    axios
+      .post("/insert_board", {
+        member_id: login_id,
+        challenge_num: id,
+        board_content: saveReply,
+      })
+      .then((res) => {
         console.log(res);
       });
   };
+
   useEffect(() => {
     //console.log("zz");
     member_check();
     member_count();
     detail();
+    reply_get();
   }, []);
 
   const saveUserReply = (event) => {
     setSaveReply(event.target.value);
   };
+
   ///////////////////////////////////////////////////////////////// 여기 부터 타이머 만드는데 관련 된 요소 /////////////////////////////////////////////////////////////
 
   var 챌린지시작일변수 = challenge_data.challenge_start;
@@ -369,7 +434,8 @@ function DetailChallenge() {
                               } else {
                                 set오늘인증했나변수(1);
                                 alert("인증되었습니다.");
-                                //리다이렉트
+                                reply_add();
+                                reply_get();
                               }
                             }}
                           >
@@ -379,32 +445,45 @@ function DetailChallenge() {
                       </div>
                       <div className="reply-list">
                         <div className="reply-obj">
-                          <div className="reply-objleft">닉네임01</div>
-                          <div className="reply-objcontent">
-                            2023년 03월 10일 오늘도 인증 완료!
+                          <div className="reply-objleft">
+                            {reply_data.member_id}
                           </div>
-                          <div className="reply-objdate">1시간 전</div>
-                          {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                          <div className="reply-objcontent">
+                            {reply_data.board_content}
+                          </div>
+                          <div className="reply-objdate">
+                            {reply_data.board_date}
+                          </div>
+                          {reply_data.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                            <div className="reply-objchange">수정</div>
+                          ) : null}
+                        </div>
+
+                        <div className="reply-obj">
+                          <div className="reply-objleft">
+                            {reply_data1.member_id}
+                          </div>
+                          <div className="reply-objcontent">
+                            {reply_data1.board_content}
+                          </div>
+                          <div className="reply-objdate">
+                            {reply_data1.board_date}
+                          </div>
+                          {reply_data1.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
                             <div className="reply-objchange">수정</div>
                           ) : null}
                         </div>
                         <div className="reply-obj">
-                          <div className="reply-objleft">닉네임02</div>
-                          <div className="reply-objcontent">
-                            인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
+                          <div className="reply-objleft">
+                            {reply_data2.member_id}
                           </div>
-                          <div className="reply-objdate">2023-03-09</div>
-                          {bonin === 0 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
-                            <div className="reply-objchange">수정</div>
-                          ) : null}
-                        </div>
-                        <div className="reply-obj">
-                          <div className="reply-objleft">이름은몇글자까지</div>
                           <div className="reply-objcontent">
-                            인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글인증글
+                            {reply_data2.board_content}
                           </div>
-                          <div className="reply-objdate">2023-03-09</div>
-                          {bonin === 1 ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
+                          <div className="reply-objdate">
+                            {reply_data2.board_date}
+                          </div>
+                          {reply_data2.member_id === login_id ? ( // 댓글을 쓴 사람과 본인 id가 일치하면
                             <div className="reply-objchange">수정</div>
                           ) : null}
                         </div>
