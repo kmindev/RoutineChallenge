@@ -65,8 +65,10 @@ public class ChallengeServiceImpl implements ChallengeService{
 	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1) throws IOException {
 		String thumbnailSaveName = null;
 	
-		if(mul1 != null) {thumbnailSaveName = saveImage(mul1);}
-		
+		//첨부된 파일이 있을 경우
+		if(mul1 != null && !mul1.isEmpty()) {
+			thumbnailSaveName = saveImage(mul1);
+		}
 		return mapper.insertChallenge(challengeDTO2, thumbnailSaveName);
 		
 	}
