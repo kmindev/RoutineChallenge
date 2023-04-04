@@ -11,6 +11,6 @@ public interface MemberService {
 	public String findId(MemberVO member); // 아이디 찾기
 	public String findPw(MemberVO member); // 비밀번호 찾기
 	public MemberVO getMember(String member_id);	// 회원 정보 조회
-	public int updateMember(MemberVO member); // 회원 정보 수정
+	public int updateMember(MemberVO memberVO, MultipartFile update_profile) throws IOException; //회원 정보 수정
 	public int deleteMember(String member_id); // 회원 탈퇴
 }
