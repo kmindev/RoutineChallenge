@@ -2,73 +2,133 @@ import "./DetailChallenge.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams, useSearchParams } from "react-router-dom";
+import Login from "../Login";
 
-var test = 0;
-
-//==========================================================================================================================
-var challenge_num = 2; // 각 Challenge 페이지 마다 특정 번호 부여
-// Challenge 페이지가 일단은 하나뿐이라 이런 식으로 하드 코딩 했습니다. 일단 임시 값으로 2를 부여했습니다.
-//==========================================================================================================================
-
-//================   하단의 코드를 이용하여 아직 구현되지 않은 로그인 id를 세션에 설정하여 테스트 할 수 있습니다   ================//
-window.sessionStorage.setItem("member_id", "kim");
-
-const member_check = (e) => {
-  const login_id = window.sessionStorage.getItem("member_id"); // 해당 코드를 통해 세션에 저장된 member_id를 따와 저장합니다.
-
-  axios
-    .post("/membercheck_challenge", {
-      member_id: login_id, // 위에서 따온 member_id와 challenge_num을 해당 url 파라미터로 넘깁니다.
-      challenge_num: challenge_num,
-    })
-    .then((res) => {
-      console.log(res);
-      if (res.data === 1) {
-        // res.data는 스프링에서의 membercheck_challenge 함수의 return 값입니다. 챌린지 참여 여부 조회 (1:참여 중, 0: 미참여)
-        test = 1;
-      } else {
-      }
-    })
-    .catch((e) => {
-      console.error(e);
-    });
-};
-
-const select_challenge = (e) => {
-  axios
-    .get("/detail_challenge", {})
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((e) => {
-      console.error(e);
-    });
-};
-
-member_check();
-select_challenge();
+//window.sessionStorage.setItem("member_id", "kim"); 임시 로그인 세션 값
 
 function DetailChallenge() {
   var [참여현황변수, set참여현황변수] = useState(0); //  챌린지 참여중이 아니면 0, 챌린지에 참여중이면 1
   var [오늘인증했나변수, set오늘인증했나변수] = useState(0); // 인증했으면 1, 인증 안했으면 0  이 항목은 '참여현황변수'가 1일 경우에만 유효합니다.
 
-  var 챌린지시작일변수 = new Date("3 2, 2023, 0:00:00");
-  var 챌린지마지막일변수 = new Date("6 31, 2023, 0:00:00");
   var bonin = 0;
   const [saveReply, setSaveReply] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const id = searchParams.get("challenge_num");
+  //console.log(id);
+  parseInt({ id });
 
+  const login_id = window.sessionStorage.getItem("member_id"); // 해당 코드를 통해 세션에 저장된 member_id를 따와 저장합니다.
+
+  const [challenge_data, setChallenge_data] = useState({
+    challenge_num: "",
+    challenge_create: "",
+    challenge_title: "",
+    challenge_theme: "",
+    challenge_start: "",
+    challenge_end: "",
+    challenge_cycle: "",
+    challenge_intro: "",
+    challenge_content: "",
+    challenge_thumbnail: "",
+    challenge_image: "",
+    challenge_readcount: "",
+  });
+
+  const [people, setPeople] = useState(0);
+
+  const member_count = () => {
+    axios
+      .get("/count_challengemember", {
+        params: {
+          challenge_num: id,
+        },
+      })
+      .then((res) => {
+        //console.log("넘어옴 =>", id);
+        setPeople(res.data);
+      });
+  };
+
+  const member_check = () => {
+    //console.log(id);
+
+    axios
+      .post("/membercheck_challenge", {
+        member_id: login_id, // 위에서 따온 member_id와 challenge_num을 해당 url 파라미터로 넘깁니다.
+        challenge_num: id,
+      })
+      .then((res) => {
+        //console.log(res.data);
+        if (res.data === 1) {
+          // res.data는 스프링에서의 membercheck_challenge 함수의 return 값입니다. 챌린지 참여 여부 조회 (1:참여 중, 0: 미참여)
+
+          set참여현황변수(1);
+        } else {
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+
+  const detail = () => {
+    axios
+      .get("/detail_challenge", {
+        params: {
+          challenge_num: id,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setChallenge_data(res.data);
+      });
+  };
+
+  const join = () => {
+    axios
+      .post("/join_challenge", {
+        challenge_num: id,
+        member_id: login_id,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
   useEffect(() => {
-    if (test === 1) {
-      set참여현황변수(1);
-    } else {
-      set참여현황변수(0);
-    }
+    //console.log("zz");
+    member_check();
+    member_count();
+    detail();
   }, []);
 
   const saveUserReply = (event) => {
     setSaveReply(event.target.value);
   };
   ///////////////////////////////////////////////////////////////// 여기 부터 타이머 만드는데 관련 된 요소 /////////////////////////////////////////////////////////////
+
+  var 챌린지시작일변수 = challenge_data.challenge_start;
+  var mathteacher_year = 챌린지시작일변수.slice(0, 4);
+  var mathteacher_month = 챌린지시작일변수.slice(5, 7);
+  var mathteacher_day = 챌린지시작일변수.slice(8, 10);
+  var mathteacher = new Date(
+    mathteacher_year,
+    mathteacher_month - 1,
+    mathteacher_day
+  );
+
+  //console.log(mathteacher);
+
+  //console.log(챌린지시작일변수);
+  var 챌린지마지막일변수 = challenge_data.challenge_end;
+  var mathteacher2_year = 챌린지마지막일변수.slice(0, 4);
+  var mathteacher2_month = 챌린지마지막일변수.slice(5, 7);
+  var mathteacher2_day = 챌린지마지막일변수.slice(8, 10);
+  var mathteacher2 = new Date(
+    mathteacher2_year,
+    mathteacher2_month - 1,
+    mathteacher2_day
+  );
 
   const [time, setTime] = useState(new Date()); // 현재 시간 변수는 time 입니다. 해당 값은 밀리초 (ms) 형태로 표기 됩니다. ex "1678198855933"
 
@@ -88,7 +148,7 @@ function DetailChallenge() {
   var tomorrow1 = new Date(year2, month2, day2 - 1);
 
   var gap = tomorrow - today; // 챌린지 시작일 변수와 현재 날짜의 차를 구합니다.
-  var gap2 = 챌린지시작일변수 - today;
+  var gap2 = mathteacher - today;
 
   var day3 = Math.floor(gap2 / (1000 * 60 * 60 * 24));
 
@@ -131,14 +191,14 @@ function DetailChallenge() {
 
   var closed = 0; // 마감 됐다면 1, 아니면 0
 
-  if (time > 챌린지마지막일변수) {
+  if (time > mathteacher2) {
     // 현재 시간이 챌린지 마지막 날을 지났다면 closed를 1로 설정합니다.
     closed = 1;
   }
 
   var started = 0; // 해당 변수는 챌린지 시작일이 현재 날짜를 지났는지 판단하는 변수입니다.
 
-  if (time > 챌린지시작일변수) {
+  if (time > mathteacher) {
     // 현재 시간이 챌린지 첫 시작 날을 지났다면 started를 1로 설정합니다.
     started = 1;
   }
@@ -177,15 +237,18 @@ function DetailChallenge() {
               <div className="state-box-Challenge2">진행예정</div>
             )}
 
-            <div className="Challenge-Title">매일 운동하기</div>
-            <div className="Challenge-Period">2023.03.02~2023.06.31</div>
-            <div className="Challenge-People">현재 213명 참여 중</div>
+            <div className="Challenge-Title">
+              {challenge_data.challenge_title}
+            </div>
+            <div className="Challenge-Period">
+              {challenge_data.challenge_start}&nbsp;~&nbsp;
+              {challenge_data.challenge_end}
+            </div>
+            <div className="Challenge-People">현재 {people}명 참여 중</div>
             <div className="Challenge-Explain">
-              -------------------------------------------------
               <br />
-              운동 설명
+              {challenge_data.challenge_content}
               <br />
-              -------------------------------------------------
             </div>
 
             {
@@ -230,6 +293,7 @@ function DetailChallenge() {
                   <div
                     className="box-Today-challenge2"
                     onClick={() => {
+                      join();
                       alert("챌린지에 참여하였습니다!"); // 🚩맘에 드는 폼으로 수정해야 합니다 🚩
                       set참여현황변수(1);
                     }}
