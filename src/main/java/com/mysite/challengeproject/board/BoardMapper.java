@@ -15,7 +15,7 @@ public interface BoardMapper {
 	public int insertBoard(BoardVO board);
 	
 	// 댓글 조회
-	@Select("SELECT member_id, board_content, board_date FROM board WHERE challenge_num=#{challenge_num} ORDER BY board_num DESC")
+	@Select("SELECT board_num, member_id, board_content, board_date FROM board WHERE challenge_num=#{challenge_num} ORDER BY board_num DESC")
 	public List<BoardVO> getBoard(int challenge_num);
 	
 	// 회원 댓글 조회 (로그인 중인 회원 댓글 고유 번호 조회)
