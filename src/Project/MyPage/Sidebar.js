@@ -29,7 +29,14 @@ function Sidebar(props) {
         <div className="sideProfile">
           <div id="profile_container">
             <p className="pf-img">
-              <img src={user.member_profile} alt="프로필 사진" />
+              <img
+                src={
+                  process.env.PUBLIC_URL +
+                  "/image/upload/profile/" +
+                  user.member_profile
+                }
+                alt="프로필 사진"
+              />
             </p>
             <p className="pf-text">
               {user.member_nickname}
