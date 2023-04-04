@@ -24,7 +24,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		if(member_profile != null) {  // 첨부된 파일이 있을 경우
 			profileSaveName = UUID.randomUUID().toString() +"." +StringUtils.getFilename(member_profile.getOriginalFilename());
-			File file = new File("C:\\Project\\upload\\profile_image\\" + profileSaveName);
+			File file = new File("C:\\Project\\React_Source\\mini-project\\public\\image\\upload\\profile\\" + profileSaveName);
 			member_profile.transferTo(file);
 		}
 		return mapper.insertMember(memberDTO, profileSaveName); // memberDTO와 이미지 저장명을 전달

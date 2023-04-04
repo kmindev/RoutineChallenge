@@ -65,7 +65,6 @@ public class ChallengeServiceImpl implements ChallengeService{
 	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1) throws IOException {
 		String thumbnailSaveName = null;
 	
-		
 		if(mul1 != null) {thumbnailSaveName = saveImage(mul1);}
 		
 		return mapper.insertChallenge(challengeDTO2, thumbnailSaveName);
@@ -74,7 +73,7 @@ public class ChallengeServiceImpl implements ChallengeService{
 	
 	private String saveImage(MultipartFile mul) throws IOException {
 		String imgName = UUID.randomUUID() + "." +StringUtils.getFilename(mul.getOriginalFilename());
-		File file = new File("C:\\Project\\upload\\" + imgName); 
+		File file = new File("C:\\Project\\React_Source\\mini-project\\public\\image\\upload\\challengeimg\\" + imgName); 
 		mul.transferTo(file);
 		return imgName;
 	}
