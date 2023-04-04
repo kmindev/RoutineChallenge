@@ -22,12 +22,18 @@ public class MemberServiceImpl implements MemberService {
 	public int insertMember(MemberDTO memberDTO, MultipartFile member_profile) throws IOException {   
 		String profileSaveName = null;
 		
-		if(member_profile != null) {  // 첨부된 파일이 있을 경우
-			profileSaveName = UUID.randomUUID().toString() +"." +StringUtils.getFilename(member_profile.getOriginalFilename());
-			File file = new File("C:\\Project\\upload\\profile_image\\" + profileSaveName);
-			member_profile.transferTo(file);
+		// 첨부된 파일이 있을 경우
+		if(member_profile != null && !member_profile.isEmpty()) {  
+			profileSaveName = saveImage(member_profile);
 		}
 		return mapper.insertMember(memberDTO, profileSaveName); // memberDTO와 이미지 저장명을 전달
+	}
+	
+	private String saveImage(MultipartFile mul) throws IOException {
+		String imgName = UUID.randomUUID() + "." +StringUtils.getFilename(mul.getOriginalFilename());
+		File file = new File("C:\\Project\\React_Source\\mini-project\\public\\image\\upload\\profile\\" + imgName); 
+		mul.transferTo(file);
+		return imgName;
 	}
 	
 	@Override // 로그인
