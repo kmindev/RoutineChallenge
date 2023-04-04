@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  FullPage,
-  Slide,
-} from "https://cdn.skypack.dev/react-full-page@0.1.12";
 import "./HomeAbout.css";
 
 const HomeAbout = () => {
+
   const navigate = useNavigate();
 
   const linkToMypage = () => {
@@ -18,23 +15,19 @@ const HomeAbout = () => {
   };
 
   return (
-    <div>
-      <FullPage controls controlsProps={{ className: "slide" }}>
-        <Slide>
-          <div className="visual">
-            <div className="v-text">
-              <p>루틴챌린지</p>
-              <p>
-                당신의 건강한 하루를 위한
-                <br />
-                페이스 메이커
-              </p>
-            </div>
-          </div>
-        </Slide>
-      </FullPage>
+    <div className="outer">
+      <div className="visual">
+        <div className="v-text">
+          <p>루틴챌린지</p>
+          <p>
+            당신의 건강한 하루를 위한
+            <br />
+            페이스 메이커
+          </p>
+        </div>
+      </div>
 
-      <section id="about">
+      <section id="about" >
         <div className="con01">
           <ul>
             <li className="c01-left">
