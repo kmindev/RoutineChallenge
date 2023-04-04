@@ -37,7 +37,6 @@ function Join() {
 
     const formData = new FormData();
     formData.append("member_profile", profileImage);
-    console.log(profileImage === null ? "profile.jpg" : profileImage);
     formData.append("member_name", member.member_name);
     formData.append("member_id", member.member_id);
     formData.append("member_password", member.member_password);
