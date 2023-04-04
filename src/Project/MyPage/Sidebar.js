@@ -37,11 +37,12 @@ function Sidebar(props) {
               <span>{user.member_email}</span>
             </p>
           </div>
-          <img
+          <hr className="sidebar-line" />
+          {/* <img
             className="line"
             src={process.env.PUBLIC_URL + "/image/myPage/line.png"}
             alt="이미지 로드"
-          ></img>
+          ></img> */}
           <div id="side-nav">
             <p className="nav-sub">
               <a href="/myPage">참여중인 챌린지</a>
