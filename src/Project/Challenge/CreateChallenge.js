@@ -1,9 +1,20 @@
-import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./CreateChallenge.css";
+import { useNavigate } from "react-router-dom";
 
 const CreateChallenge = () => {
+  const loginnavigate = useNavigate();
+  useEffect(() => {
+    // 로그인 상태인지 체크
+    const login_id = window.sessionStorage.getItem("member_id");
+    console.log("window.sessionStorage(login_id) => ", login_id);
+    if (login_id === null) {
+      alert("로그인 후 사용 가능합니다!!");
+      loginnavigate("/login");
+    }
+  }, []);
+
   const input_mainImage = useRef(""); //ref 설정: createRef함수
   const input_title = useRef("");
   const input_theme = useRef("");
@@ -103,21 +114,19 @@ const CreateChallenge = () => {
     formData.append("challenge_creater", member_id);
     formData.append("challenge_title", input_title.current.value);
     formData.append("challenge_theme", themeKind);
-    formData.append("challenge_start",input_start.current.value);
+    formData.append("challenge_start", input_start.current.value);
     formData.append("challenge_end", input_end.current.value);
     formData.append("challenge_cycle", cycleKind);
-    formData.append("challenge_intro",input_intro.current.value);
-    formData.append("challenge_content",  input_content.current.value);
+    formData.append("challenge_intro", input_intro.current.value);
+    formData.append("challenge_content", input_content.current.value);
     formData.append("challenge_thumbnail", input_mainImage.current.value);
     formData.append("challenge_image", input_photo.current.value);
     formData.append("challenge_readcount", 0);
 
     axios
-      .post(
-        "/create_challenge", formData, 
-        {
-          headers: {"Content-Type": "multipart/form-data"},
-        })
+      .post("/create_challenge", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
       .then((res) => {
         console.log("handleCreateChallenge =>", res);
         console.log("handleCreateChallenge((res.data) =>", res.data);
