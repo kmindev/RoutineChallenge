@@ -25,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
 		// 첨부된 파일이 있을 경우
 		if(member_profile != null && !member_profile.isEmpty()) {  
 			profileSaveName = saveImage(member_profile);
-		}
+		} else profileSaveName = "profile_icon.png";
 		return mapper.insertMember(memberDTO, profileSaveName); // memberDTO와 이미지 저장명을 전달
 	}
 	

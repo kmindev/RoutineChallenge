@@ -68,6 +68,8 @@ public class ChallengeServiceImpl implements ChallengeService{
 		//첨부된 파일이 있을 경우
 		if(mul1 != null && !mul1.isEmpty()) {
 			thumbnailSaveName = saveImage(mul1);
+		} else {
+			thumbnailSaveName = challengeDTO2.getChallenge_theme() + ".jpg";
 		}
 		return mapper.insertChallenge(challengeDTO2, thumbnailSaveName);
 		
