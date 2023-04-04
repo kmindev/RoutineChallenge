@@ -481,7 +481,7 @@ function DetailChallenge() {
                     </div>
                   </section>
 
-                  <div className="table-big">
+                  {/* <div className="table-big">
                     <img
                       className="detail-image"
                       alt=""
@@ -490,7 +490,7 @@ function DetailChallenge() {
                         "/image/detailChallenge/detail9.png"
                       }
                     ></img>
-                  </div>
+                  </div> */}
                 </>
               ) : null
             }
