@@ -64,6 +64,9 @@ body{margin:0; padding:0;}
   letter-spacing:0.03em;
   overflow:hidden;
 }
+.box3ul .editR .email0 {
+  margin-bottom:1.5vh;
+}
 .box3ul .editR input{
   width:100%;
   height:6vh;
@@ -235,7 +238,7 @@ body{margin:0; padding:0;}
 .box3ul .editR .favC2 p:last-child{
   margin-right:0;
 }
-.box3ul .editR .favC2 input[type="checkbox"]{
+.box3ul .editR .favC2 input[type="radio"]{
   -webkit-appearance: none;
   position:relative;
   width:1.5vw;
@@ -248,7 +251,7 @@ body{margin:0; padding:0;}
   margin-right:0.4vw;
   top:7px;
 }
-.box3ul .editR .favC2 input[type="checkbox"]::before{
+.box3ul .editR .favC2 input[type="radio"]::before{
   content: "\2713";
   position: absolute;
   top:50%;
@@ -257,14 +260,14 @@ body{margin:0; padding:0;}
   transform:scale(0) translate(-50%, -50%);
   line-height:1;
 }
-.box3ul .editR .favC2 input[type="checkbox"]:hover{border-color: rgba(255, 153, 0, 0.5);}
-.box3ul .editR .favC2 input[type="checkbox"]:focus{border:2px solid #FF6B00}
-.box3ul .editR .favC2 input[type="checkbox"]:checked {
+.box3ul .editR .favC2 input[type="radio"]:hover{border-color: rgba(255, 153, 0, 0.5);}
+.box3ul .editR .favC2 input[type="radio"]:focus{border:2px solid #FF6B00}
+.box3ul .editR .favC2 input[type="radio"]:checked {
   background-color: #FF9900;
   border-color: rgba(255, 255, 255, 0.3);
   color: white;
 }
-.box3ul .editR .favC2 input[type="checkbox"]:checked::before {
+.box3ul .editR .favC2 input[type="radio"]:checked::before {
   border-radius: 2px;
   transform: scale(1) translate(-50%, -50%)
 }
@@ -407,3 +410,4 @@ body{margin:0; padding:0;}
   justify-content: center;
   margin-top:3vh;
 }
+

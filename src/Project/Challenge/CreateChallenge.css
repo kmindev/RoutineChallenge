@@ -50,6 +50,8 @@ body{margin:0; padding:0;}
 }
 .createChallenge .inner2 .box2 .wrap .main .main-image{
   border:1px solid #FF6B00;
+  background:url(../image/createChallenge/img00.png);
+  background-size:100% 100%;
   border-radius:0.3vw;
   width:100%;
   height:24vh;

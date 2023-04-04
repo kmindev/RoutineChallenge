@@ -5,13 +5,26 @@ import DeleteModal from "./DeleteModal";
 import axios from "axios";
 
 function EditInformation(props) {
+
   const navigate = useNavigate();
 
-  const [member, setMember] = useState({});
-  //프로필 이미지 변경
-  const [profileImage, setProfileImage] = useState(null);
+  const [member, setMember] = useState({
+    member_name: "", //이름
+    member_id: "", //아이디
+    member_password: "", //현재 비밀번호
+    member_nickname: "", //닉네임
+    member_birth: "", //생년월일
+    member_email1: "", //이메일
+    member_email2: "", //이메일 뒷 주소
+    member_theme: "", //관심 챌린지
+    image: process.env.PUBLIC_URL + "/image/myPage/profile_icon.png", //프로필 이미지
+  });
 
   const member_id = window.sessionStorage.getItem("member_id");
+
+
+  //프로필 이미지 변경
+  const [profileImage, setProfileImage] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,6 +34,7 @@ function EditInformation(props) {
   const handleFileChange = (event) => {
     setProfileImage(event.target.files[0]);
   };
+
 
   //회원탈퇴 모달
   const [del, setDel] = useState(false);
@@ -33,7 +47,9 @@ function EditInformation(props) {
     })
     .then((res) => setMember(res.data));
 
-  const onClick = (event) => {
+
+  //수정버튼 데이터 전달
+  const handleUpdate = (event) => {
     event.preventDefault();
 
     const formData = new FormData();
@@ -50,7 +66,6 @@ function EditInformation(props) {
     formData.append("member_theme", member.member_theme);
 
     // API 요청을 보냅니다.
-
     axios
       .post("/update_member", formData, {
         headers: {
@@ -73,6 +88,23 @@ function EditInformation(props) {
       });
   };
 
+
+  //관심챌린지 map
+  const themesKinds = [
+    { id: "development", name: "자기계발" },
+    { id: "study", name: "학습" },
+    { id: "exercise", name: "운동" },
+    { id: "health", name: "건강" },
+    { id: "etc", name: "기타" },
+  ];
+
+  const [themeKind, setThemeKind] = useState([]);
+
+  const handlethemeRadioBtn = (e) => {
+    console.log(e.target.value);
+    setThemeKind(e.target.value);
+  };
+
   return (
     <>
       <div className="editInfo">
@@ -90,14 +122,7 @@ function EditInformation(props) {
               </ul>
               <ul className="box3ul">
                 <li className="editL editL2">현재 비밀번호</li>
-                <li className="editR">
-                  <input
-                    type="password"
-                    placeholder="현재 비밀번호*"
-                    required
-                    onChange={handleChange}
-                  />
-                </li>
+                <li className="editR">{member.member_password}</li>
               </ul>
               <ul className="box3ul">
                 <li className="editL editL2">비밀번호 변경</li>
@@ -180,12 +205,13 @@ function EditInformation(props) {
               <ul className="box3ul">
                 <li className="editL editL2">이메일</li>
                 <li className="editR">
+                  <div className="email0">{member.member_email}</div>
                   <p className="email1">
                     <input
                       onChange={handleChange}
                       type="text"
                       name="member_email1"
-                      placeholder={member.member_email}
+                      placeholder="새로운 E-mail"
                       value={member.member_email1}
                       required
                     />
@@ -213,66 +239,30 @@ function EditInformation(props) {
                 <p className="editL editC">관심 챌린지</p>
                 <p className="editR">
                   <div className="favC2">
-                    <p>
-                      <input
-                        type="radio"
-                        name="member_challenge"
-                        value="development"
-                        onChange={handleChange}
-                      />
-                      <label for="development">
-                        <span>자기계발</span>
-                      </label>
-                    </p>
-                    <p>
-                      <input
-                        type="radio"
-                        name="member_challenge"
-                        value="study"
-                        onChange={handleChange}
-                      />
-                      <label for="study">
-                        <span>학습</span>
-                      </label>
-                    </p>
-                    <p>
-                      <input
-                        type="radio"
-                        name="member_challenge"
-                        value="exercise"
-                        onChange={handleChange}
-                      />
-                      <label for="exercise">
-                        <span>운동</span>
-                      </label>
-                    </p>
-                    <p>
-                      <input
-                        type="radio"
-                        name="member_challenge"
-                        value="health"
-                        onChange={handleChange}
-                      />
-                      <label for="health">
-                        <span>건강</span>
-                      </label>
-                    </p>
-                    <p>
-                      <input
-                        type="radio"
-                        name="member_challenge"
-                        value="etc"
-                        onChange={handleChange}
-                      />
-                      <label for="etc">
-                        <span>기타</span>
-                      </label>
-                    </p>
+                    {themesKinds.map((theme) => (
+                      <p>
+                        <input
+                          type="radio"
+                          value={theme.id}
+                          key={theme.id}
+                          name="theme"
+                          id={theme.id}
+                          checked={themeKind === `${theme.id}`}
+                          onChange={handlethemeRadioBtn}
+                          onClick={() => {
+                            setThemeKind(theme.id);
+                          }}
+                        />
+                        <label key={theme.name}>
+                          <span>{theme.name}</span>
+                        </label>
+                      </p>
+                    ))}
                   </div>
                 </p>
               </div>
               <div className="editBtn">
-                <button onClick={onClick}>수정</button>
+                <input id="edit" type="submit" value="수정" onClick={handleUpdate}/>
               </div>
             </form>
 
