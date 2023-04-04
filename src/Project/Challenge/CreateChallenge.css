@@ -89,7 +89,7 @@ body{margin:0; padding:0;}
   background: #fff;
   box-sizing:border-box;
   border:none;
-  background:url(../image/creteChallenge/arrow.png) no-repeat;
+  background:url(../image/createChallenge/arrow.png) no-repeat;
   background-size:100% 100%;
   border-radius:0.3vw;
   cursor: pointer;
@@ -189,7 +189,7 @@ body{margin:0; padding:0;}
   color:#000;
   letter-spacing:0.03em;
   position:relative;
-  background:url(../image/creteChallenge/Cal.png) no-repeat 97% 50% / 0.9vw auto;
+  background:url(../image/createChallenge/Cal.png) no-repeat 97% 50% / 0.9vw auto;
   padding-bottom:0.2vh;
 }
 .createChallenge .inner2 .box2 .wrap .create ul .second input[type="date"]::placeholder{color:#999999;}
