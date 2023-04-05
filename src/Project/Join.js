@@ -67,7 +67,7 @@ function Join() {
         // 회원가입이 성공적으로 이루어졌을 경우 처리할 코드 작성
         console.log(response);
         if (response.data === 1) {
-          alert(member.member_name + "님 오늘도 반갑습니다!");
+          alert(member.member_name + "님 환영합니다!");
           navigate("/login");
         } else {
           alert("회원 정보를 확인해주세요.");
