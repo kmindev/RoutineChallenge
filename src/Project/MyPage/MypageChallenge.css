@@ -15,27 +15,27 @@ body{margin:0; padding:0;}
 }
 
 .myPage .mainPage{
-  border-left:0.3vw solid #FFF8ED;
+  /* border-left:0.3vw solid #FFF8ED; */
   width:80%;
   height:100%;
   /* background-color:lightpink; */
   margin-left:20%;
-  padding:8vh 0 10vh;
   text-align:center;
 }
 
 
 /* 참여중인 공유 챌린지 전체 부분 */
 .share_challenge{
-  /* border:1px solid blue; */
-  width:90%;
+  border-left:0.3vw solid #FFF8ED;
+  width:100%;
   height:auto;
   overflow:hidden;
+  padding:8vh 0 10vh;
 }
 
 /* 참여중인 공유 챌린지 상단 */
 .share_top{
-  width:100%;
+  width:90%;
   overflow:hidden;
 }
 .share_top .share_title{
@@ -60,10 +60,9 @@ body{margin:0; padding:0;}
 /* 참여중인 공유 챌린지 */
 .share_body {
   margin-top:3vh;
-  width:100%;
+  width:90%;
   overflow:hidden;
 }
-/* .share_body2{padding-top:3vh;} */
 
 .share_body ul{
   width:100%;
@@ -75,24 +74,27 @@ body{margin:0; padding:0;}
   display: inline-block;
   float:left;
   width:31%;
-  height:300px;
-  margin-right:3.5%;
+  height:40vh;
+  margin:0 3.5% 3vh 0;
   background-color: #fefaf8;
   border-radius: 1.5vw;
   border: 2px solid #FF9900;
   cursor:pointer;
 }
 #my_challenge:nth-child(3){margin-right:0;}
+#my_challenge:nth-child(6){margin-right:0;}
+#my_challenge:nth-child(9){margin-right:0;}
+#my_challenge:nth-child(12){margin-right:0;}
 .ch-image{
   width:100%;
-  height:180px;
+  height:25vh;
   border-radius:1.5vw 1.5vw 0px 0px;
   overflow:hidden;
   align-items:center;
 }
 .ch-image .ch-img{
   width:100%;
-  height:190px;
+  height:25vh;
   object-fit:cover;
   object-position:center;
 }
@@ -101,16 +103,14 @@ body{margin:0; padding:0;}
   clear: both;
   float: left;
   width: 100%;
-  height: 110px;
+  height:15vh;
   padding: 1.5vh 10% 3vh;
   border-radius: 0px 0px 1.5vw 1.5vw;
 }
 .ch-text .ch-title {
   clear: both;
   float: left;
-  margin: 0;
-  padding: 0;
-  height: 35px;
+  margin-bottom:0.7vh;
   overflow: hidden;
   font-weight:700;
   font-size:1.2vw;
@@ -120,8 +120,7 @@ body{margin:0; padding:0;}
 .ch-text .ch-subtext {
   clear: both;
   float: left;
-  height: 25px;
-  margin-bottom:5px;
+  margin-bottom:1.8vh;
   padding: 0;
   overflow: hidden;
   font-weight: 400;
@@ -136,6 +135,6 @@ body{margin:0; padding:0;}
   font-weight: 700;
   font-size: 0.85vw;
   color: #ff6700;
-  right:7%;
+  /* right:5%; */
   bottom:1.5vh;
 }
