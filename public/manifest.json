@@ -1,21 +1,21 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Challenge",
+  "name": "Rutine Challenge",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "title_logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
-      "src": "logo192.png",
+      "src": "logo_circle1.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "272x272"
     },
     {
-      "src": "logo512.png",
+      "src": "logo_circle2.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "272x272"
     }
   ],
   "start_url": ".",
