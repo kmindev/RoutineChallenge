@@ -1,0 +1,83 @@
+/* Sidebar.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+*{box-sizing:border-box; list-style-type:none;}
+body{margin:0; padding:0;}
+*{margin:0; padding:0;}
+
+.sideBar-wrap{
+  width:100%;
+  height:auto;
+}
+.sideBar-wrap .sideBar{
+  width:20%;
+  height:79%;
+  position:fixed;
+  top:8vh;
+  left:0;
+  text-align:center;
+  z-index:4;
+  /* background-color:mediumspringgreen; */
+}
+.sideBar-wrap .sideBar .sideProfile{
+  margin:0 auto;
+  padding-top:10vh;
+}
+#profile_container .pf-img{
+  width: 20vh;
+  height: 20vh;
+  margin: 0 auto 3vh;
+  border-radius:100%;
+  overflow: hidden;
+}
+#profile_container .pf-img>img{
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+}
+#profile_container .pf-text{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.3vw;
+  font-weight:600;
+  color:#000;
+  letter-spacing:0.03em;
+}
+#profile_container .pf-text span{
+  font-size:1vw;
+  font-weight:400;
+}
+.sideBar-wrap .sideBar .sideProfile .sidebar-line {
+  clear: both;
+  margin: 4vh auto;
+  width: 25%;
+  border: none;
+  border-top: 5px solid rgba(255, 153, 0, 0.6);
+  color: #ffc266;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+.sideBar-wrap .sideBar .sideProfile .sidebar-line::after {
+  top: -17.5px;
+  font-size: 20px;
+  content: "◆";
+  color: #ffc266;
+  position: relative;
+}
+/* .sideBar-wrap .sideBar .sideProfile .line{
+  margin:4vh 0;
+} */
+#side-nav .nav-sub{
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size:1.3vw;
+  color:#000;
+  letter-spacing:0.03em;
+  margin-bottom:2vh;
+}
+#side-nav .nav-sub a{
+  text-decoration:none;
+  color:#000;
+}
+#side-nav .nav-sub a:hover{font-weight:600;}
+#side-nav .nav-sub a:focus{font-weight:600;}

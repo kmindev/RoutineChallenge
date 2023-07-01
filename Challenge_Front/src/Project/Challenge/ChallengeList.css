@@ -1,0 +1,86 @@
+/* ChallengeList.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.listWrap {
+  clear: both;
+  width: 64%;
+  margin: 0 auto;
+}
+
+#challenge {
+  float: left;
+  width: 32%;
+  min-height: 383px;
+  margin-bottom: 3.5vh;
+  background-color: #fceee6;
+  box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5vw;
+  cursor: pointer;
+}
+#challenge a {
+  text-decoration: none;
+}
+#challenge:not(:nth-child(3n)) {
+  margin-right: 2%;
+}
+
+.c-image {
+  width: 100%;
+  height: 233px;
+  border-radius: 1.5vw 1.5vw 0px 0px;
+  overflow: hidden;
+  align-items: center;
+}
+.c-image .c-img { 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.c-text {
+  clear: both;
+  width: 100%;
+  height: 150px;
+  padding: 2.5vh 3.5vh 5vh;
+  border-radius: 0px 0px 1.5vw 1.5vw;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: left;
+  position: relative;
+}
+.c-text .c-title {
+  clear: both;
+  height: 35px;
+  font-weight: 700;
+  font-size: 1.05vw;
+  color: #333333;
+}
+.c-text .c-subtext {
+  clear: both;
+  height: 50px;
+  margin-bottom: 5px;
+  font-size: 0.85vw;
+  color: #666666;
+}
+.c-text .c-date {
+  clear: both;
+  font-weight: 700;
+  font-size: 0.85vw;
+  color: #ff6700;
+  position: absolute;
+  right: 7%;
+  bottom: 1.2vh;
+} 

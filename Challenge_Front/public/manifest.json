@@ -1,0 +1,25 @@
+{
+  "short_name": "Challenge",
+  "name": "Rutine Challenge",
+  "icons": [
+    {
+      "src": "title_logo.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "logo_circle1.png",
+      "type": "image/png",
+      "sizes": "272x272"
+    },
+    {
+      "src": "logo_circle2.png",
+      "type": "image/png",
+      "sizes": "272x272"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

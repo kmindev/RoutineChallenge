@@ -1,0 +1,140 @@
+/* MypageChallenge.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+*{box-sizing:border-box; list-style-type:none; font-family: 'Noto Sans KR', sans-serif;}
+body{margin:0; padding:0;}
+*{margin:0; padding:0;}
+
+
+.myPage{
+  width:100%;
+  height:100vh;
+  padding-top:8vh;
+  position:relative;
+  /* border:1px solid blue; */
+}
+
+.myPage .mainPage{
+  /* border-left:0.3vw solid #FFF8ED; */
+  width:80%;
+  height:100%;
+  /* background-color:lightpink; */
+  margin-left:20%;
+  text-align:center;
+}
+
+
+/* 참여중인 공유 챌린지 전체 부분 */
+.share_challenge{
+  border-left:0.3vw solid #FFF8ED;
+  width:100%;
+  height:auto;
+  overflow:hidden;
+  padding:8vh 0 10vh;
+}
+
+/* 참여중인 공유 챌린지 상단 */
+.share_top{
+  width:90%;
+  overflow:hidden;
+}
+.share_top .share_title{
+  float:left;
+  font-weight:700;
+  font-size:1.3vw;
+  color: #555555;
+}
+.share_top .share_link{
+  float:right;
+  cursor:pointer;
+  font-size:1vw;
+  color: #999999;
+  padding-top:1vh;
+}
+.share_top .share_link a{
+  text-decoration:none;
+  color: #999999;
+}
+.share_top .share_link a:hover{color: #555555;}
+
+/* 참여중인 공유 챌린지 */
+.share_body {
+  margin-top:3vh;
+  width:90%;
+  overflow:hidden;
+}
+
+.share_body ul{
+  width:100%;
+  overflow:hidden;
+}
+
+#my_challenge{
+  /* border:2px solid green; */
+  display: inline-block;
+  float:left;
+  width:31%;
+  height:40vh;
+  margin:0 3.5% 3vh 0;
+  background-color: #fefaf8;
+  border-radius: 1.5vw;
+  border: 2px solid #FF9900;
+  cursor:pointer;
+}
+#my_challenge:nth-child(3){margin-right:0;}
+#my_challenge:nth-child(6){margin-right:0;}
+#my_challenge:nth-child(9){margin-right:0;}
+#my_challenge:nth-child(12){margin-right:0;}
+.ch-image{
+  width:100%;
+  height:25vh;
+  border-radius:1.5vw 1.5vw 0px 0px;
+  overflow:hidden;
+  align-items:center;
+}
+.ch-image .ch-img{
+  width:100%;
+  height:25vh;
+  object-fit:cover;
+  object-position:center;
+}
+
+.ch-text{
+  clear: both;
+  float: left;
+  width: 100%;
+  height:15vh;
+  padding: 1.5vh 10% 3vh;
+  border-radius: 0px 0px 1.5vw 1.5vw;
+}
+.ch-text .ch-title {
+  clear: both;
+  float: left;
+  margin-bottom:0.7vh;
+  overflow: hidden;
+  font-weight:700;
+  font-size:1.2vw;
+  text-align: left;
+  color:#333333;
+}
+.ch-text .ch-subtext {
+  clear: both;
+  float: left;
+  margin-bottom:1.8vh;
+  padding: 0;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 0.85vw;
+  line-height: 1vw;
+  text-align: left;
+  color:#666666;
+}
+.ch-text .ch-date {
+  clear: both;
+  float: right;
+  font-weight: 700;
+  font-size: 0.85vw;
+  color: #ff6700;
+  /* right:5%; */
+  bottom:1.5vh;
+}
