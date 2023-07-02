@@ -30,16 +30,13 @@
 
 
 ### FrontEnd
-
-### BackEnd
-
-### Database
-
 - React.js
 
+### BackEnd
 - Spring Boot
 - MyBatis
-
+  
+### Database
 - MySQL
 
 ## 수행 절차
