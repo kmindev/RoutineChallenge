@@ -90,13 +90,15 @@
 
 
 
-![Untitled](%E1%84%85%E1%85%AE%E1%84%90%E1%85%B5%E1%86%AB%20%E1%84%8E%E1%85%A2%E1%86%AF%E1%84%85%E1%85%B5%E1%86%AB%E1%84%8C%E1%85%B5%204d487bc9eae64f529519c6d9c0b4d545/Untitled.png)
+![Untitled](https://github.com/kmindev/RoutineChallenge/assets/97210232/f3802881-277f-41bf-a5ca-4453338d1ec1)
+
 
 ## 기능 소개
 
 
 
-![Untitled](%E1%84%85%E1%85%AE%E1%84%90%E1%85%B5%E1%86%AB%20%E1%84%8E%E1%85%A2%E1%86%AF%E1%84%85%E1%85%B5%E1%86%AB%E1%84%8C%E1%85%B5%204d487bc9eae64f529519c6d9c0b4d545/Untitled%201.png)
+![Untitled 1](https://github.com/kmindev/RoutineChallenge/assets/97210232/67cd4d2d-7907-49e0-b833-1eb16113fc58)
+
 
 ## 페이지 소개
 
