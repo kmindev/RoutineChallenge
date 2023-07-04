@@ -1,10 +1,10 @@
 # 루틴 챌린지
 
-## Github Link
+## Notion Link
 
 
 
-[https://github.com/kmindev/RoutineChallenge](https://github.com/kmindev/RoutineChallenge)
+(https://dented-bell-59e.notion.site/e0d485c838194f9db9bd6e2cd044c65a?pvs=4)
 
 ## 프로젝트 소개
 
