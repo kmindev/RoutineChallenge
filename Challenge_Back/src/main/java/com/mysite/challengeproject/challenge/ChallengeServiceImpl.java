@@ -5,13 +5,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ChallengeServiceImpl implements ChallengeService{
-	
+	@Value("${spring.servlet.multipart.location}")
+	String uploadDir;
 	private ChallengeMapper mapper;
 	
 	public ChallengeServiceImpl(ChallengeMapper mapper) {
@@ -43,24 +45,6 @@ public class ChallengeServiceImpl implements ChallengeService{
 		mapper.setReadCountUpdate(challenge_num);
 	}
 	
-//	@Override // 챌린지 생성
-//	public int insertChallenge(ChallengeVO challenge) {
-//		return mapper.insertChallenge(challenge);
-//	}
-	
-//	@Override // 챌린지 생성
-//	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1, MultipartFile mul2) throws IOException {
-//		String thumbnailSaveName = null;
-//		String challengeImageSaveName = null;
-//		
-//		if(mul1 != null) {thumbnailSaveName = saveImage(mul1);}
-//		
-//		if(mul2 != null) { challengeImageSaveName = saveImage(mul1);}
-//		
-//		return mapper.insertChallenge(challengeDTO2, thumbnailSaveName, challengeImageSaveName);
-//		
-//	}
-	
 	@Override // 챌린지 생성
 	public int insertChallenge(ChallengeDTO2 challengeDTO2, MultipartFile mul1) throws IOException {
 		String thumbnailSaveName = null;
@@ -76,10 +60,10 @@ public class ChallengeServiceImpl implements ChallengeService{
 	}
 	
 	private String saveImage(MultipartFile mul) throws IOException {
-		String imgName = UUID.randomUUID() + "." +StringUtils.getFilename(mul.getOriginalFilename());
-		File file = new File("C:\\Project\\React_Source\\mini-project\\public\\image\\upload\\challengeimg\\" + imgName); 
-		mul.transferTo(file);
-		return imgName;
+		File storedFileName = new File(UUID.randomUUID().toString() + "_" + mul.getOriginalFilename());
+		mul.transferTo(storedFileName);
+
+		return storedFileName.toString();
 	}
    
 	@Override // 챌린지 상세정보 조회
