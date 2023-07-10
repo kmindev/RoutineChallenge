@@ -17,7 +17,9 @@ function EditInformation(props) {
           member_id: member_id,
         },
       })
-      .then((res) => setMember(res.data));
+      .then((res) => {
+        setMember(res.data);
+      });
   }, []);
 
   const [update_member, setUdate_member] = useState({
@@ -95,7 +97,7 @@ function EditInformation(props) {
         console.log(response);
         if (response.data === 1) {
           alert(member.member_name + "님 개인정보 수정이 완료됐습니다!");
-          navigate("/mypage");
+          window.location.reload();
         } else {
           alert("회원 정보를 확인해주세요.");
         }
@@ -180,14 +182,17 @@ function EditInformation(props) {
                 <li className="editL">프로필 사진</li>
                 <li className="editR">
                   <div className="pro-img">
-                    <img
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/image/upload/profile/" +
-                        member.member_profile
-                      }
-                      alt="프로필 사진"
-                    />
+                    {profileImage === null ? (
+                      <img
+                        src={`http://localhost:8080/images/${member.member_profile}`}
+                        alt="프로필 사진"
+                      />
+                    ) : (
+                      <img
+                        src={URL.createObjectURL(profileImage)}
+                        alt="프로필 사진"
+                      />
+                    )}
                   </div>
                   <div id="upload_container">
                     <div className="pro-btn">

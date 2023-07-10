@@ -312,11 +312,7 @@ function DetailChallenge() {
           <img
             className="banner-image"
             alt="배너이미지"
-            src={
-              process.env.PUBLIC_URL +
-              "/image/upload/challengeimg/" +
-              challenge_data.challenge_thumbnail
-            }
+            src={`http://localhost:8080/images/${challenge_data.challenge_thumbnail}`}
           ></img>
           <div className="banner-explain">
             {closed === 1 ? (
@@ -417,9 +413,7 @@ function DetailChallenge() {
             <img
               className="image-explain-detail"
               alt="챌린지설명"
-              src={
-                process.env.PUBLIC_URL + "/image/detailChallenge/detail9.png"
-              }
+              src={`http://localhost:8080/images/${challenge_data.challenge_thumbnail}`}
             ></img>
           </>
         ) : (
@@ -480,17 +474,6 @@ function DetailChallenge() {
                       </div>
                     </div>
                   </section>
-
-                  {/* <div className="table-big">
-                    <img
-                      className="detail-image"
-                      alt=""
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/image/detailChallenge/detail9.png"
-                      }
-                    ></img>
-                  </div> */}
                 </>
               ) : null
             }
