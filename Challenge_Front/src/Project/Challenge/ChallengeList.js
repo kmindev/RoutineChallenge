@@ -16,7 +16,10 @@ function ChallengeList(props) {
           state: 0,
         },
       })
-      .then((res) => setLists(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setLists(res.data);
+      })
       .catch((e) => {
         console.error(e);
       });
@@ -98,11 +101,7 @@ function ChallengeList(props) {
             <img
               className="c-img"
               alt={`챌린지이미지`}
-              src={
-                process.env.PUBLIC_URL +
-                "/image/upload/challengeimg/" +
-                li.challenge_thumbnail
-              }
+              src={`http://localhost:8080/images/${li.challenge_thumbnail}`}
             ></img>
           </div>
           <div className="c-text">

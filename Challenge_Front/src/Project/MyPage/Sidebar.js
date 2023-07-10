@@ -14,7 +14,10 @@ function Sidebar(props) {
           member_id: member_id,
         },
       })
-      .then((res) => setUser(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+      })
       .catch((e) => {
         console.error(e);
       });
@@ -30,11 +33,7 @@ function Sidebar(props) {
           <div id="profile_container">
             <p className="pf-img">
               <img
-                src={
-                  process.env.PUBLIC_URL +
-                  "/image/upload/profile/" +
-                  user.member_profile
-                }
+                src={`http://localhost:8080/images/${user.member_profile}`}
                 alt="프로필 사진"
               />
             </p>
