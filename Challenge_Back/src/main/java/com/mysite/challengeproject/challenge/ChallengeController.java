@@ -53,9 +53,8 @@ public class ChallengeController {
 	
 	@PostMapping("/create_challenge")
 	public int insertChallenge(ChallengeDTO2 challengeDTO2, 
-			@RequestParam(value="challenge_thumbnail", required = false) MultipartFile mul1) throws IOException {
-		System.out.println(challengeDTO2.getChallenge_creater());
-		return challengeServiceImpl.insertChallenge(challengeDTO2, mul1);
+			@RequestParam(value="challenge_thumbnail", required = false) MultipartFile mul) throws IOException {
+		return challengeServiceImpl.insertChallenge(challengeDTO2, mul);
 	}
 	
 
