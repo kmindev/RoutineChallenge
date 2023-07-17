@@ -4,7 +4,7 @@
 
 
 
-(https://dented-bell-59e.notion.site/e0d485c838194f9db9bd6e2cd044c65a?pvs=4)
+(https://dented-bell-59e.notion.site/66b1782f530e4bf096818a5f89c8e0f6?pvs=4)
 
 ## 프로젝트 소개
 
@@ -101,13 +101,10 @@
 
 
 ## 페이지 소개
-
-
-
-[Home&About](https://www.notion.so/Home-About-d57114c0fef044938118be62676b8518?pvs=21)
-
-[로그인 및 회원가입](https://www.notion.so/65111823d805474bb02d5e07aa4550bf?pvs=21)
-
-[챌린지 서비스](https://www.notion.so/508837d3b5b746d1934ebc88803cb43b?pvs=21)
-
-[마이페이지](https://www.notion.so/7546c4c9f0d1457180be741aa9e775f4?pvs=21)
+![image](https://github.com/kmindev/RoutineChallenge/assets/97210232/975c62bf-2e32-4b94-a9f4-e87782f6aca1)
+![image](https://github.com/kmindev/RoutineChallenge/assets/97210232/c57f1b5e-abcc-4bdf-be9a-ca761a7425dd)
+![image](https://github.com/kmindev/RoutineChallenge/assets/97210232/38c3ad44-ab21-4bb6-bec8-63bdc6a3f465)
+![image](https://github.com/kmindev/RoutineChallenge/assets/97210232/c361041a-8728-43be-b7ff-8e3ecb6ee895)
+![image](https://github.com/kmindev/RoutineChallenge/assets/97210232/5683ae87-7fba-4f6a-97a9-ffa67a9bc114)
+![image](https://github.com/kmindev/RoutineChallenge/assets/97210232/99fe32c1-4e7f-4d70-846e-03e0bcc6cfc3)
+![image](https://github.com/kmindev/RoutineChallenge/assets/97210232/9e68ed27-b37e-40f7-bfa2-220171377e05)
