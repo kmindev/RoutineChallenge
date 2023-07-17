@@ -29,15 +29,18 @@
 
 
 
-### FrontEnd
-- React.js
+### rontEnd
+
+- `React.js`
 
 ### BackEnd
-- Spring Boot
-- MyBatis
-  
+
+- `Spring Boot`
+- `MyBatis`
+
 ### Database
-- MySQL
+
+- `MySQL`
 
 ## 📅수행 절차
 
