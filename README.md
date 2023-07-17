@@ -1,4 +1,4 @@
-# https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f3c3.svg루틴 챌린지
+# :muscle:루틴 챌린지
 
 ## Notion Link
 
