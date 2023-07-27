@@ -39,7 +39,7 @@
 
 
 
-### rontEnd
+### FrontEnd
 
 - `React.js`
 
